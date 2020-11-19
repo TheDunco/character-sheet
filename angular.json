@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "character-sheet"
+    }
+  },
+  "defaultProject": "character-sheet",
+  "cli": {
+    "analytics": false
+  }
 }
