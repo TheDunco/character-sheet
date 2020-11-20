@@ -1,7 +1,7 @@
 <header
   fxLayout="row"
   fxLayoutAlign="center">
-    Character Name 
+    Character Name, Class, Level
     <!-- {{character.name}} or something eventually -->
 </header>
 
@@ -15,7 +15,7 @@
   
   <!-- Health -->
   <div>
-      <mat-expansion-panel>
+      <mat-expansion-panel [expanded]="true">
           <mat-expansion-panel-header>
               <mat-panel-title>
                   Health
@@ -27,7 +27,7 @@
   
   <!-- Summary -->
   <div>
-      <mat-expansion-panel>
+      <mat-expansion-panel [expanded]="true">
           <mat-expansion-panel-header>
               <mat-panel-title>
                   Summary
@@ -52,7 +52,7 @@
       fxFlex="0 1 calc(33.3% - 32px)"
       fxFlex.lt-md="0 1 calc(50% - 32px)"
       fxFlex.lt-sm="100%">
-        <mat-expansion-panel>
+        <mat-expansion-panel [expanded]="true">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     Ability Scores
@@ -67,7 +67,7 @@
       fxFlex.lt-md="0 1 calc(50% - 32px)"
       fxFlex="0 1 calc(33.3% - 32px)"
       fxFlex.lt-sm="100%">
-        <mat-expansion-panel>
+        <mat-expansion-panel [expanded]="true">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     Actions
@@ -82,7 +82,7 @@
       fxFlex="0 1 calc(33.3% - 32px)"
       fxFlex.lt-md="0 1 calc(50% - 32px)"
       fxFlex.lt-sm="100%">
-        <mat-expansion-panel>
+        <mat-expansion-panel [expanded]="true">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     Skills
@@ -106,7 +106,7 @@
     fxFlex="0 1 calc(33.3% - 32px)" 
     fxFlex.lt-md="0 1 calc(50% - 32px)"
     fxFlex.lt-sm="100%">
-        <mat-expansion-panel>
+        <mat-expansion-panel [expanded]="true">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     Trackables
@@ -121,7 +121,7 @@
     fxFlex="0 1 calc(33.3% - 32px)" 
     fxFlex.lt-md="0 1 calc(50% - 32px)"
     fxFlex.lt-sm="100%">
-        <mat-expansion-panel>
+        <mat-expansion-panel [expanded]="true">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     Spells
@@ -133,7 +133,7 @@
     
     <!-- Proficiency -->
     <div fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
-        <mat-expansion-panel>
+        <mat-expansion-panel [expanded]="true">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     Proficiency
@@ -155,7 +155,7 @@
 
     <!-- Defenses -->
     <div fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
-        <mat-expansion-panel>
+        <mat-expansion-panel [expanded]="true">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     Defenses
@@ -167,7 +167,7 @@
 
     <!-- Abilities -->
     <div fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
-        <mat-expansion-panel>
+        <mat-expansion-panel [expanded]="true">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     Abilities
@@ -189,7 +189,7 @@
 
     <!-- Equipment -->
     <div fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
-        <mat-expansion-panel>
+        <mat-expansion-panel [expanded]="true">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     Equipment
@@ -201,7 +201,7 @@
 
     <!-- Feats -->
     <div fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
-        <mat-expansion-panel>
+        <mat-expansion-panel [expanded]="true">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     Feats
@@ -218,7 +218,7 @@
 
     <!-- Notes -->
     <div fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
-        <mat-expansion-panel>
+        <mat-expansion-panel [expanded]="true">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     Notes
