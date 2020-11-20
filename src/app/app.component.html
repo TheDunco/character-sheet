@@ -1,42 +1,40 @@
-<header
-  fxLayout="row"
-  fxLayoutAlign="center">
-    Character Name, Class, Level
+<header>
+  <!-- fxLayout="row" -->
+  <!-- fxLayoutAlign="center"> -->
+  <h1>
+      Character Name, Class, Level
+  </h1>
     <!-- {{character.name}} or something eventually -->
+    <!-- Row 0 -->
+    <div fxLayout="row" fxLayout.lt-sm="column" fxLayout.lt-md="column" fxLayoutGap="32px" fxLayoutAlign="center">
+    
+        <!-- Health -->
+        <div>
+            <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Health
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-health></app-health>
+            </mat-expansion-panel>
+        </div>
+    
+        <!-- Summary -->
+        <div>
+            <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Summary
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-summary></app-summary>
+            </mat-expansion-panel>
+        </div>
+    </div>
 </header>
 
-<!-- Row 0 -->
-<div   
-  fxLayout="row" 
-  fxLayout.lt-sm="column" 
-  fxLayout.lt-md="column"
-  fxLayoutGap="32px" 
-  fxLayoutAlign="center">
-  
-  <!-- Health -->
-  <div>
-      <mat-expansion-panel [expanded]="true">
-          <mat-expansion-panel-header>
-              <mat-panel-title>
-                  Health
-              </mat-panel-title>
-          </mat-expansion-panel-header>
-          <app-health></app-health>
-      </mat-expansion-panel>
-  </div>
-  
-  <!-- Summary -->
-  <div>
-      <mat-expansion-panel [expanded]="true">
-          <mat-expansion-panel-header>
-              <mat-panel-title>
-                  Summary
-              </mat-panel-title>
-          </mat-expansion-panel-header>
-          <app-summary></app-summary>
-      </mat-expansion-panel>
-  </div>
-</div>
+
 
 <!-- Row 1 -->
 <div 
@@ -49,6 +47,7 @@
     
     <!-- Ability Scores -->
     <div 
+      class="left"
       fxFlex="0 1 calc(33.3% - 32px)"
       fxFlex.lt-md="0 1 calc(50% - 32px)"
       fxFlex.lt-sm="100%">
@@ -103,6 +102,7 @@
   
     <!-- Trackables -->
     <div 
+    class="left"
     fxFlex="0 1 calc(33.3% - 32px)" 
     fxFlex.lt-md="0 1 calc(50% - 32px)"
     fxFlex.lt-sm="100%">
@@ -154,7 +154,11 @@
   fxLayoutAlign="flex-start">
 
     <!-- Defenses -->
-    <div fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+    <div 
+    class="left"
+    fxFlex="0 1 calc(33.3% - 32px)" 
+    fxFlex.lt-md="0 1 calc(50% - 32px)" 
+    fxFlex.lt-sm="100%">
         <mat-expansion-panel [expanded]="true">
             <mat-expansion-panel-header>
                 <mat-panel-title>
@@ -188,7 +192,11 @@
   fxLayoutAlign="flex-start">
 
     <!-- Equipment -->
-    <div fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+    <div 
+    class="left"
+    fxFlex="0 1 calc(33.3% - 32px)" 
+    fxFlex.lt-md="0 1 calc(50% - 32px)" 
+    fxFlex.lt-sm="100%">
         <mat-expansion-panel [expanded]="true">
             <mat-expansion-panel-header>
                 <mat-panel-title>
@@ -217,7 +225,11 @@
     fxLayoutAlign="flex-start">
 
     <!-- Notes -->
-    <div fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+    <div 
+    class="left"
+    fxFlex="0 1 calc(33.3% - 32px)" 
+    fxFlex.lt-md="0 1 calc(50% - 32px)" 
+    fxFlex.lt-sm="100%">
         <mat-expansion-panel [expanded]="true">
             <mat-expansion-panel-header>
                 <mat-panel-title>
