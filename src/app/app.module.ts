@@ -18,10 +18,36 @@ import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AbilityScoreComponent } from './components/ability-score/ability-score.component';
+import { HealthComponent } from './components/health/health.component';
+import { SummaryComponent } from './components/summary/summary.component';
+import { ActionsComponent } from './components/actions/actions.component';
+import { SkillsComponent } from './components/skills/skills.component';
+import { TrackablesComponent } from './components/trackables/trackables.component';
+import { SpellsComponent } from './components/spells/spells.component';
+import { ProficiencyComponent } from './components/proficiency/proficiency.component';
+import { DefensesComponent } from './components/defenses/defenses.component';
+import { AbilitiesComponent } from './components/abilities/abilities.component';
+import { EquipmentComponent } from './components/equipment/equipment.component';
+import { FeatsComponent } from './components/feats/feats.component';
+import { NotesComponent } from './components/notes/notes.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AbilityScoreComponent,
+    HealthComponent,
+    SummaryComponent,
+    ActionsComponent,
+    SkillsComponent,
+    TrackablesComponent,
+    SpellsComponent,
+    ProficiencyComponent,
+    DefensesComponent,
+    AbilitiesComponent,
+    EquipmentComponent,
+    FeatsComponent,
+    NotesComponent
   ],
   imports: [
     BrowserModule,
