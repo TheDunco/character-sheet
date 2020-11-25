@@ -15,6 +15,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 // import { MatGridListModule } from '@angular/material/grid-list';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -47,7 +49,7 @@ import { NotesComponent } from './components/notes/notes.component';
     AbilitiesComponent,
     EquipmentComponent,
     FeatsComponent,
-    NotesComponent
+    NotesComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,9 @@ import { NotesComponent } from './components/notes/notes.component';
     MatButtonModule,
     // MatGridListModule,
     FlexLayoutModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatFormFieldModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

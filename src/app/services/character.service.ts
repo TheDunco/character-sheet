@@ -5,7 +5,26 @@ import { Injectable } from '@angular/core';
 })
 export class CharacterService {
 
-  constructor() { }
+  constructor() { 
+  }
+  
+  // Ability Score
+    abilityScores: abilityScore = {
+    charisma: 8,
+    constitution: 8,
+    dexterity: 8,
+    intelligence: 8,
+    strength: 8,
+    wisdom: 8,
+  }
+  getAbilityScores(): abilityScore {
+    return this.abilityScores
+  }
+  setAbilityScores(newScores: abilityScore) {
+    this.abilityScores = newScores;
+  }
+  
+  
 }
 
 export interface abilityScore {
