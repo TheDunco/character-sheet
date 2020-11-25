@@ -72,7 +72,10 @@
                     Actions
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <app-actions></app-actions>
+            <app-actions
+                name="Unarmed Strike"
+                description="bludgeoning">
+            </app-actions>
         </mat-expansion-panel>
     </div>
     
@@ -177,7 +180,9 @@
                     Abilities
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <app-abilities></app-abilities>
+            <app-abilities></app-abilities>                 
+                
+
         </mat-expansion-panel>
     </div>
 </div>
@@ -235,6 +240,9 @@
                 <mat-panel-title>
                     Notes
                 </mat-panel-title>
+                <button mat-icon-button (click)="openDialog()">
+                    <mat-icon color="black">add</mat-icon>
+                </button>
             </mat-expansion-panel-header>
             <app-notes></app-notes>
         </mat-expansion-panel>

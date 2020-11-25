@@ -39,6 +39,9 @@ import { EquipmentComponent } from './components/equipment/equipment.component';
 import { FeatsComponent } from './components/feats/feats.component';
 import { NotesComponent } from './components/notes/notes.component';
 
+
+import { MatDialogModule } from '@angular/material/dialog';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +76,7 @@ import { NotesComponent } from './components/notes/notes.component';
     MatInputModule,
     MatDividerModule,
     MatCheckboxModule
-
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-actions',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActionsComponent implements OnInit {
 
+  @Input() name: string;
+  @Input() description: string;
   constructor() { }
 
   ngOnInit(): void {
