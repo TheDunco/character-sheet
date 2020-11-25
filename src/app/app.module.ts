@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 
 import { FormsModule } from '@angular/forms';
 
+
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
@@ -15,10 +16,14 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 // import { MatGridListModule } from '@angular/material/grid-list';
-import {MatFormFieldModule} from '@angular/material/form-field';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInput, MatInputModule } from '@angular/material/input';
+import {MatDividerModule} from '@angular/material/divider';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatExpansionModule } from '@angular/material/expansion';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AbilityScoreComponent } from './components/ability-score/ability-score.component';
 import { HealthComponent } from './components/health/health.component';
@@ -64,7 +69,10 @@ import { NotesComponent } from './components/notes/notes.component';
     // MatGridListModule,
     FlexLayoutModule,
     MatExpansionModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule,
+    MatDividerModule,
+    MatCheckboxModule
 
   ],
   providers: [],
