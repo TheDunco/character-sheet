@@ -31,6 +31,7 @@ import { AbilitiesComponent } from './components/abilities/abilities.component';
 import { EquipmentComponent } from './components/equipment/equipment.component';
 import { FeatsComponent } from './components/feats/feats.component';
 import { NotesComponent } from './components/notes/notes.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 import { MatDialogModule } from '@angular/material/dialog';
@@ -51,6 +52,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     EquipmentComponent,
     FeatsComponent,
     NotesComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -65,7 +67,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     // MatGridListModule,
     FlexLayoutModule,
     MatExpansionModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class CharacterService {
 
+  
   constructor() { }
 }
 
@@ -84,4 +85,9 @@ export interface trackable {
   name: string,
   type: 'checkboxes' | 'number',
   description: string
+}
+
+export interface note{
+  title: string;
+  description: string;
 }

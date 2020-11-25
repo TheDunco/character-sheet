@@ -1,13 +1,13 @@
 <h1 mat-dialog-title>NOTE</h1>
 <div mat-dialog-content>
-    <input matInput [(ngModel)]="data.animal">
+  <input matInput [(ngModel)]="data.userTitle">
   <p>Name</p>
   <mat-form-field>
-    <input matInput [(ngModel)]="data.animal">
+    <input matInput [(ngModel)]="data.description">
   </mat-form-field>
   <p>Description</p>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">CANCEL</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>DONE</button>
+  <button mat-button>DONE</button>
 </div>
