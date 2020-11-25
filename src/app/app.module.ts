@@ -32,6 +32,9 @@ import { EquipmentComponent } from './components/equipment/equipment.component';
 import { FeatsComponent } from './components/feats/feats.component';
 import { NotesComponent } from './components/notes/notes.component';
 
+
+import { MatDialogModule } from '@angular/material/dialog';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +50,7 @@ import { NotesComponent } from './components/notes/notes.component';
     AbilitiesComponent,
     EquipmentComponent,
     FeatsComponent,
-    NotesComponent
+    NotesComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,8 @@ import { NotesComponent } from './components/notes/notes.component';
     MatButtonModule,
     // MatGridListModule,
     FlexLayoutModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

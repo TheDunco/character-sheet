@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotesComponent implements OnInit {
 
+
+  
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  submitNotes(){
+
   }
 
 }
