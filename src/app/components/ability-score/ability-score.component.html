@@ -1,1 +1,65 @@
-<p>ability-score works!</p>
+<div>
+    <span>
+        <mat-form-field appearance="simple">
+            <input matInput [(ngModel)]="this.charisma" (input)="setAbilityScores()">
+        </mat-form-field>
+        Charisma |
+        Mod <label class="number">{{charismaMod}}</label> |
+        Save <label class="number">{{charismaSave}}</label> |
+        Prof <mat-checkbox [checked]="charismaProf" (change)="this.changeProf('charismaSave', this.charismaProf)"></mat-checkbox>
+    </span>
+    <br>
+    <span>
+        <mat-form-field appearance="simple">
+            <input matInput [(ngModel)]="this.constitution" (input)="setAbilityScores()">
+        </mat-form-field>
+        Constitution |
+        Mod <label class="number">{{constitutionMod}}</label> |
+        Save <label class="number">{{constitutionSave}}</label> |
+        Prof <mat-checkbox [checked]="constitutionProf" (change)="this.changeProf('constitutionSave', this.constitutionProf)"></mat-checkbox>
+    </span>
+    <br>
+    <span>
+        <mat-form-field appearance="simple">
+            <input matInput [(ngModel)]="this.dexterity" (input)="setAbilityScores()">
+        </mat-form-field>
+        Dexterity |
+        Mod <label class="number">{{dexterityMod}}</label> |
+        Save <label class="number">{{dexteritySave}}</label> |
+        Prof <mat-checkbox [checked]="dexterityProf" (change)="this.changeProf('dexteritySave', this.dexterityProf)"></mat-checkbox>
+    </span>
+    <br>
+    <span>
+        <mat-form-field appearance="simple">
+            <input matInput [(ngModel)]="this.intelligence" (input)="setAbilityScores()">
+        </mat-form-field>
+        Intelligence |
+        Mod <label class="number">{{intelligenceMod}}</label> |
+        Save <label class="number">{{intelligenceSave}}</label> |
+        Prof <mat-checkbox [checked]="intelligenceProf" (change)="this.changeProf('intelligenceSave', this.intelligenceProf)"></mat-checkbox>
+    </span>
+    <br>
+    <span>
+        <mat-form-field appearance="simple">
+            <input matInput [(ngModel)]="this.strength" (input)="setAbilityScores()">
+        </mat-form-field>
+        Strength |
+        Mod <label class="number">{{strengthMod}}</label> |
+        Save <label class="number">{{strengthSave}}</label> |
+        Prof <mat-checkbox [checked]="strengthProf" (change)="this.changeProf('strengthSave', this.strengthProf)"></mat-checkbox>
+    </span>
+    <br>
+    <span>
+        <mat-form-field appearance="simple">
+            <input matInput [(ngModel)]="this.wisdom" (input)="setAbilityScores()">
+        </mat-form-field>
+        Wisdom |
+        Mod <label class="number">{{wisdomMod}}</label> |
+        Save <label class="number">{{wisdomSave}}</label> |
+        Prof <mat-checkbox [checked]="wisdomProf" (change)="this.changeProf('wisdomSave', this.wisdomProf)"></mat-checkbox>
+    </span>
+    <br>
+    <div>
+         
+    </div>
+</div>
