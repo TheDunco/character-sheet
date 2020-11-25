@@ -6,8 +6,6 @@ import { ɵangular_packages_platform_browser_platform_browser_k } from '@angular
 })
 export class CharacterService {
 
-  constructor() { 
-  }
   
   // Ability Score
     abilityScores: abilityScore = {

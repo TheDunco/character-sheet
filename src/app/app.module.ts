@@ -75,7 +75,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatFormFieldModule,
     MatInputModule,
     MatDividerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
     MatDialogModule
   ],
   providers: [],
