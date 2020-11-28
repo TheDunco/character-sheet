@@ -22,6 +22,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -38,6 +39,7 @@ import { AbilitiesComponent } from './components/abilities/abilities.component';
 import { EquipmentComponent } from './components/equipment/equipment.component';
 import { FeatsComponent } from './components/feats/feats.component';
 import { NotesComponent } from './components/notes/notes.component';
+
 
 
 import { MatDialogModule } from '@angular/material/dialog';
@@ -76,7 +78,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     MatDividerModule,
     MatCheckboxModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

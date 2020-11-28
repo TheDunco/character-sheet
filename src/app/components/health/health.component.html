@@ -1,10 +1,21 @@
 <div class="grid-container">
-    <button mat-icon-button class="up-arrow" (click)="gainHP()">
+    <button mat-icon-button color="primary" class="up-arrow" (click)="gainHP()">
         <mat-icon>arrow_circle_up</mat-icon>
     </button>
-    <button mat-icon-button class="down-arrow" (click)="loseHP()">
+    <button mat-icon-button color="warn" class="down-arrow" (click)="loseHP()">
         <mat-icon>arrow_circle_down</mat-icon>
     </button>
-    <input [(ngModel)]="inputHP" (keyup.enter)="setHP()" class="hp-counter" placeholder={{hp}}>
+    <input matInput [(ngModel)]="inputHP" (keyup.enter)="setHP()" class="hp-counter mainHealth" placeholder={{hp}}/>
+    
     <div class="total-hp">/{{maxHP}}</div>
+    
+    <label class="tempLabel">Temp: </label>
+    <input matInput [(ngModel)]="tempHP" class="temp"/>
+    
+    <input matInput [(ngModel)]="inputHealthDamage" class="health-damage" placeholder="Health/Damage"/>
+    
+    <button color="primary" mat-button class="health" (click)="health()">Health</button>
+    <button color="warn" mat-button class="damage" (click)="damage()">Damage</button>
+    
+    <mat-progress-bar class="indicator" mode="determinate" [value]="this.healthPercent"></mat-progress-bar>
 </div>
