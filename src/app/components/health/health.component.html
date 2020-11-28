@@ -1,1 +1,10 @@
-<p>health works!</p>
+<div class="grid-container">
+    <button mat-icon-button class="up-arrow" (click)="gainHP()">
+        <mat-icon>arrow_circle_up</mat-icon>
+    </button>
+    <button mat-icon-button class="down-arrow" (click)="loseHP()">
+        <mat-icon>arrow_circle_down</mat-icon>
+    </button>
+    <input [(ngModel)]="inputHP" (keyup.enter)="setHP()" class="hp-counter" placeholder={{hp}}>
+    <div class="total-hp">/{{maxHP}}</div>
+</div>
