@@ -22,6 +22,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -41,6 +42,7 @@ import { NotesComponent } from './components/notes/notes.component';
 
 
 import { MatDialogModule } from '@angular/material/dialog';
+import { AbilityDialogComponent } from './components/ability-dialog/ability-dialog.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     EquipmentComponent,
     FeatsComponent,
     NotesComponent,
+    AbilityDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,7 +79,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     MatDividerModule,
     MatCheckboxModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

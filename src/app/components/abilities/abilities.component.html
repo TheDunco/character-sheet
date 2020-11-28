@@ -1,5 +1,5 @@
 <div *ngFor="let ability of abilityList">
 
-    <div>{{ability.name}}- {{ability.description}}</div>
+    <div><strong><a (click)="openDialog(ability.name,ability.summary)">{{ability.name}}</a></strong> - {{ability.description}}</div>
 
 </div>
