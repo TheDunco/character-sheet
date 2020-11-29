@@ -1,4 +1,5 @@
 import { Component, Inject } from '@angular/core';
+import { CharacterService } from './services/character.service';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +10,16 @@ export class AppComponent {
   title = 'Character Sheet';
 
   
-  constructor(){}
+  constructor(public character: CharacterService){}
 
 
   newNoteEntered(){
 
+  }
+  
+  
+  ngOnInit() {
+    this.character.levelSet()
   }
 }
 

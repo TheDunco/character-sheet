@@ -1,1 +1,26 @@
-<p>health works!</p>
+<div class="grid-container">
+    <button mat-icon-button color="primary" class="up-arrow" (click)="gainHP()">
+        <mat-icon>arrow_circle_up</mat-icon>
+    </button>
+    <button mat-icon-button color="warn" class="down-arrow" (click)="loseHP()">
+        <mat-icon>arrow_circle_down</mat-icon>
+    </button>
+    
+    <input matInput [(ngModel)]="inputHP" (keyup.enter)="setHP()" class="hp-counter mainHealth" placeholder={{hp}}/>
+    <span class="total-hp"> 
+        <span class="slash">
+            <label class="slash">/</label>
+        </span>
+        <input matInput class="mainHealth" [(ngModel)]="maxHP"/>
+    </span>
+    
+    <label class="tempLabel">Temp: </label>
+    <input matInput [(ngModel)]="tempHP" class="temp"/>
+    
+    <input matInput [(ngModel)]="inputHealthDamage" class="health-damage" placeholder="Health/Damage"/>
+    
+    <button color="primary" mat-button class="health" (click)="heal()">Health</button>
+    <button color="warn" mat-button class="damage" (click)="damage()">Damage</button>
+    
+    <mat-progress-bar [color]="this.progressColor" class="indicator" mode="determinate" [value]="this.healthPercent"></mat-progress-bar>
+</div>

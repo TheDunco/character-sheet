@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CharacterService } from 'src/app/services/character.service';
 
 @Component({
   selector: 'app-summary',
@@ -7,8 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SummaryComponent implements OnInit {
 
-  constructor() { }
+  constructor(public character: CharacterService) { }
 
+  localSummary = this.character.summary
+  xp = this.character.xp
+  level = this.character.level
+  profBonus = this.character.proficiencyBonus
+  
+  updateSummary(): void {
+    this.character.setXP(this.xp)
+    this.xp = this.character.xp
+    this.level = this.character.level
+    this.profBonus = this.character.proficiencyBonus
+    this.character.setSummary(this.localSummary)
+  }
   ngOnInit(): void {
   }
 

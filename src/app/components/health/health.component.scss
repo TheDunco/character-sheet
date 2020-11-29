@@ -1,0 +1,94 @@
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    ". tempL temp ."
+    "up num count health"
+    "down num count hd"
+    "down num count damage"
+    "bar bar bar bar";
+  padding: 5px;
+}
+
+.up-arrow {
+  grid-area: up;
+  margin-top: 15px;
+}
+
+.down-arrow {
+  grid-area: down;
+  margin-bottom: 15px;
+}
+
+.hp-counter {
+  grid-area: num;
+  align-self: center;
+  padding-left: 15px;
+}
+
+.mainHealth {
+  max-width: 2vmax;
+  min-width: 45px;
+  text-align: center;
+  font-size: 36px;
+}
+
+.slash {
+  margin-bottom: 10px;
+  font-size: 4rem;
+  font-weight: 100;
+}
+
+.total-hp {
+  grid-area: count;
+  text-align: center;
+  align-self: center;
+  font-size: 36px;
+}
+
+mat-icon {
+  font-size: 36px;
+  margin-right: 12px;
+}
+
+.health-damage {
+  grid-area: hd;
+  text-align: center;
+  height: 20px;
+  margin-top: -10px;
+  font-size: 16px;
+}
+
+.health {
+  grid-area: health;
+  height: 40px;
+}
+
+.damage {
+  grid-area: damage;
+  height: 40px;
+}
+
+.indicator {
+  grid-area: bar;
+  width: 100%;
+}
+
+.tempLabel {
+  grid-area: tempL;
+  max-width: 2vmax;
+  min-width: 45px;
+  text-align: center;
+  font-size: 28px;
+  margin-top: 20px;
+}
+
+.temp {
+  grid-area: temp;
+  width: 10px;
+  max-width: 2vmax;
+  min-width: 45px;
+  text-align: center;
+  font-size: 28px;
+  margin-top: 14px;
+  margin-left: 20px;
+}
