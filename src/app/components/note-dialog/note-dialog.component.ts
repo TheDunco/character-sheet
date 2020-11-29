@@ -9,25 +9,38 @@ import {CharacterService, note} from '../../services/character.service';
   styleUrls: ['./note-dialog.component.scss']
 })
 export class NoteDialogComponent implements OnInit {
+  
+  tempTitle:string;
+  tempNote: note= {nTitle: "", nDescription: ""};
 
   constructor(
     private character: CharacterService,
     public noteDialog: MatDialogRef<NoteDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {}
 
-  tempNote: note= {nTitle: "", nDescription: ""};
-
   ngOnInit(): void {
+    this.tempTitle = this.data.title;
     console.log(this.data.title,this.data.description);
   }
+
   closeDialog(){
     this.noteDialog.close();
   }
-  saveNote(newTitle: string, newDescription: string){
-  
-    this.tempNote = {nTitle: newTitle, nDescription: newDescription};
-    this.character.updateNote(this.tempNote, this.data.title);
-    console.log(this.character)
+
+  saveNote(){
+    if(this.data.title && this.data.description){
+      this.tempNote = {nTitle: this.data.title, nDescription: this.data.description};
+      this.character.updateNote(this.tempNote, this.tempTitle);
+      console.log(this.character)
+      this.noteDialog.close();
+    }
+    else {
+      alert("Please fill out both to create a note.");
+    }
+  }
+
+  deleteNote(){
+    this.character.deleteNote(this.tempTitle);
     this.noteDialog.close();
   }
 }

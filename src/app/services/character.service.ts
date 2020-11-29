@@ -96,6 +96,14 @@ export class CharacterService {
       this.exampleNote.push(nData);
     }
   }
+
+  deleteNote(oNote:string){
+    const index = this.exampleNote.findIndex(item => item.nTitle === oNote);
+    if (index > -1) {
+      // delete this.exampleNote[index];
+      this.exampleNote.splice(index, 1);
+    }
+  }
 }
 
 export interface abilityScore {
