@@ -19,7 +19,9 @@ export class NoteDialogComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+  closeDialog(){
+    this.noteDialog.close();
+  }
   saveNote(title: string, description: string){
     console.log(title,description);
     this.tempNote = {nTitle: title, nDescription: description};

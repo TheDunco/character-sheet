@@ -7,6 +7,6 @@
     <mat-label>Description</mat-label>
 </div>
 <div mat-dialog-actions>
-  <button mat-button >CANCEL</button>
+  <button mat-button (click)="closeDialog()">CANCEL</button>
   <button mat-button (click)="saveNote(data.nTitle, data.nDescription)">DONE</button>
 </div>
