@@ -1,14 +1,34 @@
 import { Injectable } from '@angular/core';
 import { ɵangular_packages_platform_browser_platform_browser_k } from '@angular/platform-browser';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CharacterService {
 
+  // Health
+  health: health = {
+    hpCurrent: 30,
+    hpMax: 30,
+    hpTemp: 10,
+    hitDiceCurrent: 0,
+    hitDiceMax: 3,
+    hitDiceType: 8,
+    deathSaveFails: 0,
+    deathSaveSuccesses: 0
+  }
   
-  // Ability Score
-    abilityScores: abilityScore = {
+  getHealth(): health {
+    return this.health
+  }
+  
+  setHealth(newHealth: health) {
+    this.health = newHealth;
+  }
+  
+    // Ability Scores
+  abilityScores: abilityScore = {
     charisma: 8,
     constitution: 8,
     dexterity: 8,
@@ -16,6 +36,7 @@ export class CharacterService {
     strength: 8,
     wisdom: 8,
   }
+  
   getAbilityScores(): abilityScore {
     return this.abilityScores
   }
@@ -24,7 +45,7 @@ export class CharacterService {
   }
   
   // Proficiencies
-  proficiencies: string[] = ["charismaSave"]
+  proficiencies: string[] = ["charismaSave", "sleightOfHand", "investigation"]
   
   // Will eventually be based off of level
   proficiencyBonus = 2;
