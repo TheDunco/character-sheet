@@ -1,0 +1,36 @@
+.number {
+  color: #3f51b5;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 1.3rem;
+}
+
+.abSelect {
+  width: 25%;
+}
+
+mat-label {
+  size: 1.3rem;
+  font-size: 1rem;
+}
+
+mat-select {
+  margin: 2px;
+  font-size: 1.3rem;
+}
+
+.languages {
+  width: 75%;
+}
+
+textarea {
+  height: 50px;
+  font-size: 1.2rem;
+}

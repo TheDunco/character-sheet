@@ -1,1 +1,92 @@
-<p>summary works!</p>
+<div class="wrapper">
+    <mat-form-field>
+        <mat-label>
+            Age:
+        </mat-label>
+        <input [(ngModel)]="localSummary.age" matInput appearance="filled" (keyup.enter)="updateSummary()"/>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>
+            Height:
+        </mat-label>
+        <input matInput [(ngModel)]="localSummary.height" appearance="filled" (keyup.enter)="updateSummary()"/>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>
+            Weight:
+        </mat-label>
+        <input matInput [(ngModel)]="localSummary.weight" appearance="filled" (keyup.enter)="updateSummary()"/>
+    </mat-form-field>
+<br>    
+    <mat-form-field>
+        <mat-label>
+            Eyes:
+        </mat-label>
+        <input [(ngModel)]="localSummary.eyes" matInput appearance="filled" (keyup.enter)="updateSummary()">
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-label>
+            Hair:
+        </mat-label>
+        <input [(ngModel)]="localSummary.hair" matInput appearance="filled" (keyup.enter)="updateSummary()"/>
+    </mat-form-field>
+<br>
+    <mat-form-field>
+        <mat-label>
+            Skin:
+        </mat-label>
+        <input [(ngModel)]="localSummary.skin" matInput appearance="filled" (keyup.enter)="updateSummary()"/>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>
+            Race:
+        </mat-label>
+        <input [(ngModel)]="localSummary.race" matInput appearance="filled" (keyup.enter)="updateSummary()"/>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>
+            Class:
+        </mat-label>
+        <input matInput [(ngModel)]="localSummary.class" appearance="filled" (keyup.enter)="updateSummary()"/>
+    </mat-form-field>
+<br>
+    <mat-form-field>
+        <mat-label>
+            Alignment:
+        </mat-label>
+        <input matInput [(ngModel)]="localSummary.alignment" appearance="filled" (keyup.enter)="updateSummary()">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>
+            Backround:
+        </mat-label>
+        <input matInput [(ngModel)]="localSummary.background" appearance="filled" (keyup.enter)="updateSummary()">
+    </mat-form-field>
+<br>
+    <mat-form-field>
+        <mat-label>
+            XP:
+        </mat-label>
+        <input matInput [(ngModel)]="this.xp" appearance="filled" (keyup.enter)="updateSummary()">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>
+            Level:
+        </mat-label>
+        <input matInput [(ngModel)]="this.level" appearance="filled" (keyup.enter)="updateSummary()">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>
+            Proficiency Bonus:
+        </mat-label>
+        <input matInput [(ngModel)]="this.profBonus" appearance="filled" (keyup.enter)="updateSummary()">
+    </mat-form-field>
+</div>
