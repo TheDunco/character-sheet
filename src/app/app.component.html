@@ -1,12 +1,14 @@
 <header>
-  <h1>
-      {{this.character.name}}, Level {{this.character.level}} {{this.character.class}}
-  </h1>
     <!-- Row 0 -->
-    <div fxLayout="row" fxLayout.lt-sm="column" fxLayout.lt-md="column" fxLayoutGap="50px" fxLayoutAlign="center">
+    <div fxLayout="column" fxLayout.lt-sm="column" fxLayout.lt-md="column" fxLayoutGap="50px" fxLayoutAlign="start">
+        <div>    
+            <h1>
+                {{this.character.name}}, Level {{this.character.level}} {{this.character.class}}
+            </h1>
+        </div>
     
         <!-- Health -->
-        <div>
+        <div fxLayout="row">
             <mat-expansion-panel [expanded]="true">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
@@ -16,18 +18,23 @@
                 <app-health></app-health>
             </mat-expansion-panel>
         </div>
+    </div>
     
-        <!-- Summary -->
-        <div>
-            <mat-expansion-panel [expanded]="true">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Summary
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <app-summary></app-summary>
-            </mat-expansion-panel>
-        </div>
+    <!-- Summary -->
+    <div 
+        fxLayout="row"
+        fxLayoutGap="32px"
+        fxLayout.lt-sm="column" 
+        fxLayout.lt-md="column"
+        fxLayoutAlign="start">
+        <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Summary
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-summary></app-summary>
+        </mat-expansion-panel>
     </div>
 </header>
 
