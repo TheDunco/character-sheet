@@ -41,6 +41,7 @@ import { NotesComponent } from './components/notes/notes.component';
 
 
 import { MatDialogModule } from '@angular/material/dialog';
+import { NoteDialogComponent } from './components/note-dialog/note-dialog.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     EquipmentComponent,
     FeatsComponent,
     NotesComponent,
+    NoteDialogComponent,
   ],
   imports: [
     BrowserModule,

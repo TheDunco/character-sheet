@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>NOTE</h1>
+<div mat-dialog-content>
+    <input matInput [(ngModel)]="data.nTitle" value="data.title">
+    <mat-label>Name</mat-label>
+    
+    <input matInput [(ngModel)]="data.nDescription" value="{{data.description}}">
+    <mat-label>Description</mat-label>
+</div>
+<div mat-dialog-actions>
+  <button mat-button >CANCEL</button>
+  <button mat-button (click)="saveNote(data.nTitle, data.nDescription)">DONE</button>
+</div>
