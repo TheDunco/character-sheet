@@ -13,7 +13,10 @@ export class CharacterService {
   setClass(newClass: string): void { this.class = newClass }
   
   xp = 500
-  setXP(newXP: number): void { this.xp = newXP }
+  setXP(newXP: number): void {
+    this.xp = newXP;
+    this.levelSet()
+  }
   
   level = 2
   
@@ -29,81 +32,90 @@ export class CharacterService {
   
   
   levelSet(): void {
-    if (this.xp <= 0) {
+    console.log('level set')
+    if (this.xp >= 0 && this.xp < 300) {
       this.level = 1; 
       this.proficiencyBonus = 2;
     } else
-    if (this.xp >= 300) {
+    if (this.xp >= 300 && this.xp < 900) {
       this.level = 2; 
       this.proficiencyBonus = 2;
     } else
-    if (this.xp >= 2700) {
+    if (this.xp >= 900 && this.xp < 2700) {
+      this.level = 3;
+      this.proficiencyBonus = 2;
+    } else
+    if (this.xp >= 2700 && this.xp < 6500) {
       this.level = 4; 
       this.proficiencyBonus = 2;
     } else
-    if (this.xp >= 6500) {
+    if (this.xp >= 6500 && this.xp < 14000) {
       this.level = 5; 
       this.proficiencyBonus = 3;
     } else
-    if (this.xp >= 14000) {
+    if (this.xp >= 14000 && this.xp < 23000) {
       this.level = 6; 
       this.proficiencyBonus = 3;
     } else
-    if (this.xp <= 23000) {
+    if (this.xp <= 23000 && this.xp < 34000) {
       this.level = 7; 
       this.proficiencyBonus = 3;
     } else
-    if (this.xp >= 34000) {
+    if (this.xp >= 34000 && this.xp < 48000) {
       this.level = 8; 
       this.proficiencyBonus = 3;
     } else
-    if (this.xp >= 48000) {
+    if (this.xp >= 48000 && this.xp < 64000) {
       this.level = 9; 
       this.proficiencyBonus = 4;
     } else
-    if (this.xp >= 64000) {
+    if (this.xp >= 64000 && this.xp < 85000) {
       this.level = 10; 
       this.proficiencyBonus = 4;
     } else
-      if (this.xp >= 85000) {
+      if (this.xp >= 85000 && this.xp < 100000) {
       this.level = 11;
       this.proficiencyBonus = 4;
     } else
-    if (this.xp >= 100000) {
+    if (this.xp >= 100000 && this.xp < 120000) {
       this.level = 12; 
       this.proficiencyBonus = 4;
     } else
-    if (this.xp >= 120000) {
+    if (this.xp >= 120000 && this.xp < 140000) {
       this.level = 13; 
       this.proficiencyBonus = 5;
     } else
-    if (this.xp >= 140000) {
+    if (this.xp >= 140000 && this.xp < 165000) {
       this.level = 14; 
       this.proficiencyBonus = 5;
     } else
-    if (this.xp >= 165000) {
+    if (this.xp >= 165000 && this.xp < 195000) {
       this.level = 15; 
       this.proficiencyBonus = 5;
     } else
-    if (this.xp >= 195000) {
+    if (this.xp >= 195000 && this.xp < 225000) {
       this.level = 16; 
       this.proficiencyBonus = 5;
     } else
-    if (this.xp >= 225000) {
+    if (this.xp >= 225000 && this.xp < 265000) {
       this.level = 17; 
       this.proficiencyBonus = 6;
     } else
-    if (this.xp >= 265000) {
+    if (this.xp >= 265000 && this.xp < 305000) {
       this.level = 18; 
       this.proficiencyBonus = 6;
     } else
-    if (this.xp >= 305000) {
+    if (this.xp >= 305000 && this.xp < 355000) {
       this.level = 19; 
       this.proficiencyBonus = 6;
     } else
     if (this.xp >= 355000) {
       this.level = 20;
       this.proficiencyBonus = 6;
+    }
+    else {
+      this.level = 0;
+      this.proficiencyBonus = 0;
     }
   }
   
@@ -123,6 +135,24 @@ export class CharacterService {
   }
   setHealth(newHealth: health) {
     this.health = newHealth;
+  }
+  
+  summary: summary = {
+    age: "21",
+    height: "5'0\"",
+    weight: "150",
+    eyes: "Blue",
+    hair: "Brown",
+    skin: "White",
+    race: "Human",
+    class: "Paladin",
+    alignment: "Neutral", //(dropdown eventually)
+    background: "Acolyte"
+  }
+  
+  setSummary(newSum: summary): void {
+    this.summary = newSum;
+    console.log(this.summary)
   }
   
   // Ability Scores
