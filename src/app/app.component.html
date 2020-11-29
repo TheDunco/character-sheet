@@ -155,6 +155,18 @@
             </mat-expansion-panel>
         </div>
         
+        <!-- Abilities -->
+        <div fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+            <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Abilities
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-abilities></app-abilities>
+            </mat-expansion-panel>
+        </div>
+        
         <!-- Feats -->
         <div fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
             <mat-expansion-panel [expanded]="true">
@@ -185,18 +197,6 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <app-skills></app-skills>
-            </mat-expansion-panel>
-        </div>
-        
-        <!-- Abilities -->
-        <div fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
-            <mat-expansion-panel [expanded]="true">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Abilities
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <app-abilities></app-abilities>                 
             </mat-expansion-panel>
         </div>
             
