@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CharacterService, abilityScore } from '../../services/character.service';
+import { SkillsComponent } from '../skills/skills.component'
 
 @Component({
   selector: 'app-ability-score',
@@ -53,7 +54,6 @@ export class AbilityScoreComponent implements OnInit {
   }
   
   changeProf(name: string, prof: boolean): void {
-    console.log('running changeProf with ', prof)
     if (prof) {
       this.character.removeProficiency(name)
     }
@@ -63,6 +63,7 @@ export class AbilityScoreComponent implements OnInit {
     console.log(this.character.proficiencies)
     this.checkProfs()
     this.updateMods()
+    this.setAbilityScores()
   }
   
   updateMods(): void {
@@ -91,5 +92,4 @@ export class AbilityScoreComponent implements OnInit {
     })
     this.updateMods()
   }
-  
 }

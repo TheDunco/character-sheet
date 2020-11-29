@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CharacterService, health } from '../../services/character.service'
 
 @Component({
   selector: 'app-health',
@@ -7,23 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HealthComponent implements OnInit {
 
-  constructor() { }
+  constructor(private character: CharacterService) { }
 
-  hp: number = 30;
-  maxHP: number = 30;
+  health = this.character.getHealth();
+  //TODO: This will have to get moved to the character service at some point
+  hp = this.health.hpCurrent;
+  maxHP = this.health.hpMax;
+  tempHP = this.health.hpTemp;
   inputHP: string;
-  tempHP: number;
   inputHealthDamage: number;
   healthPercent: number;
+  progressColor = "primary";
 
   ngOnInit(): void {
-    this.updateHealthPercent();
+    this.updateHealth();
   }
 
 
   gainHP(): void {
-    this.hp += 1
-    this.updateHealthPercent();
+    if (this.hp + 1 <= this.maxHP) {
+      this.hp += 1
+      this.updateHealth();
+    }
   }
 
   loseHP(): void {
@@ -32,20 +38,24 @@ export class HealthComponent implements OnInit {
     } else {
       this.hp -= 1
     }
-    this.updateHealthPercent();
+    this.updateHealth();
   }
 
   setHP(): void {
     this.hp = Number(this.inputHP);
     this.inputHP = '';
-    this.updateHealthPercent();
+    this.updateHealth();
   }
   
-  health(): void {
-    if (this.inputHealthDamage != undefined) {
-      this.hp += +this.inputHealthDamage;
+  heal(): void {
+    if (this.hp + Number(this.inputHealthDamage) <= this.maxHP) {  
+      if (this.inputHealthDamage != undefined) {
+        this.hp += +this.inputHealthDamage;
+      }
+      this.updateHealth();
+    } else {
+      this.hp = this.maxHP;
     }
-    this.updateHealthPercent();
   }
   
   damage(): void {
@@ -59,13 +69,23 @@ export class HealthComponent implements OnInit {
       } else {
         this.hp -= +this.inputHealthDamage;
       }
-      
     }
-    this.updateHealthPercent();
+    this.updateHealth();
   }
   
-  updateHealthPercent(): void {
+  updateHealth(): void {
+    this.health.hpCurrent = this.hp;
+    this.health.hpMax = this.maxHP;
+    this.health.hpTemp = this.tempHP;
+    
+    this.character.setHealth(this.health)
     this.healthPercent = (this.hp / this.maxHP) * 100
+    if (this.healthPercent <= 50) {
+      this.progressColor = "warn"
+    } else {
+      this.progressColor = "primary"
+    }
+    console.log(this.progressColor)
   }
 
 }

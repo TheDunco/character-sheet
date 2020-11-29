@@ -14,8 +14,8 @@
     
     <input matInput [(ngModel)]="inputHealthDamage" class="health-damage" placeholder="Health/Damage"/>
     
-    <button color="primary" mat-button class="health" (click)="health()">Health</button>
+    <button color="primary" mat-button class="health" (click)="heal()">Health</button>
     <button color="warn" mat-button class="damage" (click)="damage()">Damage</button>
     
-    <mat-progress-bar class="indicator" mode="determinate" [value]="this.healthPercent"></mat-progress-bar>
+    <mat-progress-bar [color]="this.progressColor" class="indicator" mode="determinate" [value]="this.healthPercent"></mat-progress-bar>
 </div>
