@@ -6,7 +6,107 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CharacterService {
-
+  name = "Mr. Tester"
+  setName(newName: string): void { this.name = newName }
+  
+  class = "Paladin"
+  setClass(newClass: string): void { this.class = newClass }
+  
+  xp = 500
+  setXP(newXP: number): void { this.xp = newXP }
+  
+  level = 2
+  
+  spellcastingAbility = "charisma";
+   setSpellCastingAbility(newAb: string): void {
+    this.spellcastingAbility = newAb;
+  }
+  
+  languages = "Common"
+  setLanguages(newLanguages: string): void { this.languages = newLanguages }
+  miscProfs = "Thieves Tools, Martial Weapons"
+  setMiscProfs(newProfs: string): void { this.miscProfs = newProfs }
+  
+  
+  levelSet(): void {
+    if (this.xp <= 0) {
+      this.level = 1; 
+      this.proficiencyBonus = 2;
+    } else
+    if (this.xp >= 300) {
+      this.level = 2; 
+      this.proficiencyBonus = 2;
+    } else
+    if (this.xp >= 2700) {
+      this.level = 4; 
+      this.proficiencyBonus = 2;
+    } else
+    if (this.xp >= 6500) {
+      this.level = 5; 
+      this.proficiencyBonus = 3;
+    } else
+    if (this.xp >= 14000) {
+      this.level = 6; 
+      this.proficiencyBonus = 3;
+    } else
+    if (this.xp <= 23000) {
+      this.level = 7; 
+      this.proficiencyBonus = 3;
+    } else
+    if (this.xp >= 34000) {
+      this.level = 8; 
+      this.proficiencyBonus = 3;
+    } else
+    if (this.xp >= 48000) {
+      this.level = 9; 
+      this.proficiencyBonus = 4;
+    } else
+    if (this.xp >= 64000) {
+      this.level = 10; 
+      this.proficiencyBonus = 4;
+    } else
+      if (this.xp >= 85000) {
+      this.level = 11;
+      this.proficiencyBonus = 4;
+    } else
+    if (this.xp >= 100000) {
+      this.level = 12; 
+      this.proficiencyBonus = 4;
+    } else
+    if (this.xp >= 120000) {
+      this.level = 13; 
+      this.proficiencyBonus = 5;
+    } else
+    if (this.xp >= 140000) {
+      this.level = 14; 
+      this.proficiencyBonus = 5;
+    } else
+    if (this.xp >= 165000) {
+      this.level = 15; 
+      this.proficiencyBonus = 5;
+    } else
+    if (this.xp >= 195000) {
+      this.level = 16; 
+      this.proficiencyBonus = 5;
+    } else
+    if (this.xp >= 225000) {
+      this.level = 17; 
+      this.proficiencyBonus = 6;
+    } else
+    if (this.xp >= 265000) {
+      this.level = 18; 
+      this.proficiencyBonus = 6;
+    } else
+    if (this.xp >= 305000) {
+      this.level = 19; 
+      this.proficiencyBonus = 6;
+    } else
+    if (this.xp >= 355000) {
+      this.level = 20;
+      this.proficiencyBonus = 6;
+    }
+  }
+  
   // Health
   health: health = {
     hpCurrent: 30,
@@ -18,16 +118,14 @@ export class CharacterService {
     deathSaveFails: 0,
     deathSaveSuccesses: 0
   }
-  
   getHealth(): health {
     return this.health
   }
-  
   setHealth(newHealth: health) {
     this.health = newHealth;
   }
   
-    // Ability Scores
+  // Ability Scores
   abilityScores: abilityScore = {
     charisma: 8,
     constitution: 8,
@@ -39,6 +137,16 @@ export class CharacterService {
   
   getAbilityScores(): abilityScore {
     return this.abilityScores
+  }
+  getAbilityScore(which: string): number {
+    switch (which) {
+      case 'charisma': return this.abilityScores.charisma;
+      case 'constitution': return this.abilityScores.constitution;
+      case 'dexterity': return this.abilityScores.dexterity;
+      case 'intelligence': return this.abilityScores.intelligence;
+      case 'strength': return this.abilityScores.strength;
+      case 'wisdom': return this.abilityScores.wisdom;
+    }
   }
   setAbilityScores(newScores: abilityScore) {
     this.abilityScores = newScores;
@@ -83,7 +191,8 @@ export class CharacterService {
     if (score == 26 || score == 27) {return 8}
     if (score == 28 || score == 29) {return 9}
     if (score == 30) {return 10}
-    }
+  }
+  
   exampleAbility: abilities = {name: "Assassinate", description: "Advantage and automatic critical against surprised creatures.", summary: "During its first turn, this creature has advantage on attack rolls against any creature that hasn’t taken a turn. Any hit it scores against a surprised creature is a critical hit."};
   exampleAbility2: abilities =  {name: "Cunning Action", description: "Use a bonus action to Dash, Disengage, or Hide.",summary: "Your quick thinking and agility allow you to move and act quickly. You can take a bonus action on each of your turns in combat. This action can be used only to take the Dash, Disengage, or Hide action."};
   exampleAbilities = [this.exampleAbility, this.exampleAbility2];
@@ -114,7 +223,6 @@ export interface languages {
 export interface miscProficiency {
   miscProf: string
 }
-
 
 export interface abilities{
   name: string,
