@@ -11,21 +11,23 @@ import {CharacterService, note} from '../../services/character.service';
 export class NoteDialogComponent implements OnInit {
 
   constructor(
-    private userNote: CharacterService,
+    private character: CharacterService,
     public noteDialog: MatDialogRef<NoteDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   tempNote: note= {nTitle: "", nDescription: ""};
 
   ngOnInit(): void {
+    console.log(this.data.title,this.data.description);
   }
   closeDialog(){
     this.noteDialog.close();
   }
-  saveNote(title: string, description: string){
-    console.log(title,description);
-    this.tempNote = {nTitle: title, nDescription: description};
-    this.userNote.addNote(this.tempNote);
+  saveNote(newTitle: string, newDescription: string){
+  
+    this.tempNote = {nTitle: newTitle, nDescription: newDescription};
+    this.character.updateNote(this.tempNote, this.data.title);
+    console.log(this.character)
     this.noteDialog.close();
   }
 }

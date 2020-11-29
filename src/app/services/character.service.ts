@@ -84,6 +84,18 @@ export class CharacterService {
   addNote(nData: note): void {
     this.exampleNote.push(nData);
   }
+
+  updateNote(nData: note, oNote:string):void {
+    const index = this.exampleNote.findIndex(item => item.nTitle === oNote);
+    if (index > -1) {
+      this.exampleNote[index].nTitle = nData.nTitle;
+      this.exampleNote[index].nDescription = nData.nDescription;
+      console.log(this.exampleNote[index].nTitle );
+    }
+    else{
+      this.exampleNote.push(nData);
+    }
+  }
 }
 
 export interface abilityScore {

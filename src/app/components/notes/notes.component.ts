@@ -11,9 +11,9 @@ import { MatDialog} from '@angular/material/dialog';
 })
 export class NotesComponent implements OnInit {
 
-  constructor(private userNote: CharacterService, private matDialog: MatDialog) { }
+  constructor(private character: CharacterService, private matDialog: MatDialog) { }
 
-  noteList: note[] = this.userNote.getNotes();
+  noteList: note[] = this.character.getNotes();
   title:string;
   description:string;
   ngOnInit(): void {
@@ -32,7 +32,10 @@ export class NotesComponent implements OnInit {
   openNewNoteDialog(){
      const noteNewDialog = this.matDialog.open(NoteDialogComponent, {
        width: '30vmax',
-       data: this.noteList
+       data: {
+        title: "",
+        description: ""
+      }
      });
   }
 
