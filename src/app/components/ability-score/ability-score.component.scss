@@ -1,6 +1,14 @@
 @import "~@angular/material/theming";
 @include mat-core();
 
+.legend {
+  margin-right: 10px;
+}
+
+mat-checkbox {
+  margin-right: 20px;
+}
+
 mat-form-field {
   max-width: 32px;
   font-size: 1.8rem;
@@ -12,5 +20,5 @@ div {
 }
 
 .number {
-  color: blue;
+  color: #3f51b5;
 }

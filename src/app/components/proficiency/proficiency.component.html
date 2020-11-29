@@ -1,1 +1,33 @@
-<p>proficiency works!</p>
+<div class="wrapper">
+    <button mat-icon-button (click)="update()">
+        <mat-icon>refresh</mat-icon>
+    </button>
+    <label><label class="number">{{profBonus}}</label> Proficiency Bonus</label>
+    <br>
+    <mat-form-field class="abSelect">
+        <mat-label>Casting Ability</mat-label>
+        <mat-select (selectionChange)="update()" [(ngModel)]="selectedAbility" appearance="fill">
+            <mat-option value="charisma">Charisma</mat-option>
+            <mat-option value="constitution">Constitution</mat-option>
+            <mat-option value="dexterity">Dexterity</mat-option>
+            <mat-option value="intelligence">Intelligence</mat-option>
+            <mat-option value="strength">Strength</mat-option>
+            <mat-option value="wisdom">Wisdom</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <label><label class="number">{{attackBonus}} </label> Attack Bonus</label>
+    <br>
+    <br>
+    <mat-form-field appearance="fill" class="languages">
+        <mat-label>Languages</mat-label>
+        <textarea matInput [(ngModel)]="languages" (change)="update()"></textarea>
+    </mat-form-field>
+    
+    <br>
+    <br>
+    <mat-form-field appearance="fill" class="languages">
+        <mat-label>Proficiencies</mat-label>
+        <textarea matInput [(ngModel)]="miscProfs" (change)="update()"></textarea>
+    </mat-form-field>
+</div>
