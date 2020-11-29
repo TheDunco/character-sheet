@@ -45,6 +45,7 @@ import { NotesComponent } from './components/notes/notes.component';
 
 
 import { MatDialogModule } from '@angular/material/dialog';
+import { NoteDialogComponent } from './components/note-dialog/note-dialog.component';
 import { AbilityDialogComponent } from './components/ability-dialog/ability-dialog.component';
 
 @NgModule({
@@ -63,6 +64,7 @@ import { AbilityDialogComponent } from './components/ability-dialog/ability-dial
     EquipmentComponent,
     FeatsComponent,
     NotesComponent,
+    NoteDialogComponent,
     AbilityDialogComponent,
   ],
   imports: [

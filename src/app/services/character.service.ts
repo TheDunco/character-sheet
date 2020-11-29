@@ -232,6 +232,30 @@ export class CharacterService {
       
     return this.exampleAbilities;
   }
+
+  userNotes: note ={nTitle:"This is the first title" , nDescription: "this is the first description" };
+  userNotes2: note ={nTitle:"This is the first title2" , nDescription: "this is the first description2" };
+  exampleNote = [this.userNotes , this.userNotes2];
+
+  getNotes(): note[]{
+    return this.exampleNote;
+  }
+
+  addNote(nData: note): void {
+    this.exampleNote.push(nData);
+  }
+
+  updateNote(nData: note, oNote:string):void {
+    const index = this.exampleNote.findIndex(item => item.nTitle === oNote);
+    if (index > -1) {
+      this.exampleNote[index].nTitle = nData.nTitle;
+      this.exampleNote[index].nDescription = nData.nDescription;
+      console.log(this.exampleNote[index].nTitle );
+    }
+    else{
+      this.exampleNote.push(nData);
+    }
+  }
 }
 
 export interface abilityScore {
@@ -294,6 +318,12 @@ export interface level {
   xp: number,
   level: number,
   class: number
+}
+
+
+export interface note {
+  nTitle: string,
+  nDescription: string
 }
 
 // This is subject to change and could get more complex if we wanted to 

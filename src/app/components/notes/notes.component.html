@@ -1,3 +1,8 @@
-<!-- <p *ngFor="let note of {{userNotes}}">
-    {{note.title}}
-</p> -->
+<div *ngFor="let note of noteList">
+
+    <p><strong><a (click)="openNoteDialog(note.nTitle, note.nDescription)">{{note.nTitle}}</a></strong> - {{note.nDescription}}</p>
+
+</div>
+<button mat-icon-button (click)="openNewNoteDialog()">
+    <mat-icon color="black">add</mat-icon>
+</button>
