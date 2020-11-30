@@ -51,6 +51,7 @@ import { AbilityDialogComponent } from './components/ability-dialog/ability-dial
 import { HitDiceComponent } from './components/hit-dice/hit-dice.component';
 import { OtherComponent } from './components/other/other.component';
 import { DeathSavesComponent } from './components/death-saves/death-saves.component';
+import { FeatDialogComponent } from './components/feat-dialog/feat-dialog.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { DeathSavesComponent } from './components/death-saves/death-saves.compon
     HitDiceComponent,
     OtherComponent,
     DeathSavesComponent,
+    FeatDialogComponent,
   ],
   imports: [
     BrowserModule,

@@ -265,6 +265,44 @@ export class CharacterService {
       this.exampleNote.splice(index, 1);
     }
   }
+
+  cloneNote(oNote:string){
+    const index = this.exampleNote.findIndex(item => item.nTitle === oNote);
+    this.exampleNote.push(this.exampleNote[index]);
+  }
+
+  userFeatExample: feat = {fTitle:"Title", fDescription: "dscription", fDetail:"detail", fSummary: "summary"}
+  userFeat = [this.userFeatExample];
+
+  updateFeat(fData: feat, oFeat:string){
+    const index = this.userFeat.findIndex(item => item.fTitle === oFeat);
+    if (index > -1) {
+      this.userFeat[index].fTitle = fData.fTitle;
+      this.userFeat[index].fDescription = fData.fDescription;
+      this.userFeat[index].fDetail = fData.fDetail;
+      this.userFeat[index].fSummary = fData.fSummary;
+      
+    }
+    else{
+      this.userFeat.push(fData);
+    }
+  }
+
+  deleteFeat(oFeat:string){
+    const index = this.userFeat.findIndex(item => item.fTitle === oFeat);
+    if (index > -1) {
+      this.userFeat.splice(index, 1);
+    }
+  }
+
+  getFeat(): feat[]{
+    return this.userFeat;
+  }
+
+  cloneFeat(oFeat:string){
+    const index = this.userFeat.findIndex(item => item.fTitle === oFeat);
+    this.userFeat.push(this.userFeat[index]);
+  }
 }
 
 export interface abilityScore {
@@ -333,6 +371,13 @@ export interface level {
 export interface note {
   nTitle: string,
   nDescription: string
+}
+
+export interface feat {
+  fTitle: string,
+  fDescription: string,
+  fDetail: string,
+  fSummary: string
 }
 
 // This is subject to change and could get more complex if we wanted to 
