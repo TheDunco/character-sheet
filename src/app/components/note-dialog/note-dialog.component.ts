@@ -27,15 +27,10 @@ export class NoteDialogComponent implements OnInit {
   }
 
   saveNote(){
-    if(this.data.title && this.data.description){
-      this.tempNote = {nTitle: this.data.title, nDescription: this.data.description};
-      this.character.updateNote(this.tempNote, this.tempTitle);
-      console.log(this.character)
-      this.noteDialog.close();
-    }
-    else {
-      alert("Please fill out both to create a note.");
-    }
+    this.tempNote = {nTitle: this.data.title, nDescription: this.data.description};
+    this.character.updateNote(this.tempNote, this.tempTitle);
+    console.log(this.character)
+    this.noteDialog.close();
   }
 
   deleteNote(){

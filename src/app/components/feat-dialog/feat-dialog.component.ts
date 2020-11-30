@@ -27,14 +27,9 @@ export class FeatDialogComponent implements OnInit {
 
   
   saveFeat(){
-    if(this.data.title && this.data.description && this.data.summary && this.data.detail){
-      this.tempFeat = {fTitle: this.data.title, fDescription: this.data.description, fSummary: this.data.summary, fDetail: this.data.detail};
-      this.character.updateFeat(this.tempFeat, this.tempTitle);
-      this.featDialog.close();
-    }
-    else {
-      alert("Please fill out everything.");
-    }
+    this.tempFeat = {fTitle: this.data.title, fDescription: this.data.description, fSummary: this.data.summary, fDetail: this.data.detail};
+    this.character.updateFeat(this.tempFeat, this.tempTitle);
+    this.featDialog.close();
   }
 
   deleteFeat(){

@@ -1,21 +1,28 @@
 <h1 mat-dialog-title>FEAT</h1>
 <div mat-dialog-content>
-    <input matInput [(ngModel)]="data.title" value="data.title" appearance="filled">
-    <mat-label><strong>Name</strong></mat-label>
+    <mat-form-field>
+        <mat-label><strong>Name</strong></mat-label>
+        <input matInput [(ngModel)]="data.title" value="data.title" appearance="filled">
+    </mat-form-field>
     
-    <input matInput [(ngModel)]="data.detail" value="data.detail" appearance="filled">
-    <mat-label><strong>Detail</strong></mat-label>
+    <mat-form-field>
+        <mat-label><strong>Detail</strong></mat-label>
+        <input matInput [(ngModel)]="data.detail" value="data.detail" appearance="filled">
+    </mat-form-field>
     
-    <input matInput [(ngModel)]="data.summary" value="data.summary" appearance="filled">
-    <mat-label><strong>Summary</strong></mat-label>
+    <mat-form-field>
+        <mat-label><strong>Summary</strong></mat-label>
+        <input matInput [(ngModel)]="data.summary" value="data.summary" appearance="filled">
+    </mat-form-field>
     
-
-    <input matInput  [(ngModel)]="data.description" value="data.description" appearance="filled">
-    <mat-label><strong>Description</strong></mat-label>
+    <mat-form-field>
+        <mat-label><strong>Description</strong></mat-label>
+        <textarea matInput  [(ngModel)]="data.description" value="data.description" appearance="filled"></textarea>
+    </mat-form-field>
 </div>
 <div mat-dialog-actions>
     <button mat-button (click)="cloneFeat()">CLONE</button>
-    <button mat-button (click)="deleteFeat()">DELETE</button>
+    <button mat-button color="warn" (click)="deleteFeat()">DELETE</button>
     <button mat-button (click)="closeDialog()">CANCEL</button>
-    <button mat-button (click)="saveFeat()">DONE</button>
+    <button mat-button color="primary" (click)="saveFeat()">DONE</button>
 </div>
