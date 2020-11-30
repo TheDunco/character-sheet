@@ -1,0 +1,31 @@
+
+<div class="wrapper">
+    <div class="successes group">
+        <label>Successes</label>
+        <br>
+        <button mat-icon-button color="warn" (click)="minusSuccess()">
+            <mat-icon>horizontal_rule</mat-icon>
+        </button>
+        <mat-checkbox disabled color="primary" [checked]="localHealth.deathSaveSuccesses == 1 || localHealth.deathSaveSuccesses == 2 || localHealth.deathSaveSuccesses == 3" ></mat-checkbox>
+        <mat-checkbox disabled color="primary" [checked]="localHealth.deathSaveSuccesses == 2 || localHealth.deathSaveSuccesses == 3"></mat-checkbox>
+        <mat-checkbox disabled color="primary" [checked]="localHealth.deathSaveSuccesses == 3"></mat-checkbox>
+        <button mat-icon-button color="primary" (click)="addSuccess()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+    
+    <div class="failures group">
+        <label>Failures</label>
+        <br>
+        <button mat-icon-button color="warn" (click)="minusFail()">
+            <mat-icon>horizontal_rule</mat-icon>
+        </button>
+        <mat-checkbox disabled color="primary" [checked]="localHealth.deathSaveFails == 1 || localHealth.deathSaveFails == 2 || localHealth.deathSaveFails == 3">
+        </mat-checkbox>
+        <mat-checkbox disabled color="primary" [checked]="localHealth.deathSaveFails == 2 || localHealth.deathSaveFails == 3"></mat-checkbox>
+        <mat-checkbox disabled color="primary" [checked]="localHealth.deathSaveFails == 3"></mat-checkbox>
+        <button mat-icon-button color="primary" (click)="addFail()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+</div>

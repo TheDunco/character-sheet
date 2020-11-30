@@ -1,0 +1,47 @@
+.wrapper {
+  display: flex;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "up"
+    "down";
+  padding: 5px;
+}
+
+.up-arrow {
+  grid-area: up;
+  margin-top: 15px;
+}
+
+.down-arrow {
+  grid-area: down;
+  margin-bottom: 15px;
+}
+
+.hp-counter {
+  grid-area: num;
+  align-self: center;
+  padding-left: 15px;
+}
+
+.mainHealth {
+  max-width: 2vmax;
+  min-width: 45px;
+  text-align: center;
+  font-size: 36px;
+}
+
+mat-icon {
+  font-size: 36px;
+  margin-right: 12px;
+}
+
+label {
+  font-size: 36px;
+}
+
+.label {
+  margin-top: 50px;
+}

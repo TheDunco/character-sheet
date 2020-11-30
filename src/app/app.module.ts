@@ -23,7 +23,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
@@ -47,6 +48,9 @@ import { NotesComponent } from './components/notes/notes.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NoteDialogComponent } from './components/note-dialog/note-dialog.component';
 import { AbilityDialogComponent } from './components/ability-dialog/ability-dialog.component';
+import { HitDiceComponent } from './components/hit-dice/hit-dice.component';
+import { OtherComponent } from './components/other/other.component';
+import { DeathSavesComponent } from './components/death-saves/death-saves.component';
 import { FeatDialogComponent } from './components/feat-dialog/feat-dialog.component';
 
 @NgModule({
@@ -67,6 +71,9 @@ import { FeatDialogComponent } from './components/feat-dialog/feat-dialog.compon
     NotesComponent,
     NoteDialogComponent,
     AbilityDialogComponent,
+    HitDiceComponent,
+    OtherComponent,
+    DeathSavesComponent,
     FeatDialogComponent,
   ],
   imports: [
@@ -88,7 +95,8 @@ import { FeatDialogComponent } from './components/feat-dialog/feat-dialog.compon
     MatCheckboxModule,
     MatDialogModule,
     MatProgressBarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -117,6 +117,7 @@ export class CharacterService {
       this.level = 0;
       this.proficiencyBonus = 0;
     }
+    this.health.hitDiceMax = this.level;
   }
   
   // Health
