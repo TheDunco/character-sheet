@@ -1,1 +1,9 @@
-<p>feats works!</p>
+<div *ngFor="let feat of featList">
+
+    <p><a (click)="openFeatDialog(feat.fTitle, feat.fDescription, feat.fDetail, feat.fSummary)"><strong>
+        {{feat.fTitle}}</strong> <bold> ({{feat.fDetail}})</bold> - {{feat.fSummary}}</a></p>
+
+</div>
+<button mat-icon-button (click)="openNewFeatDialog()">
+    <mat-icon color="black">add</mat-icon>
+</button>

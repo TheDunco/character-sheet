@@ -20,7 +20,7 @@ export class NotesComponent implements OnInit {
   }
 
   openNoteDialog(noteTitle:string, noteDescription:string){
-    const noteDialog = this.matDialog.open(NoteDialogComponent, {
+    this.matDialog.open(NoteDialogComponent, {
       width: '60vmax',
       data: {
         title: noteTitle,
@@ -30,7 +30,7 @@ export class NotesComponent implements OnInit {
 
   }
   openNewNoteDialog(){
-     const noteNewDialog = this.matDialog.open(NoteDialogComponent, {
+     this.matDialog.open(NoteDialogComponent, {
        width: '60vmax',
        data: {
         title: "",
