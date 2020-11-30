@@ -1,14 +1,19 @@
 <h1 mat-dialog-title>NOTE</h1>
 <div mat-dialog-content>
-    <input matInput [(ngModel)]="data.title" value="data.title" appearance="filled">
+  <mat-form-field>
+    <input matInput  [(ngModel)]="data.title" value="data.title" appearance="filled">
     <mat-label><strong>Name</strong></mat-label>
-    
-    <input matInput  [(ngModel)]="data.description" value="data.description" appearance="filled">
+  </mat-form-field>
+    <br>
+  <mat-form-field>
+    <input matInput   [(ngModel)]="data.description" value="data.description" appearance="filled">
     <mat-label><strong>Description</strong></mat-label>
+  </mat-form-field>
 </div>
 <div mat-dialog-actions>
     <button mat-button (click)="cloneNote()">CLONE</button>
     <button mat-button (click)="deleteNote()">DELETE</button>
+
     <button mat-button (click)="closeDialog()">CANCEL</button>
-    <button mat-button (click)="saveNote()">DONE</button>
+    <button mat-button color="primary" (click)="saveNote()">DONE</button>
 </div>

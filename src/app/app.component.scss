@@ -8,6 +8,10 @@ header {
   font-size: 2.7rem;
 }
 
+.small-header {
+  height: 50px;
+}
+
 h1 {
   font-size: 2.5rem;
 }
@@ -18,14 +22,10 @@ mat-panel-title {
 
 mat-expansion-panel-header {
   // padding-top: 3px;
-  height: 100px;
+  height: 80px;
 }
 
 mat-expansion-panel {
   margin-top: 3px;
   min-width: 300px;
-}
-
-.left {
-  padding-left: 1vw;
 }
