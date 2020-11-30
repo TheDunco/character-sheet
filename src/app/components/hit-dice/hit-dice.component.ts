@@ -29,6 +29,16 @@ export class HitDiceComponent implements OnInit {
   updateHitDice() {
     this.character.setHealth(this.localHealth)
   }
+  
+  longRest(): void {
+    this.localHealth.hitDiceCurrent = Math.floor(.5 * this.localHealth.hitDiceCurrent)
+    this.updateHitDice()
+  }
+  
+  shortRest(): void {
+    console.log('Short Rest')
+  }
+  
   ngOnInit(): void {
   }
 

@@ -9,7 +9,6 @@
         
         <div
             fxLayout="row"
-            fxLayout="row" 
             fxLayout.lt-sm="column" 
             fxLayout.lt-md="column" 
             fxLayoutGap="50px" 
@@ -17,7 +16,7 @@
         >
             
             <!-- Health -->
-            <div fxLayout="row" >
+            <div fxLayout="column" >
                 <mat-expansion-panel [expanded]="true">
                     <mat-expansion-panel-header class="small-header">
                         <mat-panel-title>
@@ -29,7 +28,7 @@
             </div>
             
             <!-- Hit Dice -->
-            <div fxLayout="row">
+            <div fxLayout="column">
                 <mat-expansion-panel class="hit-dice" [expanded]="true">
                     <mat-expansion-panel-header class="small-header">
                         <mat-panel-title>
@@ -41,7 +40,7 @@
             </div>
             
             <!-- Death Saves -->
-            <div fxLayout="row">
+            <div fxLayout="column">
                 <mat-expansion-panel [expanded]="true">
                     <mat-expansion-panel-header class="small-header">
                         <mat-panel-title>
@@ -49,18 +48,6 @@
                         </mat-panel-title>
                     </mat-expansion-panel-header>
                     <app-death-saves></app-death-saves>
-                </mat-expansion-panel>
-            </div>
-            
-            <!-- Other -->
-            <div fxLayout="row">
-                <mat-expansion-panel [expanded]="true">
-                    <mat-expansion-panel-header class="small-header">
-                        <mat-panel-title>
-                            Other
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <app-other></app-other>
                 </mat-expansion-panel>
             </div>
         </div>
@@ -72,8 +59,8 @@
         fxLayoutGap="32px"
         fxLayout.lt-sm="column" 
         fxLayout.lt-md="column"
-        fxLayoutAlign="start">
-        <mat-expansion-panel [expanded]="true">
+        fxLayoutAlign="center">
+        <mat-expansion-panel class="summary" [expanded]="true">
             <mat-expansion-panel-header class="small-header">
                 <mat-panel-title>
                     Summary
