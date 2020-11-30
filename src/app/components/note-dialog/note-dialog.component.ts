@@ -20,7 +20,6 @@ export class NoteDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.tempTitle = this.data.title;
-    console.log(this.data.title,this.data.description);
   }
 
   closeDialog(){
@@ -42,5 +41,9 @@ export class NoteDialogComponent implements OnInit {
   deleteNote(){
     this.character.deleteNote(this.tempTitle);
     this.noteDialog.close();
+  } 
+
+  cloneNote(){
+    this.character.cloneNote(this.tempTitle);
   }
 }
