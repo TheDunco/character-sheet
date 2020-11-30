@@ -23,7 +23,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
@@ -49,6 +50,7 @@ import { NoteDialogComponent } from './components/note-dialog/note-dialog.compon
 import { AbilityDialogComponent } from './components/ability-dialog/ability-dialog.component';
 import { HitDiceComponent } from './components/hit-dice/hit-dice.component';
 import { OtherComponent } from './components/other/other.component';
+import { DeathSavesComponent } from './components/death-saves/death-saves.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +72,7 @@ import { OtherComponent } from './components/other/other.component';
     AbilityDialogComponent,
     HitDiceComponent,
     OtherComponent,
+    DeathSavesComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,7 +93,8 @@ import { OtherComponent } from './components/other/other.component';
     MatCheckboxModule,
     MatDialogModule,
     MatProgressBarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

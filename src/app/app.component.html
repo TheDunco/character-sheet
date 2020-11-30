@@ -30,13 +30,25 @@
             
             <!-- Hit Dice -->
             <div fxLayout="row">
-                <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel class="hit-dice" [expanded]="true">
                     <mat-expansion-panel-header class="small-header">
                         <mat-panel-title>
                             Hit Dice
                         </mat-panel-title>
                     </mat-expansion-panel-header>
                     <app-hit-dice></app-hit-dice>
+                </mat-expansion-panel>
+            </div>
+            
+            <!-- Death Saves -->
+            <div fxLayout="row">
+                <mat-expansion-panel [expanded]="true">
+                    <mat-expansion-panel-header class="small-header">
+                        <mat-panel-title>
+                            Death Saves
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <app-death-saves></app-death-saves>
                 </mat-expansion-panel>
             </div>
             

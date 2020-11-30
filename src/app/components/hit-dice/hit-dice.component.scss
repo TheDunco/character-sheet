@@ -1,3 +1,7 @@
+.wrapper {
+  display: flex;
+}
+
 .grid-container {
   display: grid;
   grid-template-areas:
@@ -34,6 +38,10 @@ mat-icon {
   margin-right: 12px;
 }
 
-span-wrap {
-  display: flexbox;
+label {
+  font-size: 36px;
+}
+
+.label {
+  margin-top: 50px;
 }
