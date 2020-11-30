@@ -6,17 +6,51 @@
                 {{this.character.name}}, Level {{this.character.level}} {{this.character.class}}
             </h1>
         </div>
-    
-        <!-- Health -->
-        <div fxLayout="row">
-            <mat-expansion-panel [expanded]="true">
-                <mat-expansion-panel-header class="small-header">
-                    <mat-panel-title>
-                        Health
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <app-health></app-health>
-            </mat-expansion-panel>
+        
+        <div
+            fxLayout="row"
+            fxLayout="row" 
+            fxLayout.lt-sm="column" 
+            fxLayout.lt-md="column" 
+            fxLayoutGap="50px" 
+            fxLayoutAlign="center"
+        >
+            
+            <!-- Health -->
+            <div fxLayout="row" >
+                <mat-expansion-panel [expanded]="true">
+                    <mat-expansion-panel-header class="small-header">
+                        <mat-panel-title>
+                            Health
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <app-health></app-health>
+                </mat-expansion-panel>
+            </div>
+            
+            <!-- Hit Dice -->
+            <div fxLayout="row">
+                <mat-expansion-panel [expanded]="true">
+                    <mat-expansion-panel-header class="small-header">
+                        <mat-panel-title>
+                            Hit Dice
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <app-hit-dice></app-hit-dice>
+                </mat-expansion-panel>
+            </div>
+            
+            <!-- Other -->
+            <div fxLayout="row">
+                <mat-expansion-panel [expanded]="true">
+                    <mat-expansion-panel-header class="small-header">
+                        <mat-panel-title>
+                            Other
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <app-other></app-other>
+                </mat-expansion-panel>
+            </div>
         </div>
     </div>
     

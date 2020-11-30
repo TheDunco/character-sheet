@@ -47,6 +47,8 @@ import { NotesComponent } from './components/notes/notes.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NoteDialogComponent } from './components/note-dialog/note-dialog.component';
 import { AbilityDialogComponent } from './components/ability-dialog/ability-dialog.component';
+import { HitDiceComponent } from './components/hit-dice/hit-dice.component';
+import { OtherComponent } from './components/other/other.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,8 @@ import { AbilityDialogComponent } from './components/ability-dialog/ability-dial
     NotesComponent,
     NoteDialogComponent,
     AbilityDialogComponent,
+    HitDiceComponent,
+    OtherComponent,
   ],
   imports: [
     BrowserModule,

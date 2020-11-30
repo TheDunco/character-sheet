@@ -1,0 +1,21 @@
+
+<div>
+    Hit Dice
+    {{localHealth.hitDiceCurrent}}
+    {{localHealth.hitDiceType}}
+</div>
+
+<div>
+    Death Saves
+</div>
+<span class="span-wrap">
+    <span class="grid-container">
+        <button mat-icon-button color="primary" class="up-arrow" (click)="gainHD()">
+            <mat-icon>arrow_circle_up</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" class="down-arrow" (click)="loseHD()">
+            <mat-icon>arrow_circle_down</mat-icon>
+        </button>
+    </span>
+    <input matInput [(ngModel)]="localHealth.hitDiceCurrent" (keyup.enter)="updateHitDice()" class="hd-counter mainHealth" placeholder="localHealth.hitDiceCurrent" />
+</span>
