@@ -93,6 +93,13 @@
     <br>
     
     <span>
+        <mat-checkbox [checked]="this.character.isProficient('persuasion')" (change)="this.changeProf('persuasion')">
+        </mat-checkbox>
+        <small>{{persuasion}} Persuasion (Cha)</small>
+    </span>
+    <br>
+    
+    <span>
         <mat-checkbox [checked]="this.character.isProficient('religion')" (change)="this.changeProf('religion')"></mat-checkbox>
         <small>{{religion}} Religion (Int)</small>
     </span>
