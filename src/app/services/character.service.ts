@@ -313,16 +313,16 @@ export class CharacterService {
       max: 4,
       current: 2
     },
-    // {
-    //   name: '2nd Level Spell Slots',
-    //   type: 'checkboxes',
-    //   description: '2nd levels',
-    //   max: 2,
-    //   current: 1
-    // },
+    {
+      name: '2nd Level Spell Slots',
+      type: 'checkboxes',
+      description: '2nd levels',
+      max: 2,
+      current: 1
+    },
     {
       name: 'Exhaustion Levels',
-      type: 'numbers',
+      type: 'number',
       description: 'Levels of exhaustion',
       max: 6,
       current: 0

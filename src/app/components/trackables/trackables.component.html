@@ -1,8 +1,8 @@
 <div *ngFor="let track of tracklist">
 
-    <div *ngIf="track.type === 'numbers'">
-        <a (click)="openTrackDialog(track.name, track.description)">
-            <strong>{{track.name}}</strong>
+    <div *ngIf="track.type === 'number'">
+        <a (click)="openTrackDialog(track.name, track.description, track.type, track.max, track.current)">
+            <label>{{track.name}}</label>
         </a>
         <button mat-icon-button color="warn" (click)="subtractCurrent(track)">
             <mat-icon>horizontal_rule</mat-icon>
@@ -18,13 +18,12 @@
     
     <div *ngIf="track.type === 'checkboxes'">
         <a (click)="openTrackDialog(track.name, track.description, track.type, track.max, track.current)">
-            <strong>{{track.name}}</strong>    
+            <label>{{track.name}}</label>    
         </a>
         
         <button mat-icon-button color="warn" (click)="subtractCurrent(track)">
             <mat-icon>horizontal_rule</mat-icon>
         </button>
-        <label>DEBUG: {{track.max}}</label>
         <span *ngFor="let item of makeArray(track.max); let i = index">
             <mat-checkbox class="checkbox" disabled color="primary" [checked]="i < track.current"></mat-checkbox>
         </span>

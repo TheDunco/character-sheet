@@ -20,7 +20,7 @@ export class TrackablesComponent implements OnInit {
   }
   
   makeArray(n: number): number[] {
-    return [...Array(n).keys()];
+    return Array(n)
   }
   
   addCurrent(track: trackable): void {
