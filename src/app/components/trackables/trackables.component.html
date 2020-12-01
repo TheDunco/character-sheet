@@ -1,1 +1,9 @@
-<p>trackables works!</p>
+<div *ngFor="let track of tracklist">
+
+    <p><a (click)="openTrackDialog(track.name, track.description)"><strong>{{track.name}}</strong> -
+            {{track.description}}</a></p>
+
+</div>
+<button mat-icon-button (click)="openNewTrackDialog()">
+    <mat-icon color="black">add</mat-icon>
+</button>

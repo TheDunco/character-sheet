@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ɵsetCurrentInjector } from '@angular/core';
 import { ɵangular_packages_platform_browser_platform_browser_k } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 
@@ -274,6 +274,7 @@ export class CharacterService {
   userFeatExample: feat = {fTitle:"Title", fDescription: "dscription", fDetail:"detail", fSummary: "summary"}
   userFeat = [this.userFeatExample];
 
+ 
   updateFeat(fData: feat, oFeat:string){
     const index = this.userFeat.findIndex(item => item.fTitle === oFeat);
     if (index > -1) {
@@ -303,7 +304,65 @@ export class CharacterService {
     const index = this.userFeat.findIndex(item => item.fTitle === oFeat);
     this.userFeat.push(this.userFeat[index]);
   }
+  
+  tracklist = [
+    {
+      name: '1st Level Spell Slots',
+      type: 'checkboxes',
+      description: '',
+      max: 4,
+      current: 2
+    },
+    {
+      name: '2nd Level Spell Slots',
+      type: 'checkboxes',
+      description: '2nd levels',
+      max: 2,
+      current: 1
+    },
+    {
+      name: 'Exhaustion Levels',
+      type: 'numbers',
+      description: 'Levels of exhaustion',
+      max: 6,
+      current: 0
+    }
+  ]
+  
+  setTrackList(newList: trackable[]): void {
+    this.tracklist = newList;
+  }
+  
+  updateTrackable(tData: trackable, oTrack:string){
+    const index = this.tracklist.findIndex(item => item.name === oTrack);
+    console.log('Index: ', index)
+    if (index > -1) {
+      this.tracklist[index].name = tData.name;
+      this.tracklist[index].type = tData.type;
+      this.tracklist[index].description = tData.description;
+      this.tracklist[index].max = tData.max;
+      this.tracklist[index].current = tData.current;
+    }
+    else{
+      this.tracklist.push(tData);
+    }
+  }
+
+  deleteTrack(oTrack:string){
+    const index = this.tracklist.findIndex(item => item.name === oTrack);
+    if (index > -1) {
+      this.tracklist.splice(index, 1);
+    }
+  }
+
+  cloneTrack(oTrack:string){
+    const index = this.tracklist.findIndex(item => item.name === oTrack);
+    this.tracklist.push(this.tracklist[index]);
+  }
+  
 }
+
+
 
 export interface abilityScore {
   charisma: number,
@@ -390,5 +449,7 @@ export interface action {
 export interface trackable {
   name: string,
   type: 'checkboxes' | 'number',
-  description: string
+  description: string,
+  max: number,
+  current: number,
 }
