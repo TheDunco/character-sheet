@@ -1,7 +1,38 @@
 <div *ngFor="let track of tracklist">
 
-    <p><a (click)="openTrackDialog(track.name, track.description)"><strong>{{track.name}}</strong> -
-            {{track.description}}</a></p>
+    <div *ngIf="track.type === 'numbers'">
+        <a (click)="openTrackDialog(track.name, track.description)">
+            <strong>{{track.name}}</strong>
+        </a>
+        <button mat-icon-button color="warn" (click)="subtractCurrent(track)">
+            <mat-icon>horizontal_rule</mat-icon>
+        </button>
+        <label>
+            ({{track.current}}/{{track.max}})
+        </label>
+        <button mat-icon-button class="plus" color="primary" (click)="addCurrent(track)">
+            <mat-icon>add</mat-icon>
+        </button>
+        <hr>
+    </div>
+    
+    <div *ngIf="track.type === 'checkboxes'">
+        <a (click)="openTrackDialog(track.name, track.description, track.type, track.max, track.current)">
+            <strong>{{track.name}}</strong>    
+        </a>
+        
+        <button mat-icon-button color="warn" (click)="subtractCurrent(track)">
+            <mat-icon>horizontal_rule</mat-icon>
+        </button>
+        <label>DEBUG: {{track.max}}</label>
+        <span *ngFor="let item of makeArray(track.max); let i = index">
+            <mat-checkbox class="checkbox" disabled color="primary" [checked]="i < track.current"></mat-checkbox>
+        </span>
+        <button mat-icon-button class="plus" color="primary" (click)="addCurrent(track)">
+            <mat-icon>add</mat-icon>
+        </button>
+        <hr>
+    </div>
 
 </div>
 <button mat-icon-button (click)="openNewTrackDialog()">

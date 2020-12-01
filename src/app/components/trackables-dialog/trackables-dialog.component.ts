@@ -11,7 +11,7 @@ import {CharacterService, trackable} from '../../services/character.service';
 export class TrackablesDialogComponent implements OnInit {
   
   tempName:string;
-  tempTrack: trackable = {name: "", description: "", max: 0, current: 0, type: 'checkboxes'};
+  tempTrack: trackable = { name: "", description: "", max: 0, current: 0, type: 'checkboxes' };
 
   constructor(
     private character: CharacterService,
@@ -25,16 +25,28 @@ export class TrackablesDialogComponent implements OnInit {
   closeDialog(){
     this.trackDialog.close();
   }
-
-  saveTrack(){
-    this.tempTrack = {name: this.data.title, description: this.data.description, max: this.tempTrack.max, current: this.tempTrack.current, type: this.tempTrack.type};
+  
+  max = this.data.max
+  current = this.data.max
+  selectedType: 'checkboxes' | 'number' = this.data.type
+  
+  saveTrack() {
+    let current: number
+    if (this.data.current > this.max) {
+      current = this.max
+    } else { current = this.data.current }
+    
+    console.log('Current: ', current)
+    console.log('Max: ', this.max)
+    this.tempTrack = { name: this.data.title, description: this.data.description, max: this.max, current: current, type: this.selectedType };
+    console.log('tempTrack', this.tempTrack)
     this.character.updateTrackable(this.tempTrack, this.tempName);
     console.log(this.character)
     this.trackDialog.close();
   }
 
   deleteTrack(){
-    this.character.deleteTrack(this.tempName);
+    this.character.deleteTrack(this.data.title);
     this.trackDialog.close();
   } 
 

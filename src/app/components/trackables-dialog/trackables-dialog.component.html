@@ -1,11 +1,25 @@
 <h1 mat-dialog-title>TRACKABLE</h1>
 <div mat-dialog-content>
-    <mat-form-field>
+    
+    <mat-form-field class="select">
+        <mat-label>Type</mat-label>
+        <mat-select [(ngModel)]="selectedType" appearance="fill">
+            <mat-option value="checkboxes">Checkboxes</mat-option>
+            <mat-option value="number">Numbers</mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field class="select">
+        <mat-label>Maximum</mat-label>
+        <input matInput [(ngModel)]="max" appearance="filled"/>
+    </mat-form-field>
+    
+    <mat-form-field class="big">
         <input matInput [(ngModel)]="data.title" value="data.title" appearance="filled">
         <mat-label><strong>Name</strong></mat-label>
     </mat-form-field>
     <br>
-    <mat-form-field>
+    <mat-form-field class="big">
         <textarea matInput [(ngModel)]="data.description" value="data.description" appearance="filled"></textarea>
         <mat-label><strong>Description</strong></mat-label>
     </mat-form-field>

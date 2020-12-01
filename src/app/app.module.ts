@@ -25,7 +25,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -98,7 +99,8 @@ import { TrackablesDialogComponent } from './components/trackables-dialog/tracka
     MatDialogModule,
     MatProgressBarModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
