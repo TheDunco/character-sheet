@@ -25,7 +25,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -53,6 +54,8 @@ import { OtherComponent } from './components/other/other.component';
 import { DeathSavesComponent } from './components/death-saves/death-saves.component';
 import { FeatDialogComponent } from './components/feat-dialog/feat-dialog.component';
 import { EquipmentDialogComponent } from './components/equipment-dialog/equipment-dialog.component';
+import { TrackablesDialogComponent } from './components/trackables-dialog/trackables-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -77,6 +80,7 @@ import { EquipmentDialogComponent } from './components/equipment-dialog/equipmen
     DeathSavesComponent,
     FeatDialogComponent,
     EquipmentDialogComponent,
+    TrackablesDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -98,7 +102,8 @@ import { EquipmentDialogComponent } from './components/equipment-dialog/equipmen
     MatDialogModule,
     MatProgressBarModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
