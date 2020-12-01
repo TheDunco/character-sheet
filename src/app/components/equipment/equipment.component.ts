@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {money,equipment, CharacterService} from '../../services/character.service';
+import { MatDialog, MatDialogModule, MatDialogConfig } from '@angular/material/dialog';
+import { EquipmentDialogComponent } from '../equipment-dialog/equipment-dialog.component';
 
 @Component({
   selector: 'app-equipment',
@@ -7,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EquipmentComponent implements OnInit {
 
-  constructor() { }
+  moneyPouch: money = this.character.getMoney();
+  equipmentList: equipment[] = this.character.getEquipment();
+  constructor(private character: CharacterService, private matDialog: MatDialog ) { }
 
   ngOnInit(): void {
   }
 
+  openEquipmentDialog(equipment: equipment) {
+    const dialogConfig = new MatDialogConfig()
+    this.matDialog.open(EquipmentDialogComponent, {
+
+      width: '30vmax',
+      data: {
+        selectedEquipment: equipment
+      }
+
+    });
+  }
 }
+
+
+

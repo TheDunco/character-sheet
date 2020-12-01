@@ -18,6 +18,9 @@ export class CharacterService {
     this.levelSet()
   }
   
+
+
+  
   level = 2
   
   spellcastingAbility = "charisma";
@@ -232,6 +235,7 @@ export class CharacterService {
   getAbilities(): abilities[]{
       
     return this.exampleAbilities;
+
   }
 
   userNotes: note ={nTitle:"This is the first title" , nDescription: "this is the first description" };
@@ -303,6 +307,28 @@ export class CharacterService {
     const index = this.userFeat.findIndex(item => item.fTitle === oFeat);
     this.userFeat.push(this.userFeat[index]);
   }
+
+  exampleWeapon: equipment = {name: "Dagger", quantity: 2, carried: "Yes", weight: 1, equipType: "Weapon",description: " Category: Simple Melee Weapon" + '\n' + "Cost: 2gp\n Damage: 1d4 piercing\n Properties:Finesse, light, thrown (range 20/60)", equipped: "Yes"};
+  exampleArmor: equipment = {equipped: "Yes", name: "Chain Shirt", quantity: 1, carried: "Yes", weight: 20, equipType: "Armor", description: " Type: Medium Armor \n Cost: 50 gp \n Armor Class: 13 \n\n Made of interlocking metal rings, a chain shirt is worn between layers of clothing or leather. This armor offers modest protection to the wearer’s upper body and allows the sound of the rings rubbing against one another to be muffled by outer layers"}
+  exampleGear: equipment = {name: "Digsuise kit", quantity: 1, carried: "Yes", weight: 3, equipType: "Gear",equipped: "No", description: " Cost: 25gp  This pouch of cosmetics, hair dye, and small props lets you create disguises that change your physical appearance. Proficiency with this kit lets you add your proficiency bonus to any ability checks you make to create a visual disguise"}
+  exampleGear2: equipment = {name: "Explorer's Pack", quantity: 1, carried: "Yes", weight: 3, equipType: "Gear",equipped: "No", description: " Cost: 10gp \n\n Includes a backpack, a bedroll, a mess kit, a tinderbox, 10 torches, 10 days of rations, and a waterskin. The pack also has 50 feet of hempen rope strapped to the side of it"};
+  exampleTool: equipment = {name: "Thieve's Tools", weight: 1, quantity: 1, carried: "Yes", equipType: "Tool", equipped: "No", description: " Cost: 25 gp \n\n This set of tools includes a small file, a set of lock picks, a small mirror mounted on a metal handle, a set of narrow-bladed scissors, and a pair of pliers. Proficiency with these tools lets you add your proficiency bonus to any ability checks you make to disarm traps or open locks"}
+  exampleWeapon2: equipment = {name: "Shortbow", weight: 2, quantity: 1, carried: "Yes", equipped: "No", equipType: "Weapon", description: " Category: Simple Ranged\n Cost: 25gp\n Damage: 1d6 piercing\n Properties: Ammunition (range 80/320). two-handed" }
+  
+  exampleEquipment: equipment[] = [this.exampleWeapon,this.exampleArmor,this.exampleGear,this.exampleGear2,this.exampleTool,this.exampleWeapon2];
+
+  getEquipment(): equipment[]{
+      
+    return this.exampleEquipment;
+
+  }
+
+  exampleMoney: money = {copperAmount: 0, silverAmount: 2, goldAmount: 35, platinumAmount: 1};
+  
+  getMoney(): money{
+    return this.exampleMoney;
+  }
+
 }
 
 export interface abilityScore {
@@ -342,10 +368,24 @@ export interface health {
   deathSaveSuccesses: number
 }
 
-export interface equipment {
-  name: string,
+type equipmentType = "Armor" | "Weapon" | "Gear" | "Tool";
+type yesNo = "Yes" | "No";
+
+export interface money{
+  copperAmount: number;
+  silverAmount: number;
+  goldAmount: number;
+  platinumAmount: number;
+}
+
+export interface equipment{
+  name: string;
   description: string,
   quantity: number
+  carried: yesNo;
+  weight: number;
+  equipType: equipmentType;
+  equipped: yesNo;
 }
 
 export interface summary {
