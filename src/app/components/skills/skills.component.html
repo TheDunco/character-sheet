@@ -1,39 +1,143 @@
 <div>
-    <strong>{{passiveInvestigation}} Passive Ingestigation <small>(Int)</small></strong>
+    <button mat-icon-button (click)="updateSkills()">
+        <mat-icon>refresh</mat-icon>
+    </button>
     <br>
-    <strong>{{passivePerception}} Passive Perception <small>(Wis)</small></strong>
+
+    <span>
+        <strong>{{passiveInvestigation}} Passive Ingestigation <small>(Int)</small></strong>
+    </span>
     <br>
-    <small>{{acrobatics}} Acrobatics (Dex)</small>
+
+    <span>
+        <strong>{{passivePerception}} Passive Perception <small>(Wis)</small></strong>
+    </span>
     <br>
-    <small>{{acrobatics}} Acrobatics (Dex)</small>
+
+    <span>
+        <mat-checkbox [checked]="this.character.isProficient('acrobatics')" (change)="this.changeProf('acrobatics')">
+        </mat-checkbox>
+        <small>{{acrobatics}} Acrobatics (Dex)</small>
+    </span>
     <br>
-    <small>{{arcana}} Arcana (Int)</small>
+
+    <span>
+        <mat-checkbox [checked]="this.character.isProficient('animalHandling')"
+            (change)="this.changeProf('animalHandling')"></mat-checkbox>
+        <small>{{animalHandling}} Animal Handling (Wis)</small>
+    </span>
     <br>
-    <small>{{athletics}} Athletics (Str)</small>
+
+    <span>
+        <mat-checkbox [checked]="this.character.isProficient('arcana')" (change)="this.changeProf('arcana')">
+        </mat-checkbox>
+        <small>{{arcana}} Arcana (Int)</small>
+    </span>
     <br>
-    <small>{{deception}} Deception (Cha)</small>
+
+    <span>
+        <mat-checkbox [checked]="this.character.isProficient('athletics')" (change)="this.changeProf('athletics')">
+        </mat-checkbox>
+        <small>{{athletics}} Athletics (Str)</small>
+    </span>
     <br>
-    <small>{{history}} History (Int)</small>
+
+    <span>
+        <mat-checkbox [checked]="this.character.isProficient('deception')" (change)="this.changeProf('deception')">
+        </mat-checkbox>
+        <small>{{deception}} Deception (Cha)</small>
+    </span>
     <br>
-    <small>{{insight}} Insight (Wis)</small>
+
+    <span>
+        <mat-checkbox [checked]="this.character.isProficient('history')" (change)="this.changeProf('history')">
+        </mat-checkbox>
+        <small>{{history}} History (Int)</small>
+    </span>
     <br>
-    <small>{{intimidation}} Intimidation (Cha)</small>
+
+    <span>
+        <mat-checkbox [checked]="this.character.isProficient('insight')" (change)="this.changeProf('insight')">
+        </mat-checkbox>
+        <small>{{insight}} Insight (Wis)</small>
+    </span>
     <br>
-    <small>{{investigation}} Investigation (Int)</small>
+
+    <span>
+        <mat-checkbox [checked]="this.character.isProficient('intimidation')"
+            (change)="this.changeProf('intimidation')"></mat-checkbox>
+        <small>{{intimidation}} Intimidation (Cha)</small>
+    </span>
     <br>
-    <small>{{medicine}} Medicine (Wis)</small>
+
+    <span>
+        <mat-checkbox [checked]="this.character.isProficient('investigation')"
+            (change)="this.changeProf('investigation')"></mat-checkbox>
+        <small>{{investigation}} Investigation (Int)</small>
+    </span>
     <br>
-    <small>{{nature}} Nature (Int)</small>
+
+    <span>
+        <mat-checkbox [checked]="this.character.isProficient('medicine')" (change)="this.changeProf('medicine')">
+        </mat-checkbox>
+        <small>{{medicine}} Medicine (Wis)</small>
+    </span>
     <br>
-    <small>{{perception}} Perception (Wis)</small>
+
+    <span>
+        <mat-checkbox [checked]="this.character.isProficient('nature')" (change)="this.changeProf('nature')">
+        </mat-checkbox>
+        <small>{{nature}} Nature (Int)</small>
+    </span>
     <br>
-    <small>{{performance}} Performance (Cha)</small>
+
+    <span>
+        <mat-checkbox [checked]="this.character.isProficient('perception')" (change)="this.changeProf('perception')">
+        </mat-checkbox>
+        <small>{{perception}} Perception (Wis)</small>
+    </span>
     <br>
-    <small>{{religion}} Religion (Int)</small>
+
+    <span>
+        <mat-checkbox [checked]="this.character.isProficient('performance')" (change)="this.changeProf('performance')">
+        </mat-checkbox>
+        <small>{{performance}} Performance (Cha)</small>
+    </span>
     <br>
-    <small>{{sleightOfHand}} Sleight of Hand (Dex)</small>
+
+    <span>
+        <mat-checkbox [checked]="this.character.isProficient('persuasion')" (change)="this.changeProf('persuasion')">
+        </mat-checkbox>
+        <small>{{persuasion}} Persuasion (Cha)</small>
+    </span>
     <br>
-    <small>{{stealth}} Stealth (Dex)</small>
+
+    <span>
+        <mat-checkbox [checked]="this.character.isProficient('religion')" (change)="this.changeProf('religion')">
+        </mat-checkbox>
+        <small>{{religion}} Religion (Int)</small>
+    </span>
     <br>
-    <small>{{survival}} Survival (Wis)</small>
+
+    <span>
+        <mat-checkbox [checked]="this.character.isProficient('sleightOfHand')"
+            (change)="this.changeProf('sleightOfHand')"></mat-checkbox>
+        <small>{{sleightOfHand}} Sleight of Hand (Dex)</small>
+    </span>
+    <br>
+
+    <span>
+        <mat-checkbox [checked]="this.character.isProficient('stealth')" (change)="this.changeProf('stealth')">
+        </mat-checkbox>
+        <small>{{stealth}} Stealth (Dex)</small>
+    </span>
+    <br>
+
+    <span>
+        <mat-checkbox [checked]="this.character.isProficient('survival')" (change)="this.changeProf('survival')">
+        </mat-checkbox>
+        <small>{{survival}} Survival (Wis)</small>
+    </span>
+
+
 </div>
