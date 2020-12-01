@@ -53,7 +53,9 @@ import { HitDiceComponent } from './components/hit-dice/hit-dice.component';
 import { OtherComponent } from './components/other/other.component';
 import { DeathSavesComponent } from './components/death-saves/death-saves.component';
 import { FeatDialogComponent } from './components/feat-dialog/feat-dialog.component';
+import { EquipmentDialogComponent } from './components/equipment-dialog/equipment-dialog.component';
 import { TrackablesDialogComponent } from './components/trackables-dialog/trackables-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -77,6 +79,7 @@ import { TrackablesDialogComponent } from './components/trackables-dialog/tracka
     OtherComponent,
     DeathSavesComponent,
     FeatDialogComponent,
+    EquipmentDialogComponent,
     TrackablesDialogComponent,
   ],
   imports: [
