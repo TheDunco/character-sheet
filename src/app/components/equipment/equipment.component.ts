@@ -9,12 +9,17 @@ import { EquipmentDialogComponent } from '../equipment-dialog/equipment-dialog.c
   styleUrls: ['./equipment.component.scss']
 })
 export class EquipmentComponent implements OnInit {
-
+  totalWeight:number = 0;
   moneyPouch: money = this.character.getMoney();
   equipmentList: equipment[] = this.character.getEquipment();
   constructor(private character: CharacterService, private matDialog: MatDialog ) { }
 
   ngOnInit(): void {
+    for(let i = 0; i <this.equipmentList.length; i++){
+      this.totalWeight += (this.equipmentList[i].weight*this.equipmentList[i].quantity)
+    }
+      this.totalWeight += this.moneyPouch.copperAmount*0.02+this.moneyPouch.silverAmount*0.02+this.moneyPouch.goldAmount*0.02+this.moneyPouch.platinumAmount*0.02
+
   }
 
   openEquipmentDialog(equipment: equipment) {
