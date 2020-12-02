@@ -47,14 +47,14 @@
         </mat-label>
         <input [(ngModel)]="localSummary.race" matInput appearance="filled" (keyup.enter)="updateSummary()"/>
     </mat-form-field>
-<br>
+
     <mat-form-field>
         <mat-label>
             Class
         </mat-label>
         <input matInput [(ngModel)]="localSummary.class" appearance="filled" (keyup.enter)="updateSummary()"/>
     </mat-form-field>
-
+<br>
     <mat-form-field>
         <mat-label>
             Alignment
@@ -88,5 +88,26 @@
             Proficiency Bonus
         </mat-label>
         <input matInput [(ngModel)]="this.profBonus" appearance="filled" (keyup.enter)="updateSummary()">
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-label>
+            Speed
+        </mat-label>
+        <input matInput [(ngModel)]="localSummary.speed" appearance="filled" (keyup.enter)="updateSummary()">
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-label>
+            Initiative
+        </mat-label>
+        <input matInput [(ngModel)]="localSummary.initiative" appearance="filled" (keyup.enter)="updateSummary()">
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-label>
+            AC
+        </mat-label>
+        <input matInput [(ngModel)]="localSummary.ac" appearance="filled" (keyup.enter)="updateSummary()">
     </mat-form-field>
 </div>

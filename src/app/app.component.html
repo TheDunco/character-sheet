@@ -41,7 +41,7 @@
             
             <!-- Death Saves -->
             <div fxLayout="column">
-                <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel class="death-saves" [expanded]="true">
                     <mat-expansion-panel-header class="small-header">
                         <mat-panel-title>
                             Death Saves
@@ -181,7 +181,7 @@
             <mat-expansion-panel [expanded]="true">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                        Spells
+                        Spells | Prepared: <label class="prep"> {{this.character.preppedSpells}}</label>
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <app-spells></app-spells>
