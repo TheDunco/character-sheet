@@ -29,7 +29,6 @@ export class SpellsDialogComponent implements OnInit, AfterViewInit {
     @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   resolveItems(): Observable<any> {
-    console.log('Request is sent!');
     // this.http is a HttpClient library provide by @angular/common
     // we are calling .get() method over this.http object
     // this .get() method takes URL to call API
@@ -72,7 +71,8 @@ export class SpellsDialogComponent implements OnInit, AfterViewInit {
 
   saveSpell(){
     this.character.updateSpell(this.tempSpell, this.tempName);
-    console.log(this.character)
+    this.character.updateHighestLevelSpell();
+    // console.log(this.character);
     this.spellDialog.close();
   }
 

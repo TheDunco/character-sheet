@@ -11,10 +11,11 @@ import { SpellsDialogComponent } from '../spells-dialog/spells-dialog.component'
 export class SpellsComponent implements OnInit {
 
 constructor(public character: CharacterService, private matDialog: MatDialog) { }
-  
-  ngOnInit(): void {
-  }
-  
+
+ngOnInit(): void {
+  this.character.updateHighestLevelSpell()
+}
+
   openSpellDialog(name: string, summary: string, description: string, level: number, prepared: boolean, school: "Conjuration" | "Necromancy" | "Evocation" | "Abjuration" | "Transmutation" | "Divination" | "Enchantment" | "Illusion" | "Dunamancy", srdUrl: string){
     this.matDialog.open(SpellsDialogComponent, {
       width: '60vmax',
