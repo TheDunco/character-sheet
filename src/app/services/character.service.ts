@@ -140,22 +140,7 @@ export class CharacterService {
     this.health = newHealth;
   }
   
-  summary: summary = {
-    age: "21",
-    height: "5'0\"",
-    weight: "150",
-    eyes: "Blue",
-    hair: "Brown",
-    skin: "White",
-    race: "Human",
-    class: "Paladin",
-    alignment: "Neutral", //(dropdown eventually)
-    background: "Acolyte"
-  }
-  
-  setSummary(newSum: summary): void {
-    this.summary = newSum;
-  }
+ 
   
   // Ability Scores
   abilityScores: abilityScore = {
@@ -182,6 +167,26 @@ export class CharacterService {
   }
   setAbilityScores(newScores: abilityScore) {
     this.abilityScores = newScores;
+  }
+  
+   summary: summary = {
+    age: "21",
+    height: "5'0\"",
+    weight: "150",
+    eyes: "Blue",
+    hair: "Brown",
+    skin: "White",
+    race: "Human",
+    class: "Paladin",
+    alignment: "Neutral", //(dropdown eventually)
+    background: "Acolyte",
+    speed: 30,
+    initiative: this.toMod(this.abilityScores.dexterity),
+    ac: this.toMod(this.abilityScores.dexterity) + 10
+  }
+  
+  setSummary(newSum: summary): void {
+    this.summary = newSum;
   }
   
   // Proficiencies
@@ -422,14 +427,18 @@ export class CharacterService {
   ]
   
   highestLevelSpell: number = 0;
+  preppedSpells: number = 0;
   
   updateHighestLevelSpell() {
+    this.preppedSpells = 0;
     this.spellList.forEach((spell) => {
       if (this.highestLevelSpell < spell.level) {
         this.highestLevelSpell = spell.level
       }
+      if (spell.prepared === true) {
+        this.preppedSpells += 1
+      }
     })
-    console.log(this.highestLevelSpell)
   }
   
   updateSpell(nSpell: spell, oSpellName: string) {
@@ -530,7 +539,10 @@ export interface summary {
   race: string,
   class: string,
   alignment: string, //(dropdown eventually)
-  background: string
+  background: string,
+  speed: number,
+  initiative: number,
+  ac: number,
 }
 
 export interface level {

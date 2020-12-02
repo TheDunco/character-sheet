@@ -54,7 +54,7 @@ export class SkillsComponent implements OnInit {
     this.intimidation = this.character.toMod(this.character.abilityScores.charisma) + (this.character.isProficient('intimidation') ? this.character.proficiencyBonus : 0);
     this.investigation = this.character.toMod(this.character.abilityScores.intelligence) + (this.character.isProficient('investigation') ? this.character.proficiencyBonus : 0);
     this.medicine = this.character.toMod(this.character.abilityScores.wisdom) + (this.character.isProficient('medicine') ? this.character.proficiencyBonus : 0);
-    this.nature = this.character.toMod(this.character.abilityScores.intelligence); + (this.character.isProficient('nature') ? this.character.proficiencyBonus : 0)
+    this.nature = this.character.toMod(this.character.abilityScores.intelligence) + (this.character.isProficient('nature') ? this.character.proficiencyBonus : 0)
     this.perception = this.character.toMod(this.character.abilityScores.wisdom) + (this.character.isProficient('perception') ? this.character.proficiencyBonus : 0);
     this.performance = this.character.toMod(this.character.abilityScores.charisma) + (this.character.isProficient('performance') ? this.character.proficiencyBonus : 0);
     this.persuasion = this.character.toMod(this.character.abilityScores.charisma) + (this.character.isProficient('persuasion') ? this.character.proficiencyBonus : 0);

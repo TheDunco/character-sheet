@@ -48,4 +48,7 @@ export class TrackablesDialogComponent implements OnInit {
     this.trackDialog.close();
   } 
 
+  cloneTrack() {
+    this.character.cloneTrack(this.tempName)
+  }
 }

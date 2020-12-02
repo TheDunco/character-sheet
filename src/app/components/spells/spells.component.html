@@ -1,5 +1,4 @@
 <div>
-    
     <div *ngIf="this.character.highestLevelSpell >= 0">
         <label>Cantrips</label>
         <hr>
@@ -7,7 +6,7 @@
     <div *ngFor="let spell of this.character.spellList">
         <div *ngIf="spell.level === 0">
             <p>
-                <mat-checkbox [checked]="spell.prepared" [(ngModel)]="spell.prepared"></mat-checkbox>
+                <mat-checkbox (change)="this.character.updateHighestLevelSpell()" [checked]="spell.prepared" [(ngModel)]="spell.prepared"></mat-checkbox>
                 <a (click)="openSpellDialog(spell.name, spell.summary, spell.description, spell.level, spell.prepared, spell.school, spell.srdUrl)">
                     <mat-label [ngClass]="{'prepared': spell.prepared}">{{spell.name}}</mat-label> - {{spell.summary}}
                 </a>
@@ -22,7 +21,7 @@
     <div *ngFor="let spell of this.character.spellList">
         <div *ngIf="spell.level === 1">
             <p>
-                <mat-checkbox [checked]="spell.prepared" [(ngModel)]="spell.prepared"></mat-checkbox>
+                <mat-checkbox (change)="this.character.updateHighestLevelSpell()" [checked]="spell.prepared" [(ngModel)]="spell.prepared"></mat-checkbox>
                 <a
                     (click)="openSpellDialog(spell.name, spell.summary, spell.description, spell.level, spell.prepared, spell.school, spell.srdUrl)">
                     <mat-label [ngClass]="{'prepared': spell.prepared}">{{spell.name}}</mat-label> - {{spell.summary}}
@@ -38,7 +37,7 @@
     <div *ngFor="let spell of this.character.spellList">
         <div *ngIf="spell.level === 2">
             <p>
-                <mat-checkbox [checked]="spell.prepared" [(ngModel)]="spell.prepared"></mat-checkbox>
+                <mat-checkbox (change)="this.character.updateHighestLevelSpell()" [checked]="spell.prepared" [(ngModel)]="spell.prepared"></mat-checkbox>
                 <a
                     (click)="openSpellDialog(spell.name, spell.summary, spell.description, spell.level, spell.prepared, spell.school, spell.srdUrl)">
                     <mat-label [ngClass]="{'prepared': spell.prepared}">{{spell.name}}</mat-label> - {{spell.summary}}
@@ -54,7 +53,7 @@
     <div *ngFor="let spell of this.character.spellList">
         <div *ngIf="spell.level === 3">
             <p>
-                <mat-checkbox [checked]="spell.prepared" [(ngModel)]="spell.prepared"></mat-checkbox>
+                <mat-checkbox (change)="this.character.updateHighestLevelSpell()" [checked]="spell.prepared" [(ngModel)]="spell.prepared"></mat-checkbox>
                 <a
                     (click)="openSpellDialog(spell.name, spell.summary, spell.description, spell.level, spell.prepared, spell.school, spell.srdUrl)">
                     <mat-label [ngClass]="{'prepared': spell.prepared}">{{spell.name}}</mat-label> - {{spell.summary}}
@@ -70,7 +69,7 @@
     <div *ngFor="let spell of this.character.spellList">
         <div *ngIf="spell.level === 4">
             <p>
-                <mat-checkbox [checked]="spell.prepared" [(ngModel)]="spell.prepared"></mat-checkbox>
+                <mat-checkbox (change)="this.character.updateHighestLevelSpell()" [checked]="spell.prepared" [(ngModel)]="spell.prepared"></mat-checkbox>
                 <a
                     (click)="openSpellDialog(spell.name, spell.summary, spell.description, spell.level, spell.prepared, spell.school, spell.srdUrl)">
                     <mat-label [ngClass]="{'prepared': spell.prepared}">{{spell.name}}</mat-label> - {{spell.summary}}
@@ -86,7 +85,7 @@
     <div *ngFor="let spell of this.character.spellList">
         <div *ngIf="spell.level === 5">
             <p>
-                <mat-checkbox [checked]="spell.prepared" [(ngModel)]="spell.prepared"></mat-checkbox>
+                <mat-checkbox (change)="this.character.updateHighestLevelSpell()" [checked]="spell.prepared" [(ngModel)]="spell.prepared"></mat-checkbox>
                 <a
                     (click)="openSpellDialog(spell.name, spell.summary, spell.description, spell.level, spell.prepared, spell.school, spell.srdUrl)">
                     <mat-label [ngClass]="{'prepared': spell.prepared}">{{spell.name}}</mat-label> - {{spell.summary}}
@@ -102,7 +101,7 @@
     <div *ngFor="let spell of this.character.spellList">
         <div *ngIf="spell.level === 6">
             <p>
-                <mat-checkbox [checked]="spell.prepared" [(ngModel)]="spell.prepared"></mat-checkbox>
+                <mat-checkbox (change)="this.character.updateHighestLevelSpell()" [checked]="spell.prepared" [(ngModel)]="spell.prepared"></mat-checkbox>
                 <a
                     (click)="openSpellDialog(spell.name, spell.summary, spell.description, spell.level, spell.prepared, spell.school, spell.srdUrl)">
                     <mat-label [ngClass]="{'prepared': spell.prepared}">{{spell.name}}</mat-label> - {{spell.summary}}
@@ -118,7 +117,7 @@
     <div *ngFor="let spell of this.character.spellList">
         <div *ngIf="spell.level === 7">
             <p>
-                <mat-checkbox [checked]="spell.prepared" [(ngModel)]="spell.prepared"></mat-checkbox>
+                <mat-checkbox (change)="this.character.updateHighestLevelSpell()" [checked]="spell.prepared" [(ngModel)]="spell.prepared"></mat-checkbox>
                 <a
                     (click)="openSpellDialog(spell.name, spell.summary, spell.description, spell.level, spell.prepared, spell.school, spell.srdUrl)">
                     <mat-label [ngClass]="{'prepared': spell.prepared}">{{spell.name}}</mat-label> - {{spell.summary}}
@@ -134,7 +133,7 @@
     <div *ngFor="let spell of this.character.spellList">
         <div *ngIf="spell.level === 8">
             <p>
-                <mat-checkbox [checked]="spell.prepared" [(ngModel)]="spell.prepared"></mat-checkbox>
+                <mat-checkbox (change)="this.character.updateHighestLevelSpell()" [checked]="spell.prepared" [(ngModel)]="spell.prepared"></mat-checkbox>
                 <a
                     (click)="openSpellDialog(spell.name, spell.summary, spell.description, spell.level, spell.prepared, spell.school, spell.srdUrl)">
                     <mat-label [ngClass]="{'prepared': spell.prepared}">{{spell.name}}</mat-label> - {{spell.summary}}
@@ -150,7 +149,7 @@
     <div *ngFor="let spell of this.character.spellList">
         <div *ngIf="spell.level === 9">
             <p>
-                <mat-checkbox [checked]="spell.prepared" [(ngModel)]="spell.prepared"></mat-checkbox>
+                <mat-checkbox (change)="this.character.updateHighestLevelSpell()" [checked]="spell.prepared" [(ngModel)]="spell.prepared"></mat-checkbox>
                 <a
                     (click)="openSpellDialog(spell.name, spell.summary, spell.description, spell.level, spell.prepared, spell.school, spell.srdUrl)">
                     <mat-label [ngClass]="{'prepared': spell.prepared}">{{spell.name}}</mat-label> - {{spell.summary}}
@@ -166,7 +165,7 @@
     <div *ngFor="let spell of this.character.spellList">
         <div *ngIf="spell.level >= 10">
             <p>
-                <mat-checkbox [checked]="spell.prepared" [(ngModel)]="spell.prepared"></mat-checkbox>
+                <mat-checkbox (change)="this.character.updateHighestLevelSpell()" [checked]="spell.prepared" [(ngModel)]="spell.prepared"></mat-checkbox>
                 <a
                     (click)="openSpellDialog(spell.name, spell.summary, spell.description, spell.level, spell.prepared, spell.school, spell.srdUrl)">
                     <mat-label [ngClass]="{'prepared': spell.prepared}">{{spell.name}}</mat-label> - {{spell.summary}}

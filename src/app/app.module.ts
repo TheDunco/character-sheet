@@ -50,7 +50,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { NoteDialogComponent } from './components/note-dialog/note-dialog.component';
 import { AbilityDialogComponent } from './components/ability-dialog/ability-dialog.component';
 import { HitDiceComponent } from './components/hit-dice/hit-dice.component';
-import { OtherComponent } from './components/other/other.component';
 import { DeathSavesComponent } from './components/death-saves/death-saves.component';
 import { FeatDialogComponent } from './components/feat-dialog/feat-dialog.component';
 import { EquipmentDialogComponent } from './components/equipment-dialog/equipment-dialog.component';
@@ -78,7 +77,6 @@ import { HttpClientModule } from '@angular/common/http';
     NoteDialogComponent,
     AbilityDialogComponent,
     HitDiceComponent,
-    OtherComponent,
     DeathSavesComponent,
     FeatDialogComponent,
     EquipmentDialogComponent,
