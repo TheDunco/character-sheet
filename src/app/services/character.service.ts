@@ -385,9 +385,80 @@ export class CharacterService {
     this.tracklist.push(this.tracklist[index]);
   }
   
+  spellList = [
+    {
+      name: "Puppet",
+      summary: "Control a creature",
+      description: "Your gesture forces one humanoid you can see within range to make a Constitution saving throw. On a failed save, the target must move up to its speed in a direction you choose. In addition, you can cause the target to drop whatever it is holding. This spell has no effect on a humanoid that is immune to being charmed.",
+      level: 1,
+      prepared: false,
+      school: "Enchantment",
+      srdUrl: "",
+    },
+    {
+      description: "Casting Time: 1 action↵Range: 120 feet↵Components: V,S↵Duration: Instantaneous↵Concentration: false↵Ritual: false↵↵You hurl a mote of fire at a creature or object within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 fire damage. A flammable object hit by this spell ignites if it isn't being worn or carried.,This spell's damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10).",
+      level: 0,
+      name: "Fire Bolt",
+      prepared: true,
+      school: "Evocation",
+      summary: "120 feet V,S Fire",
+      srdUrl: "fire-bolt",
+    },
+    {
+      description: "Casting Time: 1 action↵Range: 150 feet↵Components: V,S,M↵Duration: Instantaneous↵Concentration: false↵Ritual: false↵↵A bright streak flashes from your pointing finger to a point you choose within range and then blossoms with a low roar into an explosion of flame. Each creature in a 20-foot-radius sphere centered on that point must make a dexterity saving throw. A target takes 8d6 fire damage on a failed save, or half as much damage on a successful one.,The fire spreads around corners. It ignites flammable objects in the area that aren't being worn or carried.",
+      level: 3,
+      name: "Fireball",
+      prepared: true,
+      school: "Evocation",
+      srdUrl: "fireball",
+      summary: "150 feet V,S,M Fire",
+    },
+    {
+      description: "Casting Time: 1 bonus action↵Range: Self↵Components: V↵Duration: Instantaneous↵Concentration: false↵Ritual: false↵↵Briefly surrounded by silvery mist, you teleport up to 30 feet to an unoccupied space that you can see.",
+      level: 2,
+      name: "Misty Step",
+      prepared: false,
+      school: "Conjuration",
+      srdUrl: "misty-step",
+      summary: "Self V ",
+    }, 
+    
+  ]
+  
+  updateSpell(nSpell: spell, oSpellName: string) {
+    const index = this.spellList.findIndex(item => item.name === oSpellName);
+    console.log('Index: ', index)
+    if (index > -1) {
+      this.spellList[index].name = nSpell.name;
+      this.spellList[index].summary = nSpell.summary;
+      this.spellList[index].description = nSpell.description;
+      this.spellList[index].level = nSpell.level;
+      this.spellList[index].prepared = nSpell.prepared;
+      this.spellList[index].school = nSpell.school;
+      this.spellList[index].srdUrl = nSpell.srdUrl;
+    }
+    else{
+      this.spellList.push(nSpell);
+    }
+  }
+  
+  deleteSpell(sName) {
+    const index = this.spellList.findIndex(item => item.name === sName);
+    if (index > -1) {
+      this.spellList.splice(index, 1);
+    }
+  }
 }
 
-
+export interface spell {
+  name: string,
+  summary: string,
+  description: string,
+  level: number,
+  prepared: boolean,
+  school: "Conjuration" | "Necromancy" | "Evocation" | "Abjuration" | "Transmutation" | "Divination" | "Enchantment" | "Illusion" | "Dunamancy"
+  srdUrl: string
+}
 
 export interface abilityScore {
   charisma: number,
@@ -399,9 +470,6 @@ export interface abilityScore {
 }
 
 // Might not need these, probably can just make string arrays
-export interface spells {
-  spellArray: string[]
-}
 export interface languages {
   languages: string
 }

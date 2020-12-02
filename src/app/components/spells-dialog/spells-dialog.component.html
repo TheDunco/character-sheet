@@ -1,0 +1,52 @@
+<h1 mat-dialog-title>SPELL</h1>
+
+<div mat-dialog-content>
+    
+    <mat-form-field class="name font-size">
+        <input matInput [(ngModel)]="tempSpell.name" appearance="filled">
+        <mat-label>Name</mat-label>
+    </mat-form-field>
+    
+    <mat-form-field class="name font-size">
+        <input matInput [(ngModel)]="tempSpell.level" appearance="filled">
+        <mat-label>Level</mat-label>
+    </mat-form-field>
+    
+    <mat-form-field class="select font-size">
+        <mat-label>School</mat-label>
+        <mat-select [(ngModel)]="tempSpell.school" appearance="fill">
+            <mat-option value="Conjuration">Conjuration</mat-option>
+            <mat-option value="Necromancy">Necromancy</mat-option>
+            <mat-option value="Evocation">Evocation</mat-option>
+            <mat-option value="Abjuration">Abjuration</mat-option>
+            <mat-option value="Transumation">Transumation</mat-option>
+            <mat-option value="Divination">Divination</mat-option>
+            <mat-option value="Enchantment">Enchantment</mat-option>
+            <mat-option value="Illusion">Illusion</mat-option>
+            <mat-option value="Dunamancy">Dunamancy</mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field class="font-size">
+        <input matInput (keyup.enter)="getRestData()" [(ngModel)]="tempSpell.srdUrl" appearance="filled"/>
+        <mat-label>SRD Name</mat-label>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="long font-size">
+        <input matInput [(ngModel)]="tempSpell.summary" appearance="filled"/>
+        <mat-label>Summary</mat-label>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="long font-size">
+        <textarea matInput class="desc" [(ngModel)]="tempSpell.description" appearance="filled"></textarea>
+        <mat-label>Description</mat-label>
+    </mat-form-field>
+    
+    
+</div>
+<div mat-dialog-actions>
+    <button mat-button color="warn" (click)="deleteSpell()">DELETE</button>
+
+    <button mat-button (click)="closeDialog()">CANCEL</button>
+    <button mat-button color="primary" (click)="saveSpell()">DONE</button>
+</div>
