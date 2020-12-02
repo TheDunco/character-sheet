@@ -35,7 +35,6 @@ export class CharacterService {
   
   
   levelSet(): void {
-    console.log('level set')
     if (this.xp >= 0 && this.xp < 300) {
       this.level = 1; 
       this.proficiencyBonus = 2;
@@ -156,7 +155,6 @@ export class CharacterService {
   
   setSummary(newSum: summary): void {
     this.summary = newSum;
-    console.log(this.summary)
   }
   
   // Ability Scores
@@ -255,7 +253,6 @@ export class CharacterService {
     if (index > -1) {
       this.exampleNote[index].nTitle = nData.nTitle;
       this.exampleNote[index].nDescription = nData.nDescription;
-      console.log(this.exampleNote[index].nTitle );
     }
     else{
       this.exampleNote.push(nData);
@@ -360,7 +357,6 @@ export class CharacterService {
   
   updateTrackable(tData: trackable, oTrack:string){
     const index = this.tracklist.findIndex(item => item.name === oTrack);
-    console.log('Index: ', index)
     if (index > -1) {
       this.tracklist[index].name = tData.name;
       this.tracklist[index].type = tData.type;
@@ -425,9 +421,19 @@ export class CharacterService {
     
   ]
   
+  highestLevelSpell: number = 0;
+  
+  updateHighestLevelSpell() {
+    this.spellList.forEach((spell) => {
+      if (this.highestLevelSpell < spell.level) {
+        this.highestLevelSpell = spell.level
+      }
+    })
+    console.log(this.highestLevelSpell)
+  }
+  
   updateSpell(nSpell: spell, oSpellName: string) {
     const index = this.spellList.findIndex(item => item.name === oSpellName);
-    console.log('Index: ', index)
     if (index > -1) {
       this.spellList[index].name = nSpell.name;
       this.spellList[index].summary = nSpell.summary;
