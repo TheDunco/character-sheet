@@ -35,14 +35,12 @@ export class TrackablesDialogComponent implements OnInit {
     if (this.data.current > this.max) {
       current = this.max
     } else { current = this.data.current }
-    
-    console.log('Current: ', current)
-    console.log('Max: ', this.max)
     this.tempTrack = { name: this.data.title, description: this.data.description, max: Number(this.max), current: current, type: this.selectedType };
-    console.log('tempTrack', this.tempTrack)
-    this.character.updateTrackable(this.tempTrack, this.tempName);
-    console.log(this.character)
-    this.trackDialog.close();
+    if (this.tempTrack.name == "") { alert('Please provide a trackable name') }
+    else {
+      this.character.updateTrackable(this.tempTrack, this.tempName);
+      this.trackDialog.close();
+    }
   }
 
   deleteTrack(){

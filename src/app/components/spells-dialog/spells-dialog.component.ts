@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CharacterService, spell } from 'src/app/services/character.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-spells-dialog',
@@ -56,11 +57,15 @@ export class SpellsDialogComponent implements OnInit, AfterViewInit {
         this.tempSpell.description =
           'Casting Time: ' + data.casting_time + '\n' +
           'Range: ' + data.range + '\n' +
-          'Components: ' + data.components + '\n' + 
-          'Duration: ' + data.duration + '\n' + 
+          'Components: ' + data.components + '\n' +
+          'Duration: ' + data.duration + '\n' +
           'Concentration: ' + data.concentration + '\n' +
-          'Ritual: ' + data.ritual + '\n\n' +
-          data.desc
+          'Ritual: ' + data.ritual + '\n\n';
+        data.desc.forEach((item: string) => this.tempSpell.description += item + '\n\n')
+        this.tempSpell.description += (data.higher_level !== undefined ? '\n' + data.higher_level : "")
+        this.tempSpell.description += '\n\nClasses: '
+        data.classes.forEach((item: { name: string; }) => this.tempSpell.description += item.name + ', ')
+        this.tempSpell.description = this.tempSpell.description.trim().slice(0, -1)
       })
     }
   }
