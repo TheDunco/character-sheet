@@ -1,6 +1,6 @@
 .grid-container{
     display: grid;
-    grid-template-columns: 23vmax 7vmax 9vmax;
+    grid-template-columns: 20vmax 4vmax 7vmax;
     grid-template-rows:auto auto;
     padding: 0px;
 }
@@ -20,25 +20,14 @@ strong{
     font-size: 18px;
     font-stretch: expanded;
     margin-left: 15px;
-    color: black;
 }
 
 small{
     color: grey;
-    font-size: 16px;
+    font-size: 15px;
     margin-left: 15px;
-    
 }
 
-.action-head{
-    font-size: 20px;
-    color: grey;
-}
-
-.hit-damage{
-    font-size: 16px;
-}
-
-.desc{
-    font-size: 14px;
+.ActionType{
+    font-size: 24px;
 }
