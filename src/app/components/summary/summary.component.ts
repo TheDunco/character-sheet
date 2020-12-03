@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CharacterService } from 'src/app/services/character.service';
+import { CharacterService, summary } from 'src/app/services/character.service';
 
 @Component({
   selector: 'app-summary',
@@ -10,12 +10,19 @@ export class SummaryComponent implements OnInit {
 
   constructor(public character: CharacterService) { }
 
-  localSummary = this.character.summary
-  xp = this.character.xp
-  level = this.character.level
-  profBonus = this.character.proficiencyBonus
+  localSummary: summary;
+  xp: number;
+  level: number;
+  profBonus: number;
   
-  updateSummary(): void {
+  update(): void {
+    this.localSummary = this.character.summary
+    this.xp = this.character.xp
+    this.level = this.character.level
+    this.profBonus = this.character.proficiencyBonus
+  }
+  
+  setSummary(): void {
     this.character.setXP(this.xp)
     this.xp = this.character.xp
     this.level = this.character.level
@@ -23,6 +30,7 @@ export class SummaryComponent implements OnInit {
     this.character.setSummary(this.localSummary)
   }
   ngOnInit(): void {
+    this.update()
   }
 
 }
