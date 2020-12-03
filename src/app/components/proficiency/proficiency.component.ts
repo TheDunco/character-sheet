@@ -8,7 +8,7 @@ import { CharacterService } from 'src/app/services/character.service';
 })
 export class ProficiencyComponent implements OnInit {
 
-  constructor(private character: CharacterService) { }
+  constructor(public character: CharacterService) { }
 
   profBonus: number
   selectedAbility = this.character.spellcastingAbility;
