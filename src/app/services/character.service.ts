@@ -9,7 +9,7 @@ export class CharacterService {
   name = "Mr. Tester";
   setName(newName: string): void { this.name = newName }
   
-  class = "Paladin";
+  class = "Paladin"
   setClass(newClass: string): void { this.class = newClass }
   
   xp = 500
