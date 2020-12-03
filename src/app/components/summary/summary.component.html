@@ -76,7 +76,12 @@
         <mat-label>
             XP
         </mat-label>
-        <input matInput [(ngModel)]="this.xp" appearance="filled" (keyup.enter)="setSummary()">
+        <input matInput [matAutocomplete]="auto" [(ngModel)]="this.xp" appearance="filled" (keyup.enter)="setSummary()">
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let level of levels" [value]="level.xp">
+                Level {{level.level}}
+            </mat-option>
+        </mat-autocomplete>
     </mat-form-field>
 
     <mat-form-field>
@@ -104,7 +109,7 @@
         <mat-label>
             Initiative
         </mat-label>
-        <input matInput [(ngModel)]="localSummary.initiative" appearance="filled" (keyup.enter)="setSummary()">
+        <input matInput [(ngModel)]="this.character.initiative" appearance="filled" (keyup.enter)="setSummary()">
     </mat-form-field>
     
     <mat-form-field>

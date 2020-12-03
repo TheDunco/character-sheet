@@ -18,9 +18,6 @@ export class CharacterService {
     this.levelSet()
   }
   
-
-
-  
   level = 2
   
   spellcastingAbility = "charisma";
@@ -179,8 +176,8 @@ export class CharacterService {
     alignment: "Neutral", //(dropdown eventually)
     background: "Acolyte",
     speed: 30,
-    initiative: this.toMod(this.abilityScores.dexterity),
-  }
+   }
+  
   
   setSummary(newSum: summary): void {
     this.summary = newSum;
@@ -196,6 +193,7 @@ export class CharacterService {
     miscBonus: 0
   }
   
+  initiative = this.toMod(this.abilityScores.dexterity)
   ac = this.toMod(this.abilityScores.dexterity) + 10
   
   updateAC(): void {
@@ -206,6 +204,8 @@ export class CharacterService {
     bonus += +this.defenses.miscBonus;
     
     this.ac = this.toMod(this.abilityScores.dexterity) + bonus
+    this.initiative = this.toMod(this.abilityScores.dexterity)
+    
   }
   
   // Proficiencies
@@ -569,7 +569,6 @@ export interface summary {
   alignment: string, //(dropdown eventually)
   background: string,
   speed: number,
-  initiative: number,
 }
 
 export interface level {
