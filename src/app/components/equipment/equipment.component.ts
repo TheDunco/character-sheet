@@ -27,7 +27,7 @@ export class EquipmentComponent implements OnInit {
     this.matDialog.open(EquipmentDialogComponent, {
 
       width: '30vmax',
-      data: {
+      data: { 
         selectedEquipment: equipment
       }
 

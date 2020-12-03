@@ -1,49 +1,181 @@
-<div class="ActionType">Melee<br><br></div>
-<div class=grid-container>
-    <span class="leftElement">
-        <strong>{{name}}</strong>
-        <br>
-        <small>{{description}}</small>
-    </span>
-    <span class="rightElement">
-        <small>To Hit</small>
-        <br>
-        <strong>+7</strong>
-    </span>
-    <span class="rightElement">
-        <small>To Damage</small>
-        <br>
-        <strong>1d6+2</strong>
-    </span>
-</div>
-<br>
-
-<div class="ActionType">Ranged<br><br></div>
-    <div class=grid-container>
-        <span class="leftElement">
-            <strong>{{name}}</strong>
-            <br>
-            <small>{{description}}</small>
-        </span>
-        <span class="rightElement">
-            <small>To Hit</small>
-            <br>
-            <strong>+7</strong>
-        </span>
-        <span class="rightElement">
-            <small>To Damage</small>
-            <br>
-            <strong>1d6+2</strong>
-        </span>
+<div class="action-head" *ngIf="hasMelee == true">Melee<br><br>
+    <div *ngFor="let action of actionList">
+        <div *ngIf="action.actionType == 'Melee'">
+            <div class=grid-container>
+                <span class="leftElement">
+                    <strong>{{action.name}}</strong>
+                    <br>
+                    <small class="desc">{{action.description}}</small>
+                </span>
+                <span class="rightElement">
+                    <small>To Hit</small>
+                    <br>
+                    <strong class="hit-damage">+7</strong>
+                </span>
+                <span class="rightElement">
+                    <small>Damage</small>
+                    <br>
+                    <strong class="hit-damage">{{action.damage}}</strong>
+                </span>
+            </div>
+        </div>
     </div>
-<br>
+    <br>
+    <hr>
+</div>
 
-<div class="ActionType">Magic Item<br><br></div>
+<div class="action-head" *ngIf="hasRange == true">Range<br><br>
+    <div *ngFor="let action of actionList">
+        <div *ngIf="action.actionType == 'Range'">
+            <div class=grid-container>
+                <span class="leftElement">
+                    <strong>{{action.name}}</strong>
+                    <br>
+                    <small class="desc">{{action.description}}</small>
+                </span>
+                <span class="rightElement">
+                    <small>To Hit</small>
+                    <br>
+                    <strong class="hit-damage">+7</strong>
+                </span>
+                <span class="rightElement">
+                    <small>Damage</small>
+                    <br>
+                    <strong class="hit-damage">{{action.damage}}</strong>
+                </span>
+            </div>
+        </div>
+    </div>
+    <br>
+    <hr>
+</div>
 
+<div class="action-head" *ngIf="hasPower == true">Power<br><br>
+    <div *ngFor="let action of actionList">
+        <div *ngIf="action.actionType == 'Power'">
+            <div class=grid-container>
+                <span class="leftElement">
+                    <strong>{{action.name}}</strong>
+                    <br>
+                    <small class="desc">{{action.description}}</small>
+                </span>
+                <span class="rightElement">
+                    <small>To Hit</small>
+                    <br>
+                    <strong class="hit-damage">+7</strong>
+                </span>
+                <span class="rightElement">
+                    <small>Damage</small>
+                    <br>
+                    <strong class="hit-damage">{{action.damage}}</strong>
+                </span>
+            </div>
+        </div>
+    </div>
+    <br>
+    <hr>
+</div>
 
+<div class="action-head" *ngIf="hasSpecial == true">Special<br><br>
+    <div *ngFor="let action of actionList">
+        <div *ngIf="action.actionType == 'Special'">
+            <div class=grid-container>
+                <span class="leftElement">
+                    <strong>{{action.name}}</strong>
+                    <br>
+                    <small class="desc">{{action.description}}</small>
+                </span>
+                <span class="rightElement">
+                    <small>To Hit</small>
+                    <br>
+                    <strong class="hit-damage">+7</strong>
+                </span>
+                <span class="rightElement">
+                    <small>Damage</small>
+                    <br>
+                    <strong class="hit-damage">{{action.damage}}</strong>
+                </span>
+            </div>
+        </div>
+    </div>
+    <br>
+    <hr>
+</div>
 
+<div class="action-head" *ngIf="hasPotion == true">Potion<br><br>
+    <div *ngFor="let action of actionList">
+        <div *ngIf="action.actionType == 'Potion'">
+            <div class=grid-container>
+                <span class="leftElement">
+                    <strong>{{action.name}}</strong>
+                    <br>
+                    <small class="desc">{{action.description}}</small>
+                </span>
+                <span class="rightElement">
+                    <small>To Hit</small>
+                    <br>
+                    <strong class="hit-damage">+7</strong>
+                </span>
+                <span class="rightElement">
+                    <small>Damage</small>
+                    <br>
+                    <strong class="hit-damage">{{action.damage}}</strong>
+                </span>
+            </div>
+        </div>
+    </div>
+    <br>
+    <hr>
+</div>
 
+<div class="action-head" *ngIf="hasMagic == true">Magic Item<br><br>
+    <div *ngFor="let action of actionList">
+        <div *ngIf="action.actionType == 'Magic Item'">
+            <div class=grid-container>
+                <span class="leftElement">
+                    <strong>{{action.name}}</strong>
+                    <br>
+                    <small class="desc">{{action.description}}</small>
+                </span>
+                <span class="rightElement">
+                    <small>To Hit</small>
+                    <br>
+                    <strong class="hit-damage">+7</strong>
+                </span>
+                <span class="rightElement">
+                    <small>Damage</small>
+                    <br>
+                    <strong class="hit-damage">{{action.damage}}</strong>
+                </span>
+            </div>
+        </div>
+    </div>
+    <br>
+    <hr>
+</div>
 
-
-
-
+<div class="action-head" *ngIf="hasSpell == true">Spell<br><br>
+    <div *ngFor="let action of actionList">
+        <div *ngIf="action.actionType == 'Spell'">
+            <div class=grid-container>
+                <span class="leftElement">
+                    <strong>{{action.name}}</strong>
+                    <br>
+                    <small class="desc">{{action.description}}</small>
+                </span>
+                <span class="rightElement">
+                    <small>To Hit</small>
+                    <br>
+                    <strong class="hit-damage">+7</strong>
+                </span>
+                <span class="rightElement">
+                    <small>Damage</small>
+                    <br>
+                    <strong class="hit-damage">{{action.damage}}</strong>
+                </span>
+            </div>
+        </div>
+    </div>
+    <br>
+    <hr>
+</div>
