@@ -66,6 +66,10 @@ export class AbilityScoreComponent implements OnInit {
     this.setAbilityScores()
   }
   
+  updateAC(): void {
+    this.character.updateAC()
+  }
+  
   updateMods(): void {
     this.charismaMod = this.character.toMod(this.charisma)
     this.charismaSave = (this.character.isProficient('charismaSave') ? this.charismaMod + this.character.getProficiencyBonus() : this.charismaMod)

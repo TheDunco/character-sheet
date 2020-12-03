@@ -18,9 +18,6 @@ export class CharacterService {
     this.levelSet()
   }
 
-
-
-
   level = 2
 
   spellcastingAbility = "charisma";
@@ -139,9 +136,7 @@ export class CharacterService {
   setHealth(newHealth: health) {
     this.health = newHealth;
   }
-
-
-
+  
   // Ability Scores
   abilityScores: abilityScore = {
     charisma: 8,
@@ -184,11 +179,36 @@ export class CharacterService {
     initiative: this.toMod(this.abilityScores.dexterity),
     ac: this.toMod(this.abilityScores.dexterity) + 10
   }
+   }
 
   setSummary(newSum: summary): void {
     this.summary = newSum;
   }
 
+  defenses: defense = {
+    armorName: "Leather Armor",
+    armorBonus: 1,
+    shieldName: "",
+    shieldBonus: 0,
+    miscName: "",
+    miscBonus: 0
+  }
+  
+  initiative = this.toMod(this.abilityScores.dexterity)
+  ac = this.toMod(this.abilityScores.dexterity) + 10
+  
+  updateAC(): void {
+    console.log(this.defenses)
+    let bonus  = 10
+    bonus += +this.defenses.armorBonus;
+    bonus += +this.defenses.shieldBonus;
+    bonus += +this.defenses.miscBonus;
+    
+    this.ac = this.toMod(this.abilityScores.dexterity) + bonus
+    this.initiative = this.toMod(this.abilityScores.dexterity)
+    
+  }
+  
   // Proficiencies
   proficiencies: string[] = ["charismaSave", "sleightOfHand", "investigation"]
 
@@ -475,6 +495,15 @@ export class CharacterService {
   }
 }
 
+export interface defense {
+  armorName: string,
+  armorBonus: number,
+  shieldName: string,
+  shieldBonus: number,
+  miscName: string,
+  miscBonus: number,
+}
+
 export interface spell {
   name: string,
   summary: string,
@@ -548,8 +577,6 @@ export interface summary {
   alignment: string, //(dropdown eventually)
   background: string,
   speed: number,
-  initiative: number,
-  ac: number,
 }
 
 export interface level {

@@ -1,6 +1,6 @@
-<button mat-icon-button (click)="updateMods()">
+<!-- <button mat-icon-button (click)="updateMods()">
     <mat-icon>refresh</mat-icon>
-</button>
+</button> -->
 <div class="grid-container">
     <span>
         <mat-checkbox [checked]="charismaProf" (change)="this.changeProf('charismaSave', this.charismaProf)"></mat-checkbox>
@@ -25,7 +25,7 @@
     <span>
         <mat-checkbox [checked]="dexterityProf" (change)="this.changeProf('dexteritySave', this.dexterityProf)"></mat-checkbox>
         <mat-form-field appearance="simple">
-            <input matInput [(ngModel)]="this.dexterity" (input)="setAbilityScores()">
+            <input matInput [(ngModel)]="this.dexterity" (keyup.enter)="updateAC()"(input)="setAbilityScores()">
         </mat-form-field>
         Dexterity |
         Mod <label class="number">{{dexterityMod}}</label> |
@@ -52,7 +52,7 @@
         Save <label class="number">{{strengthSave}}</label>
     </span>
     <br>
-    <span>
+    <span class="wisdom">
         <mat-checkbox [checked]="wisdomProf" (change)="this.changeProf('wisdomSave', this.wisdomProf)"></mat-checkbox>
         <mat-form-field appearance="simple">
             <input matInput [(ngModel)]="this.wisdom" (input)="setAbilityScores()">

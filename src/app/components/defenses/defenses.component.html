@@ -1,1 +1,55 @@
-<p>defenses works!</p>
+<mat-form-field class="dex">
+    <mat-label>
+        Dex Mod
+    </mat-label>
+    <input matInput [(ngModel)]="this.character.abilityScores.dexterity" disabled appearance="filled" />
+</mat-form-field>
+
+<mat-form-field class="ac">
+    <mat-label>
+        AC
+    </mat-label>
+    <input matInput [(ngModel)]="this.character.ac" appearance="filled" />
+</mat-form-field>
+<br>
+<mat-form-field class="armor-name">
+    <mat-label>
+        Armor Name
+    </mat-label>
+    <input matInput [(ngModel)]="this.character.defenses.armorName" appearance="filled" />
+</mat-form-field>
+
+<mat-form-field class="armor-bonus">
+    <mat-label>
+        Bonus
+    </mat-label>
+    <input matInput  (keyup.enter)="this.character.updateAC()"[(ngModel)]="this.character.defenses.armorBonus" appearance="filled" />
+</mat-form-field>
+<br>
+<mat-form-field class="armor-name">
+    <mat-label>
+        Shield
+    </mat-label>
+    <input matInput [(ngModel)]="this.character.defenses.shieldName" appearance="filled" />
+</mat-form-field>
+<mat-form-field class="armor-bonus">
+    <mat-label>
+        Bonus
+    </mat-label>
+    <input matInput (keyup.enter)="this.character.updateAC()" [(ngModel)]="this.character.defenses.shieldBonus"
+        appearance="filled" />
+</mat-form-field>
+<br>
+<mat-form-field class="armor-name">
+    <mat-label>
+        Misc
+    </mat-label>
+    <input matInput [(ngModel)]="this.character.defenses.miscName" appearance="filled" />
+</mat-form-field>
+<mat-form-field class="armor-bonus">
+    <mat-label>
+        Bonus
+    </mat-label>
+    <input matInput (keyup.enter)="this.character.updateAC()" [(ngModel)]="this.character.defenses.miscBonus"
+        appearance="filled" />
+</mat-form-field>
