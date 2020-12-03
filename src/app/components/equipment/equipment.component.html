@@ -17,7 +17,7 @@
 <div class="header">Weapon
     <div class = "item" *ngFor="let equipment of equipmentList">
 
-        <div *ngIf="equipment.equipType == 'Weapon'"></div><strong (click)="openEquipmentDialog(equipment)">{{equipment.name}}</strong> x{{equipment.quantity}}
+        <div *ngIf="equipment.equipType == 'Weapon'"><strong (click)="openEquipmentDialog(equipment)">{{equipment.name}}</strong> x{{equipment.quantity}}</div>
 
     </div>
 </div>
@@ -25,7 +25,7 @@
 <div class="header">Armor
     <div class = "item" *ngFor="let equipment of equipmentList">
         
-        <div *ngIf="equipment.equipType == 'Armor'"><strong (click)="openEquipmentDialog(equipment)">{{equipment.name}}</strong> x{{equipment.quantity}}
+        <div *ngIf="equipment.equipType == 'Armor'"><strong (click)="openEquipmentDialog(equipment)">{{equipment.name}}</strong> x{{equipment.quantity}}</div>
 
     </div>
 </div>
@@ -33,7 +33,7 @@
 <div class="header">Gear
     <div class = "item" *ngFor="let equipment of equipmentList">
         
-        <div *ngIf="equipment.equipType == 'Gear'"><strong (click)="openEquipmentDialog(equipment)">{{equipment.name}}</strong> x{{equipment.quantity}}
+        <div *ngIf="equipment.equipType == 'Gear'"><strong (click)="openEquipmentDialog(equipment)">{{equipment.name}}</strong> x{{equipment.quantity}}</div>
 
     </div>
 </div>
@@ -41,7 +41,7 @@
 <div class="header">Tool
     <div class = "item" *ngFor="let equipment of equipmentList">
         
-        <div *ngIf="equipment.equipType == 'Tool'"><strong (click)="openEquipmentDialog(equipment)">{{equipment.name}}</strong> x{{equipment.quantity}}
+        <div *ngIf="equipment.equipType == 'Tool'"><strong (click)="openEquipmentDialog(equipment)">{{equipment.name}}</strong> x{{equipment.quantity}}</div>
 
     </div>
 </div>
