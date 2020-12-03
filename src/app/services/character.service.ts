@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CharacterService {
-  name = "Mr. Tester"
+  name = "Mr. Tester";
   setName(newName: string): void { this.name = newName }
   
   class = "Paladin"
@@ -351,6 +351,17 @@ export class CharacterService {
     return this.exampleMoney;
   }
   
+
+  exampleMelee: action = {name: "Unarmed Strike",description:"",actionType:"Melee",damage: "+5"};
+  exampleMelee2: action = {name: "Warhammer",description:"Bludgeoning",actionType:"Melee",damage:"1d10+4"};
+  exampleMelee3: action = {name: "Shortsword",description:"Piercing",actionType:"Melee",damage:"1d6+3"};
+  exampleRange: action = {name: "Shortbow",description:"Piercing",actionType:"Range",damage:"1d6"};
+  exampleMagic: action = {name:"Blade of Avernus (Vorpal)",description:"Slashing", actionType: "Magic Item", damage: "2d6+7"};
+  exampleAction: action[] = [this.exampleMelee,this.exampleMagic, this.exampleMelee2, this.exampleRange, this.exampleMelee3];
+
+  getActions(): action[]{
+    return this.exampleAction;
+  }
   tracklist = [
     {
       name: '1st Level Spell Slots',
@@ -594,7 +605,9 @@ export interface feat {
 // (by including a dice roller or something)
 export interface action {
   name: string,
-  description: string,
+  description: "Bludgeoning" | "Piercing" | "Slashing" | "",
+  actionType: "Power" | "Spell" | "Melee" | "Magic Item" | "Range" | "Potion" | "Special";
+  damage: string;
 }
 
 export interface trackable {
