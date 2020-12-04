@@ -1,0 +1,52 @@
+header {
+  // position: sticky;
+  z-index: 10;
+  top: 0px;
+  padding: 10px;
+  background-color: white;
+  padding: 50px;
+  font-size: 2.7rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+mat-panel-title {
+  font-size: 1.5rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+mat-panel-title:hover {
+  color: #3f51b5;
+}
+
+mat-expansion-panel-header {
+  // padding-top: 3px;
+  height: 80px;
+}
+
+mat-expansion-panel {
+  margin-top: 3px;
+  min-width: 300px;
+}
+
+.hit-dice {
+  min-width: 270px;
+  max-width: 270px;
+}
+
+.death-saves {
+  min-width: 210px;
+  max-width: 210px;
+}
+
+.prep {
+  color: #3f51b5;
+  padding-left: 10px;
+}
+
+.router-button {
+  display: flex;
+  align-items: right;
+}

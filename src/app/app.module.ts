@@ -11,11 +11,12 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 // import { firebaseConfig } from './credentials.js';
 
+import { AppRoutingModule } from './app-routing/app-routing.module';
+
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-// import { MatGridListModule } from '@angular/material/grid-list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInput, MatInputModule } from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
@@ -58,6 +59,8 @@ import { TrackablesDialogComponent } from './components/trackables-dialog/tracka
 import { SpellsDialogComponent } from './components/spells-dialog/spells-dialog.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { CharacterSheetComponent } from './pages/character-sheet/character-sheet.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +86,8 @@ import { HttpClientModule } from '@angular/common/http';
     EquipmentDialogComponent,
     TrackablesDialogComponent,
     SpellsDialogComponent,
+    DashboardComponent,
+    CharacterSheetComponent,
   ],
   imports: [
     BrowserModule,
@@ -107,7 +112,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatRadioModule,
     MatSlideToggleModule,
     HttpClientModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
