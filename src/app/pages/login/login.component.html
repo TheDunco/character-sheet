@@ -1,0 +1,34 @@
+<div class="wrapper"
+    fxLayout="column" 
+    fxLayoutAlign="center center">
+    
+    <div *ngIf="auth.user$ | async; then authenticated else guest">
+        <!-- template will replace this div -->
+    </div>
+
+    <!-- User NOT logged in -->
+    <ng-template #guest>
+        <h3 class="title">Welcome!</h3>
+        <p class="text">Login to get started...</p>
+
+        <button mat-raised-button color="accent" class="button" (click)="auth.googleSignin()">
+            Login With Google
+        </button>
+
+    </ng-template>
+
+
+    <!-- User logged in -->
+    <ng-template #authenticated>
+        <div fxLayout="column" fxLayoutAlign="center center" *ngIf="auth.user$ | async as user">
+            <h3 class="text">Howdy, {{ user.displayName }}</h3>
+            <img class="image" [src]="user.photoURL">
+            <p>UID: {{ user.uid }}</p>
+            <div fxLayout="column" fxLayoutAlign="center center" class="logout-button-wrapper">
+                <button mat-raised-button class="button" routerLink="/dashboard">Dashboard</button>
+                <br>
+                <button mat-raised-button color="warn" class="button" (click)="auth.signOut()">Logout</button>
+            </div>
+        </div>
+    </ng-template>
+<div>
