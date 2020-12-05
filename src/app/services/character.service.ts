@@ -374,11 +374,32 @@ export class CharacterService {
   exampleMelee3: action = {name: "Shortsword",description:"Piercing",actionType:"Melee",damage:"1d6+3"};
   exampleRange: action = {name: "Shortbow",description:"Piercing",actionType:"Range",damage:"1d6"};
   exampleMagic: action = {name:"Blade of Avernus (Vorpal)",description:"Slashing", actionType: "Magic Item", damage: "2d6+7"};
-  exampleAction: action[] = [this.exampleMelee,this.exampleMagic, this.exampleMelee2, this.exampleRange, this.exampleMelee3];
+  actionList: action[] = [this.exampleMelee,this.exampleMagic, this.exampleMelee2, this.exampleRange, this.exampleMelee3];
 
   getActions(): action[]{
-    return this.exampleAction;
+    return this.actionList;
   }
+
+  updateAction(nAction: action, oActionName: string) {
+    const index = this.actionList.findIndex(item => item.name === oActionName);
+    if (index > -1) {
+      this.actionList[index].name = nAction.name;
+      this.actionList[index].actionType = nAction.actionType;
+      this.actionList[index].description = nAction.description;
+      this.actionList[index].damage = nAction.damage;
+    }
+    else{
+      this.actionList.push(nAction);
+    }
+  }
+
+  deleteAction(aName) {
+    const index = this.actionList.findIndex(item => item.name === aName);
+    if (index > -1) {
+      this.actionList.splice(index, 1);
+    }
+  }
+
   tracklist = [
     {
       name: '1st Level Spell Slots',

@@ -61,6 +61,7 @@ import { SpellsDialogComponent } from './components/spells-dialog/spells-dialog.
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CharacterSheetComponent } from './pages/character-sheet/character-sheet.component';
+import { ActionDialogComponent } from './components/action-dialog/action-dialog.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import { CharacterSheetComponent } from './pages/character-sheet/character-sheet
     SpellsDialogComponent,
     DashboardComponent,
     CharacterSheetComponent,
+    ActionDialogComponent,
   ],
   imports: [
     BrowserModule,
