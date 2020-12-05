@@ -289,8 +289,8 @@ export class CharacterService {
     this.exampleNote.push(nData);
   }
 
-  updateNote(nData: note, oNote:string):void {
-    const index = this.exampleNote.findIndex(item => item.nTitle === oNote);
+  updateNote(nData: note, tNote:string, dNote:string):void {
+    const index = this.exampleNote.findIndex(item => item.nTitle === tNote && item.nDescription === dNote);
     if (index > -1) {
       this.exampleNote[index].nTitle = nData.nTitle;
       this.exampleNote[index].nDescription = nData.nDescription;
@@ -300,8 +300,8 @@ export class CharacterService {
     }
   }
 
-  deleteNote(oNote:string){
-    const index = this.exampleNote.findIndex(item => item.nTitle === oNote);
+  deleteNote(tNote:string, dNote:string){
+    const index = this.exampleNote.findIndex(item => item.nTitle === tNote && item.nDescription === dNote);
     if (index > -1) {
       // delete this.exampleNote[index];
       this.exampleNote.splice(index, 1);

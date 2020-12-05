@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
-// import { firebaseConfig } from './credentials.js';
+import { firebaseConfig } from '../credentials.js';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
@@ -62,6 +62,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CharacterSheetComponent } from './pages/character-sheet/character-sheet.component';
 import { ActionDialogComponent } from './components/action-dialog/action-dialog.component';
+import { LoginComponent } from './pages/login/login.component';
+import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -90,11 +92,12 @@ import { ActionDialogComponent } from './components/action-dialog/action-dialog.
     DashboardComponent,
     CharacterSheetComponent,
     ActionDialogComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    // AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
     BrowserAnimationsModule,
     MatSliderModule,
@@ -117,7 +120,7 @@ import { ActionDialogComponent } from './components/action-dialog/action-dialog.
     MatAutocompleteModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
