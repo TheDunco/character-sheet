@@ -61,6 +61,7 @@ import { SpellsDialogComponent } from './components/spells-dialog/spells-dialog.
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CharacterSheetComponent } from './pages/character-sheet/character-sheet.component';
+import { ActionDialogComponent } from './components/action-dialog/action-dialog.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 
@@ -90,6 +91,7 @@ import { AuthGuardService } from './services/auth-guard/auth-guard.service';
     SpellsDialogComponent,
     DashboardComponent,
     CharacterSheetComponent,
+    ActionDialogComponent,
     LoginComponent
   ],
   imports: [

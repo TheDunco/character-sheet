@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>Action</h1>
+
+<div mat-dialog-content>
+    
+    <mat-form-field class="name font-size">
+        <input matInput [(ngModel)]="tempAction.name" appearance="filled">
+        <mat-label>Name</mat-label>
+    </mat-form-field>
+    <mat-form-field class="short font-size">
+        <mat-select [(ngModel)]="tempAction.description" appearance="fill">
+            <mat-option value="">-</mat-option>
+            <mat-option value="Bludgeoning">Bludgeoning</mat-option>
+            <mat-option value="Piercing">Piercing</mat-option>
+            <mat-option value="Slashing">Slashing</mat-option>
+        </mat-select>
+        <mat-label>Damage Type</mat-label>
+    </mat-form-field>
+    <mat-form-field class="select font-size">
+        <mat-label>Type</mat-label>
+        <mat-select [(ngModel)]="tempAction.actionType" appearance="fill">
+            <mat-option value="Melee">Melee</mat-option>
+            <mat-option value="Range">Range</mat-option>
+            <mat-option value="Spell">Spell</mat-option>
+            <mat-option value="Power">Power</mat-option>
+            <mat-option value="Special">Special</mat-option>
+            <mat-option value="Potion">Potion</mat-option>
+            <mat-option value="Magic Item">Magic Item</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="name font-size">
+        <input matInput [(ngModel)]="tempAction.damage" appearance="filled">
+        <mat-label>Damage</mat-label>
+    </mat-form-field>
+    
+</div>
+<div mat-dialog-actions>
+    <button mat-button color="warn" (click)="deleteAction()">DELETE</button>
+    <button mat-button (click)="closeDialog()">CANCEL</button>
+    <button mat-button color="primary" (click)="saveAction()">DONE</button>
+</div>
