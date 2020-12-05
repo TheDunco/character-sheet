@@ -12,21 +12,32 @@ export class AbilitiesComponent implements OnInit {
 
   abilityList: abilities[] = this.character.getAbilities();
 
-  constructor(private character: CharacterService, private matDialog: MatDialog ) { }
+  constructor(private character: CharacterService, private matDialog: MatDialog ) { 
+  }
 
-  openDialog(abilityName: string, abilitySummary: string) {
+  openDialog(name: string, summary: string, description: string) {
     const dialogConfig = new MatDialogConfig()
     this.matDialog.open(AbilityDialogComponent, {
-
-      width: '30vmax',
+      width: '60vmax',
       data: {
-        name: abilityName,
-        summary: abilitySummary
+        name: name,
+        summary: summary,
+        description: description
       }
 
     });
-    
   }
+
+  openNewAbilityDialog(){
+    this.matDialog.open(AbilityDialogComponent, {
+      width: '60vmax',
+      data: {
+       name: "",
+       summary: "",
+       description: "",
+     }
+    });
+ }
   ngOnInit(): void {
   }
 

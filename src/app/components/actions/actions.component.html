@@ -25,9 +25,6 @@
     <br>
     <hr>
 </div>
-<br>
-
-
 <div class="action-head" *ngIf="hasRange == true">Range<br><br>
     <div *ngFor="let action of actionList">
         <div *ngIf="action.actionType == 'Range'">
@@ -51,7 +48,9 @@
             <br>
         </div>
     </div>
-<br>
+    <br>
+    <hr>
+</div>
 <div class="action-head" *ngIf="hasPower == true">Power<br><br>
     <div *ngFor="let action of actionList">
         <div *ngIf="action.actionType == 'Power'">
