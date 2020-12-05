@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GoogleAuthService } from './services/google-auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ export class AppComponent {
   title = 'Character Sheet';
 
   
-  constructor(){}
+  constructor(public auth: GoogleAuthService){}
 
 
   newNoteEntered(){

@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { firebaseConfig } from './credentials.js';
 
@@ -19,7 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInput, MatInputModule } from '@angular/material/input';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -62,6 +63,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CharacterSheetComponent } from './pages/character-sheet/character-sheet.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -92,7 +94,6 @@ import { CharacterSheetComponent } from './pages/character-sheet/character-sheet
   imports: [
     BrowserModule,
     FormsModule,
-    AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
     BrowserAnimationsModule,
     MatSliderModule,
@@ -113,7 +114,10 @@ import { CharacterSheetComponent } from './pages/character-sheet/character-sheet
     MatSlideToggleModule,
     HttpClientModule,
     MatAutocompleteModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
