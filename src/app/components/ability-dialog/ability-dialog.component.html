@@ -1,4 +1,26 @@
-<strong mat-dialog-title>{{data.name}}</strong>
+<h1 mat-dialog-title>Ability</h1>
+
 <div mat-dialog-content>
-    {{data.summary}}
+    
+    <mat-form-field class="name font-size">
+        <input matInput [(ngModel)]="tempAbility.name" appearance="filled">
+        <mat-label>Name</mat-label>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="long font-size">
+        <input matInput [(ngModel)]="tempAbility.summary" appearance="filled"/>
+        <mat-label>Summary</mat-label>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="long font-size">
+        <textarea matInput class="desc" [(ngModel)]="tempAbility.description" appearance="filled"></textarea>
+        <mat-label>Description</mat-label>
+    </mat-form-field>
+    
+    
+</div>
+<div mat-dialog-actions>
+    <button mat-button color="warn" (click)="deleteAbility()">DELETE</button>
+    <button mat-button (click)="closeDialog()">CANCEL</button>
+    <button mat-button color="primary" (click)="saveAbility()">DONE</button>
 </div>

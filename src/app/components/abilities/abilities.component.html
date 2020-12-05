@@ -1,5 +1,8 @@
 <div *ngFor="let ability of abilityList">
 
-    <div><strong (click)="openDialog(ability.name,ability.summary)">{{ability.name}}</strong> - {{ability.description}}</div><br>
+    <div><strong (click)="openDialog(ability.name,ability.summary,ability.description)">{{ability.name}}</strong> - {{ability.summary}}</div><br>
 
 </div>
+<button mat-icon-button (click)="openNewAbilityDialog()">
+    <mat-icon color="black">add</mat-icon>
+</button>

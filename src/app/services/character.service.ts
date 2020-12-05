@@ -249,15 +249,32 @@ export class CharacterService {
     if (score == 30) {return 10}
   }
   
-  exampleAbility: abilities = {name: "Assassinate", description: "Advantage and automatic critical against surprised creatures.", summary: "During its first turn, this creature has advantage on attack rolls against any creature that hasn’t taken a turn. Any hit it scores against a surprised creature is a critical hit."};
-  exampleAbility2: abilities =  {name: "Cunning Action", description: "Use a bonus action to Dash, Disengage, or Hide.",summary: "Your quick thinking and agility allow you to move and act quickly. You can take a bonus action on each of your turns in combat. This action can be used only to take the Dash, Disengage, or Hide action."};
-  exampleAbilities = [this.exampleAbility, this.exampleAbility2];
+  exampleAbility: abilities = {name: "Assassinate", summary: "Advantage and automatic critical against surprised creatures.", description: "During its first turn, this creature has advantage on attack rolls against any creature that hasn’t taken a turn. Any hit it scores against a surprised creature is a critical hit."};
+  exampleAbility2: abilities =  {name: "Cunning Action", summary: "Use a bonus action to Dash, Disengage, or Hide.",description: "Your quick thinking and agility allow you to move and act quickly. You can take a bonus action on each of your turns in combat. This action can be used only to take the Dash, Disengage, or Hide action."};
+  abilityList: abilities[] = [this.exampleAbility,this.exampleAbility2];
   constructor() { }
 
   getAbilities(): abilities[]{
-      
-    return this.exampleAbilities;
+    return this.abilityList;
+  }
 
+  updateAbility(nAbility: abilities, oAbilityName: string) {
+    const index = this.abilityList.findIndex(item => item.name === oAbilityName);
+    if (index > -1) {
+      this.abilityList[index].name = nAbility.name;
+      this.abilityList[index].summary = nAbility.summary;
+      this.abilityList[index].description = nAbility.description;
+    }
+    else{
+      this.abilityList.push(nAbility);
+    }
+  }
+
+  deleteAbility(aName) {
+    const index = this.abilityList.findIndex(item => item.name === aName);
+    if (index > -1) {
+      this.abilityList.splice(index, 1);
+    }
   }
 
   userNotes: note ={nTitle:"This is the first title" , nDescription: "this is the first description" };
