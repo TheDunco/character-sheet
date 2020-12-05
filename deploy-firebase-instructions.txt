@@ -1,0 +1,14 @@
+Deploy your app to Firestore Hosting this way:
+
+1. (You've already created an account online in firestore.)
+2. Install the firebase-tools package.
+3. On the CLI, log in to firebase with firebase login.
+4. Build your app with ng build --prod
+5. In the root of your application directory, do firebase init
+6. Use arrow keys, spacebar, and enter to choose "Hosting".
+7. Use dist/<yourappname> as the "public" directory  (I went looking for the name of this directory before I started.)
+8. Choose to configure as a single-page application.
+    Do NOT overwrite the index.html.
+9. Run firebase deploy. The URL for your deployed app will be given at the end.
+
+Note: after the first deploy and you want to make changes, you just need to do step 4 and step 6.
