@@ -12,6 +12,9 @@ import 'firebase/auth';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
+// Thanks so much to Jeff Delany for the Google Auth tutorial!
+// https://fireship.io/lessons/angularfire-google-oauth/
+
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 

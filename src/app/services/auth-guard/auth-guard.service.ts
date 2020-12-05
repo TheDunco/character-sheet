@@ -5,6 +5,9 @@ import { AuthService} from '../auth/auth-service'
 import { Observable } from 'rxjs';
 import { tap, map, take } from 'rxjs/operators';
 
+// Thanks so much to Jeff Delany for the Google Auth tutorial!
+// https://fireship.io/lessons/angularfire-google-oauth/
+
 @Injectable()
 export class AuthGuardService implements CanActivate {
   constructor(private auth: AuthService, private router: Router) {}
