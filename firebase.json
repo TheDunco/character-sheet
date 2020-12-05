@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/character-sheet",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

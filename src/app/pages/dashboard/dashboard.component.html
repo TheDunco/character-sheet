@@ -1,7 +1,10 @@
 <div 
+    *ngIf="auth.user$ | async as user"
     div fxLayout="column" 
-    fxLayoutAlign="center center"
+    fxLayoutAlign="start center"
     fxFill>
-    <mat-label class="title">Welcome to the character dashboard!</mat-label>
+
+    <mat-label class="title">Welcome to the character dashboard {{ user.displayName }}!</mat-label>
     <button class="button" color="primary" mat-raised-button routerLink="/character-sheet">Character Sheet</button>
+    <button mat-raised-button color="warn" class="button" (click)="auth.signOut()">Logout</button>
 </div>
