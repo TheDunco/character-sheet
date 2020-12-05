@@ -12,6 +12,7 @@ export class EquipmentComponent implements OnInit {
   totalWeight:number = 0;
   moneyPouch: money = this.character.getMoney();
   equipmentList: equipment[] = this.character.getEquipment();
+
   constructor(private character: CharacterService, private matDialog: MatDialog ) { }
 
   ngOnInit(): void {
@@ -23,16 +24,39 @@ export class EquipmentComponent implements OnInit {
   }
 
   openEquipmentDialog(equipment: equipment) {
-    const dialogConfig = new MatDialogConfig()
     this.matDialog.open(EquipmentDialogComponent, {
 
-      width: '30vmax',
+      width: '60vmax',
       data: {
-        selectedEquipment: equipment
+        equipment: equipment,
+        name: equipment.name,
+        description: equipment.description,
+        quantity: equipment.quantity,
+        carried: equipment.carried,
+        weight: equipment.weight,
+        equipType: equipment.equipType,
+        equipped: equipment.equipped
       }
 
     });
   }
+
+  openNewEquipmentDialog(){
+    this.matDialog.open(EquipmentDialogComponent, {
+      width: '60vmax',
+      data: {
+        equipment: this.equipmentList,
+        name: '',
+        description: '',
+        quantity: 0,
+        carried: 'No',
+        weight: 0,
+        equipType: 'None',
+        equipped: 'No'
+     }
+    });
+ }
+
 }
 
 

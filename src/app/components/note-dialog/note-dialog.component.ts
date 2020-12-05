@@ -20,7 +20,6 @@ export class NoteDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   ngOnInit(): void {
-    console.log(this.data);
     this.tempTitle = this.data.title;
     this.tempDescription = this.data.description;
   }
