@@ -3,6 +3,7 @@
   grid-template-columns: 25vmax 5vmax 7vmax;
   grid-template-rows: auto auto;
   padding: 0px;
+  margin-bottom: 5px;
 }
 
 .leftElement {
@@ -35,4 +36,8 @@ small {
 
 .hit-damage {
   color: black;
+}
+
+.list span {
+  margin-top: 10px;
 }
