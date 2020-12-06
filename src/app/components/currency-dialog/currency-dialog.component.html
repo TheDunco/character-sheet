@@ -1,0 +1,48 @@
+
+<strong mat-dialog-title>{{data.type}}</strong>
+<div mat-dialog-content class="grid-container">
+
+    <div *ngIf="data.type === 'Gold'" class="amount">
+        <mat-form-field class="name font-size">
+            <input matInput [(ngModel)]="money.goldAmount" appearance="filled">
+            <mat-label>Amount</mat-label>
+        </mat-form-field>
+    </div>
+    
+    <div *ngIf="data.type === 'Copper'" class="amount">
+        <mat-form-field class="name font-size">
+            <input matInput [(ngModel)]="money.copperAmount" appearance="filled">
+            <mat-label>Amount</mat-label>
+        </mat-form-field>
+    </div>
+
+    <div *ngIf="data.type === 'Silver'" class="amount">
+        <mat-form-field class="name font-size">
+            <input matInput [(ngModel)]="money.silverAmount" appearance="filled">
+            <mat-label>Amount</mat-label>
+        </mat-form-field>
+    </div>
+    
+    <div *ngIf="data.type === 'Platinum'" class="amount">
+        <mat-form-field class="name font-size">
+            <input matInput [(ngModel)]="money.platinumAmount" appearance="filled">
+            <mat-label>Amount</mat-label>
+        </mat-form-field>
+    </div>
+    
+    <button mat-icon-button color="primary" class="up-arrow" (click)="addOneToCurrency()">
+        <mat-icon>arrow_circle_up</mat-icon>
+    </button>
+    <button mat-icon-button color="warn" class="down-arrow" (click)="subtractOneFromCurrency()">
+        <mat-icon>arrow_circle_down</mat-icon>
+    </button>
+    
+    <button color="primary" mat-button class="increase" (click)="addCurrency()">Increase</button>
+    <input matInput class="input" [(ngModel)]="inputCurrency"/>
+    <button color="warn" mat-button class="decrease" (click)="subtractCurrency()">Decrease</button>
+
+</div>
+<div mat-dialog-actions>
+    <button mat-button color="primary" (click)="saveCurrency()">Done</button>
+</div>
+

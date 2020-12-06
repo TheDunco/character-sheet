@@ -1,0 +1,60 @@
+.long {
+  width: 100%;
+}
+
+.font-size {
+  font-size: 1.3rem;
+}
+
+.desc {
+  height: 10vw;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "amount amount"
+    "upArrow increase"
+    ". input"
+    "downArrow decrease";
+  width: fit-content;
+}
+
+.amount {
+  grid-area: amount;
+  margin-left: 10px;
+}
+.name {
+  width: 180px;
+  text-align: center;
+}
+
+.up-arrow {
+  grid-area: upArrow;
+}
+
+.down-arrow {
+  grid-area: downArrow;
+}
+
+.input {
+  grid-area: input;
+  text-align: center;
+  height: 20px;
+  font-size: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 150px;
+}
+
+.increase {
+  grid-area: increase;
+  height: 40px;
+  width: 150px;
+}
+
+.decrease {
+  grid-area: decrease;
+  height: 40px;
+  width: 150px;
+}

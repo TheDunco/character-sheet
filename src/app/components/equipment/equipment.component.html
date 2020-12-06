@@ -4,13 +4,13 @@
 <div class="header">Currency
     <div class = "item">
 
-            <strong >Copper</strong> x{{moneyPouch.copperAmount}}        
+            <strong (click)="openCurrencyDialog('Copper')">Copper</strong> x{{moneyPouch.copperAmount}}        
             <br>
-            <strong >Silver</strong> x{{moneyPouch.silverAmount}} 
+            <strong (click)="openCurrencyDialog('Silver')">Silver</strong> x{{moneyPouch.silverAmount}} 
             <br> 
-            <strong >Gold</strong> x{{moneyPouch.goldAmount}}
+            <strong (click)="openCurrencyDialog('Gold')">Gold</strong> x{{moneyPouch.goldAmount}}
             <br> 
-            <strong >Platinum</strong> x{{moneyPouch.platinumAmount}}  
+            <strong (click)="openCurrencyDialog('Platinum')">Platinum</strong> x{{moneyPouch.platinumAmount}}  
     </div>
 <br>
 </div>

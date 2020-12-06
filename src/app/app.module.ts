@@ -64,6 +64,7 @@ import { CharacterSheetComponent } from './pages/character-sheet/character-sheet
 import { ActionDialogComponent } from './components/action-dialog/action-dialog.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
+import { CurrencyDialogComponent } from './components/currency-dialog/currency-dialog.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { AuthGuardService } from './services/auth-guard/auth-guard.service';
     DashboardComponent,
     CharacterSheetComponent,
     ActionDialogComponent,
-    LoginComponent
+    LoginComponent,
+    CurrencyDialogComponent
   ],
   imports: [
     BrowserModule,
