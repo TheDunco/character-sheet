@@ -503,7 +503,9 @@ export class CharacterService {
 
   cloneTrack(oTrack:string){
     const index = this.tracklist.findIndex(item => item.name === oTrack);
-    this.tracklist.push(this.tracklist[index]);
+    if (index > -1) {
+      this.tracklist.push(this.tracklist[index]);
+    }
   }
   
   spellList = [
