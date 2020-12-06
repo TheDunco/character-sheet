@@ -5,6 +5,8 @@ import { ActionDialogComponent } from '../action-dialog/action-dialog.component'
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
 import { Observable } from 'rxjs';
+import { throwIfEmpty } from 'rxjs/operators';
+import { AbilityScoreComponent } from '../ability-score/ability-score.component';
 
 
 @Component({
@@ -28,16 +30,23 @@ export class ActionsComponent implements OnInit {
     this.updateHeader()
   }
 
-  openDialog(name: string, description: string, actionType: string, damage: string) {
+ 
+  
+  
+  openDialog(name: string, description: string, actionType: string, damage: string, damageType: string, toHit: number, abilityScore: string, hitMisc: number, damageMisc: number) {
     this.matDialog.open(ActionDialogComponent, {
       width: '60vmax',
       data: {
         name: name,
         damage: damage,
         actionType: actionType,
-        description: description
+        description: description,
+        damageType: damageType,
+        toHit: toHit,
+        abilityScore: abilityScore,
+        hitMisc: hitMisc,
+        damageMisc: damageMisc,
       }
-
     });
   }
 
@@ -93,7 +102,6 @@ export class ActionsComponent implements OnInit {
         }
       }
     }
-    console.log(this.hasSpell)
   }
   ngOnInit(): void {
 

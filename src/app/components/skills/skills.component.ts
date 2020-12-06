@@ -31,13 +31,8 @@ export class SkillsComponent implements OnInit {
   stealth: number
   survival: number
   
-  changeProf(name: string): void {
-    if (this.character.isProficient(name)) {
-      this.character.removeProficiency(name)
-    }
-    else {
-      this.character.addProficiency(name)
-    }
+  changeProf(newProf: string): void {
+    this.character.changeProf(newProf)
     this.updateSkills();
   }
     

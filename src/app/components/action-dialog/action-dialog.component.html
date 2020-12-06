@@ -6,15 +6,20 @@
         <input matInput [(ngModel)]="tempAction.name" appearance="filled">
         <mat-label>Name</mat-label>
     </mat-form-field>
+    
     <mat-form-field class="short font-size">
-        <mat-select [(ngModel)]="tempAction.description" appearance="fill">
-            <mat-option value="">-</mat-option>
-            <mat-option value="Bludgeoning">Bludgeoning</mat-option>
-            <mat-option value="Piercing">Piercing</mat-option>
-            <mat-option value="Slashing">Slashing</mat-option>
+        <mat-select [(ngModel)]="tempAction.abilityScore" appearance="fill">
+            <mat-option value="Charisma">Charisma</mat-option>
+            <mat-option value="Constitution">Constitution</mat-option>
+            <mat-option value="Dexterity">Dexterity</mat-option>
+            <mat-option value="Intelligence">Intelligence</mat-option>
+            <mat-option value="Strength">Strength</mat-option>
+            <mat-option value="Wisdom">Wisdom</mat-option>
         </mat-select>
-        <mat-label>Damage Type</mat-label>
+        <mat-label>Ability Score</mat-label>
     </mat-form-field>
+    
+    
     <mat-form-field class="select font-size">
         <mat-label>Type</mat-label>
         <mat-select [(ngModel)]="tempAction.actionType" appearance="fill">
@@ -27,10 +32,50 @@
             <mat-option value="Magic Item">Magic Item</mat-option>
         </mat-select>
     </mat-form-field>
+    <label class="font-size">Proficient: </label>
+    <mat-checkbox [checked]="this.character.isProficient(tempAction.name)"
+        (change)="this.character.changeProf(tempAction.name)"></mat-checkbox>
+    <br>
+    
+    <mat-form-field class="short font-size">
+        <mat-select [(ngModel)]="tempAction.damageType" appearance="fill">
+            <mat-option value="">-</mat-option>
+            <mat-option value="Bludgeoning">Bludgeoning</mat-option>
+            <mat-option value="Piercing">Piercing</mat-option>
+            <mat-option value="Slashing">Slashing</mat-option>
+            <mat-option value="Poison">Poison</mat-option>
+            <mat-option value="Acid">Acid</mat-option>
+            <mat-option value="Fire">Fire</mat-option>
+            <mat-option value="Cold">Cold</mat-option>
+            <mat-option value="Radiant">Radiant</mat-option>
+            <mat-option value="Necrotic">Necrotic</mat-option>
+            <mat-option value="Lightning">Lightning</mat-option>
+            <mat-option value="Thunder">Thunder</mat-option>
+            <mat-option value="Force">Force</mat-option>
+        </mat-select>
+        <mat-label>Damage Type</mat-label>
+    </mat-form-field>
+    
     <mat-form-field class="name font-size">
         <input matInput [(ngModel)]="tempAction.damage" appearance="filled">
-        <mat-label>Damage</mat-label>
+        <mat-label>Damage Dice</mat-label>
     </mat-form-field>
+    
+    <mat-form-field class="name font-size">
+        <input matInput [(ngModel)]="tempAction.damageMisc" appearance="filled">
+        <mat-label>Damage Misc</mat-label>
+    </mat-form-field>
+    
+    <mat-form-field class="name font-size">
+        <input matInput [(ngModel)]="tempAction.hitMisc" appearance="filled">
+        <mat-label>To Hit Misc</mat-label>
+    </mat-form-field>
+    
+    <br>
+        <mat-form-field class="long font-size">
+            <textarea matInput class="desc" [(ngModel)]="tempAction.description" appearance="filled"></textarea>
+            <mat-label>Description</mat-label>
+        </mat-form-field>
     
 </div>
 <div mat-dialog-actions>
