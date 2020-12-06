@@ -33,7 +33,7 @@ export class ActionsComponent implements OnInit {
  
   
   
-  openDialog(name: string, description: string, actionType: string, damage: string, damageType: string, toHit: number, abilityScore: string, hitMisc: number, damageMisc: number) {
+  openDialog(name: string, description: string, actionType: string, damage: string, damageType: string, toHit: number, abilityScore: string, hitMisc: number, damageMisc: number,fullToHit?:string, fullDamage?:string) {
     this.matDialog.open(ActionDialogComponent, {
       width: '60vmax',
       data: {
@@ -46,6 +46,8 @@ export class ActionsComponent implements OnInit {
         abilityScore: abilityScore,
         hitMisc: hitMisc,
         damageMisc: damageMisc,
+        fullToHit: fullToHit,
+        fullDamage: fullDamage
       }
     });
   }
@@ -58,6 +60,7 @@ export class ActionsComponent implements OnInit {
         actionType: "",
         damage: "",
         description: "",
+        abilityScore: "Strength"
       }
     });
   }

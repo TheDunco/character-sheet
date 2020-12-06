@@ -1,40 +1,38 @@
-.grid-container{
-    display: grid;
-    grid-template-columns: 25vmax 5vmax 7vmax;
-    grid-template-rows:auto auto;
-    padding: 0px;
+.grid-container {
+  display: grid;
+  grid-template-columns: 25vmax 5vmax 7vmax;
+  grid-template-rows: auto auto;
+  padding: 0px;
 }
 
-.leftElement{
-    text-align: left;
-    grid-row:1 /span 2;
+.leftElement {
+  text-align: left;
+  grid-row: 1 / span 2;
 }
 
-.rightElement{
-    text-align: center;
-
+.rightElement {
+  text-align: center;
 }
 
-strong{
-    text-indent: 500px;
-    font-size: 18px;
-    font-stretch: expanded;
-    margin-left: 15px;
-    color: blue;
+strong {
+  text-indent: 500px;
+  font-size: 18px;
+  font-stretch: expanded;
+  margin-left: 15px;
+  color: #3f51b5;
 }
 
-small{
-    color: grey;
-    font-size: 15px;
-    margin-left: 15px;
+small {
+  color: grey;
+  font-size: 15px;
+  margin-left: 15px;
 }
 
-.action-head{
-    font-size: 24px;
-    color: grey;
+.action-head {
+  font-size: 24px;
+  color: grey;
 }
 
-.hit-damage{
-    color: black;
+.hit-damage {
+  color: black;
 }
-

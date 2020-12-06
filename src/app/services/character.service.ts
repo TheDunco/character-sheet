@@ -148,12 +148,12 @@ export class CharacterService {
   
   // Ability Scores
   abilityScores: abilityScore = {
-    charisma: 8,
-    constitution: 8,
-    dexterity: 8,
-    intelligence: 8,
-    strength: 8,
-    wisdom: 8,
+    charisma: 10,
+    constitution: 10,
+    dexterity: 10,
+    intelligence: 10,
+    strength: 10,
+    wisdom: 10,
   }
   
   getAbilityScores(): abilityScore {
@@ -217,7 +217,7 @@ export class CharacterService {
   }
   
   // Proficiencies
-  proficiencies: string[] = ["charismaSave", "sleightOfHand", "investigation"]
+  proficiencies: string[] = ["charismaSave", "sleightOfHand", "investigation", "Warhammer"]
   
   // Will eventually be based off of level
   proficiencyBonus = 2;
@@ -377,11 +377,11 @@ export class CharacterService {
   }
   
 
-  exampleMelee: action = {name: "Unarmed Strike",description:"Your fists",actionType:"Melee",damage: String(this.toMod(this.abilityScores.strength)),damageType:"Bludgeoning",toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0};
-  exampleMelee2: action = {name: "Warhammer",damageType:"Bludgeoning",actionType:"Melee",damage:"1d10",description:"A big hammer", toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0};
-  exampleMelee3: action = {name: "Shortsword",damageType:"Piercing",actionType:"Melee",damage:"1d6",description:"A standard sword", toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0};
-  exampleRange: action = {name: "Shortbow",damageType:"Piercing",actionType:"Range",damage:"1d6",description:"A standard bow", toHit: this.toMod(this.abilityScores.dexterity), abilityScore: "Dexterity", damageMisc: 0, hitMisc: 0};
-  exampleMagic: action = {name:"Blade of Avernus (Vorpal)",damageType:"Slashing", actionType: "Magic Item", damage: "2d6",description:"Instant decapitation? Yes please!",toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength",damageMisc: 3, hitMisc: 3};
+  exampleMelee: action = {name: "Unarmed Strike",description:"Your fists",actionType:"Melee",damage: String(this.toMod(this.abilityScores.strength)),damageType:"Bludgeoning",toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0, fullDamage: "0", fullToHit: "0"};
+  exampleMelee2: action = {name: "Warhammer",damageType:"Bludgeoning",actionType:"Melee",damage:"1d10",description:"A big hammer", toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0, fullDamage: "1d10+0", fullToHit: "0"};
+  exampleMelee3: action = {name: "Shortsword",damageType:"Piercing",actionType:"Melee",damage:"1d6",description:"A standard sword", toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0, fullDamage: "1d6+0", fullToHit: "0"};
+  exampleRange: action = {name: "Shortbow",damageType:"Piercing",actionType:"Range",damage:"1d6",description:"A standard bow", toHit: this.toMod(this.abilityScores.dexterity), abilityScore: "Dexterity", damageMisc: 0, hitMisc: 0, fullDamage: "1d6", fullToHit: "0"};
+  exampleMagic: action = {name:"Blade of Avernus (Vorpal)",damageType:"Slashing", actionType: "Magic Item", damage: "2d6",description:"Instant decapitation? Yes please!",toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength",damageMisc: 3, hitMisc: 3, fullDamage: "0", fullToHit: "2d6+5"};
   actionList: action[] = [this.exampleMelee,this.exampleMagic, this.exampleMelee2, this.exampleRange, this.exampleMelee3];
 
   getActions(): action[]{
