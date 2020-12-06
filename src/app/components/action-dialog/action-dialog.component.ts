@@ -11,10 +11,15 @@ export class ActionDialogComponent implements OnInit {
 
   tempName:string;
   tempAction: action = {
-        name: this.data.name,
-        damage: this.data.damage,
-        actionType: this.data.actionType,
-        description: this.data.description
+    name: this.data.name,
+    damage: this.data.damage,
+    actionType: this.data.actionType,
+    description: this.data.description,
+    damageType: this.data.damageType,
+    toHit: this.data.toHit,
+    abilityScore: this.data.abilityScore,
+    hitMisc: this.data.hitMisc,
+    damageMisc: this.data.damageMisc
   };
 
 
@@ -22,19 +27,47 @@ export class ActionDialogComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public actionDialog: MatDialogRef<ActionDialogComponent>,
-    private character: CharacterService
+    public character: CharacterService
   ) {}
 
   ngOnInit(): void {
-    this.tempName=this.data.name;
-    console.log(this.data.description);
+    this.tempName = this.data.name;
+    this.calcFulls()
   }
 
   closeDialog(){
     this.actionDialog.close();
   }
+  
+  calcFulls(): void {
+    if (this.tempAction.abilityScore === "Charisma") {
+      this.tempAction.fullDamage = String(this.tempAction.damage + '+' + this.character.toMod(this.character.abilityScores.charisma))
+      this.tempAction.fullToHit = String(this.character.toMod(this.character.abilityScores.charisma) + +this.tempAction.hitMisc + +(this.character.isProficient(this.tempAction.name) ? +this.character.proficiencyBonus : 0))
+    }
+    else if (this.tempAction.abilityScore === "Constitution") {
+      this.tempAction.fullDamage = String(this.tempAction.damage + '+' + this.character.toMod(this.character.abilityScores.constitution))
+      this.tempAction.fullToHit = String(this.character.toMod(this.character.abilityScores.constitution) + +this.tempAction.hitMisc + +(this.character.isProficient(this.tempAction.name) ? +this.character.proficiencyBonus : 0))
+    } 
+    else if (this.tempAction.abilityScore === "Dexterity") {
+      this.tempAction.fullDamage = String(this.tempAction.damage + '+' + this.character.toMod(this.character.abilityScores.dexterity))
+      this.tempAction.fullToHit = String(this.character.toMod(this.character.abilityScores.dexterity) + +this.tempAction.hitMisc + +(this.character.isProficient(this.tempAction.name) ? +this.character.proficiencyBonus : 0))
+    }
+    else if (this.tempAction.abilityScore === "Intelligence") {
+      this.tempAction.fullDamage = String(this.tempAction.damage + '+' + this.character.toMod(this.character.abilityScores.intelligence))
+      this.tempAction.fullToHit = String(this.character.toMod(this.character.abilityScores.intelligence) + +this.tempAction.hitMisc+ +(this.character.isProficient(this.tempAction.name) ? +this.character.proficiencyBonus : 0))
+    }
+    else if (this.tempAction.abilityScore === "Strength") {
+      this.tempAction.fullDamage = String(this.tempAction.damage + '+' + this.character.toMod(this.character.abilityScores.strength))
+      this.tempAction.fullToHit = String(this.character.toMod(this.character.abilityScores.strength) + +this.tempAction.hitMisc + +(this.character.isProficient(this.tempAction.name) ? +this.character.proficiencyBonus : 0))
+    }
+    else if (this.tempAction.abilityScore === "Wisdom") {
+      this.tempAction.fullDamage = String(this.tempAction.damage + '+' + this.character.toMod(this.character.abilityScores.wisdom))
+      this.tempAction.fullToHit = String(this.character.toMod(this.character.abilityScores.wisdom) + +this.tempAction.hitMisc + +(this.character.isProficient(this.tempAction.name) ? +this.character.proficiencyBonus : 0))
+    }
+  }
 
-  saveAction(){
+  saveAction() {
+    this.calcFulls()
     this.character.updateAction(this.tempAction, this.tempName);
     this.actionDialog.close();
   }

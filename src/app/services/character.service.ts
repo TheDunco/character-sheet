@@ -30,6 +30,15 @@ export class CharacterService {
   miscProfs = "Thieves Tools, Martial Weapons"
   setMiscProfs(newProfs: string): void { this.miscProfs = newProfs }
   
+  changeProf(name: string): void {
+    if (this.isProficient(name)) {
+      this.removeProficiency(name)
+    }
+    else {
+      this.addProficiency(name)
+    }
+  }
+  
   
   levelSet(): void {
     if (this.xp >= 0 && this.xp < 300) {
@@ -139,12 +148,12 @@ export class CharacterService {
   
   // Ability Scores
   abilityScores: abilityScore = {
-    charisma: 8,
-    constitution: 8,
-    dexterity: 8,
-    intelligence: 8,
-    strength: 8,
-    wisdom: 8,
+    charisma: 10,
+    constitution: 10,
+    dexterity: 10,
+    intelligence: 10,
+    strength: 10,
+    wisdom: 10,
   }
   
   getAbilityScores(): abilityScore {
@@ -197,7 +206,6 @@ export class CharacterService {
   ac = this.toMod(this.abilityScores.dexterity) + 10
   
   updateAC(): void {
-    console.log(this.defenses)
     let bonus  = 10
     bonus += +this.defenses.armorBonus;
     bonus += +this.defenses.shieldBonus;
@@ -209,7 +217,7 @@ export class CharacterService {
   }
   
   // Proficiencies
-  proficiencies: string[] = ["charismaSave", "sleightOfHand", "investigation"]
+  proficiencies: string[] = ["charismaSave", "sleightOfHand", "investigation", "Warhammer"]
   
   // Will eventually be based off of level
   proficiencyBonus = 2;
@@ -405,11 +413,11 @@ export class CharacterService {
   }
   
 
-  exampleMelee: action = {name: "Unarmed Strike",description:"",actionType:"Melee",damage: "+5"};
-  exampleMelee2: action = {name: "Warhammer",description:"Bludgeoning",actionType:"Melee",damage:"1d10+4"};
-  exampleMelee3: action = {name: "Shortsword",description:"Piercing",actionType:"Melee",damage:"1d6+3"};
-  exampleRange: action = {name: "Shortbow",description:"Piercing",actionType:"Range",damage:"1d6"};
-  exampleMagic: action = {name:"Blade of Avernus (Vorpal)",description:"Slashing", actionType: "Magic Item", damage: "2d6+7"};
+  exampleMelee: action = {name: "Unarmed Strike",description:"Your fists",actionType:"Melee",damage: String(this.toMod(this.abilityScores.strength)),damageType:"Bludgeoning",toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0, fullDamage: "0", fullToHit: "0"};
+  exampleMelee2: action = {name: "Warhammer",damageType:"Bludgeoning",actionType:"Melee",damage:"1d10",description:"A big hammer", toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0, fullDamage: "1d10+0", fullToHit: "0"};
+  exampleMelee3: action = {name: "Shortsword",damageType:"Piercing",actionType:"Melee",damage:"1d6",description:"A standard sword", toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0, fullDamage: "1d6+0", fullToHit: "0"};
+  exampleRange: action = {name: "Shortbow",damageType:"Piercing",actionType:"Range",damage:"1d6",description:"A standard bow", toHit: this.toMod(this.abilityScores.dexterity), abilityScore: "Dexterity", damageMisc: 0, hitMisc: 0, fullDamage: "1d6", fullToHit: "0"};
+  exampleMagic: action = {name:"Blade of Avernus (Vorpal)",damageType:"Slashing", actionType: "Magic Item", damage: "2d6",description:"Instant decapitation? Yes please!",toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength",damageMisc: 3, hitMisc: 3, fullDamage: "0", fullToHit: "2d6+5"};
   actionList: action[] = [this.exampleMelee,this.exampleMagic, this.exampleMelee2, this.exampleRange, this.exampleMelee3];
 
   getActions(): action[]{
@@ -423,6 +431,11 @@ export class CharacterService {
       this.actionList[index].actionType = nAction.actionType;
       this.actionList[index].description = nAction.description;
       this.actionList[index].damage = nAction.damage;
+      this.actionList[index].damageType = nAction.damageType;
+      this.actionList[index].damageMisc = nAction.damageMisc;
+      this.actionList[index].hitMisc = nAction.hitMisc;
+      this.actionList[index].fullDamage = nAction.fullDamage;
+      this.actionList[index].fullToHit = nAction.fullToHit;
     }
     else{
       this.actionList.push(nAction);
@@ -679,9 +692,16 @@ export interface feat {
 // (by including a dice roller or something)
 export interface action {
   name: string,
-  description: "Bludgeoning" | "Piercing" | "Slashing" | "",
+  description: string,
   actionType: "Power" | "Spell" | "Melee" | "Magic Item" | "Range" | "Potion" | "Special";
-  damage: string;
+  damage: string,
+  damageType: string,
+  toHit: number,
+  abilityScore: "Charisma" | "Constitution" | "Dexterity" | "Intelligence" | "Strength" | "Wisdom",
+  damageMisc: number,
+  hitMisc: number,
+  fullToHit?: string,
+  fullDamage?: string
 }
 
 export interface trackable {
