@@ -406,12 +406,15 @@ export class CharacterService {
     }
   }
 
-  exampleMoney: money = {copperAmount: 0, silverAmount: 2, goldAmount: 35, platinumAmount: 1};
+  money: money = {copperAmount: 0, silverAmount: 2, goldAmount: 35, platinumAmount: 1};
   
   getMoney(): money{
-    return this.exampleMoney;
+    return this.money;
   }
   
+  setMoney(newMoney: money) {
+    this.money = newMoney
+  }
 
   exampleMelee: action = {name: "Unarmed Strike",description:"Your fists",actionType:"Melee",damage: String(this.toMod(this.abilityScores.strength)),damageType:"Bludgeoning",toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0, fullDamage: "0", fullToHit: "0"};
   exampleMelee2: action = {name: "Warhammer",damageType:"Bludgeoning",actionType:"Melee",damage:"1d10",description:"A big hammer", toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0, fullDamage: "1d10+0", fullToHit: "0"};
