@@ -20,7 +20,7 @@ export class AuthGuardService implements CanActivate {
            tap(loggedIn => {
              if (!loggedIn) {
                console.log('access denied')
-               this.router.navigate(['/']);
+               this.router.navigateByUrl('');
              }
          })
     )
