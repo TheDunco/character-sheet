@@ -17,13 +17,18 @@ export class EquipmentComponent implements OnInit {
   constructor(private character: CharacterService, private matDialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.updateWeight()
+  }
+
+  updateWeight(): void {
+    this.totalWeight = 0;
     for (let i = 0; i < this.equipmentList.length; i++) {
       this.totalWeight += (this.equipmentList[i].weight * this.equipmentList[i].quantity)
     }
     this.totalWeight += this.moneyPouch.copperAmount * 0.02 + this.moneyPouch.silverAmount * 0.02 + this.moneyPouch.goldAmount * 0.02 + this.moneyPouch.platinumAmount * 0.02
 
   }
-
+  
   openEquipmentDialog(equipment: equipment) {
     this.matDialog.open(EquipmentDialogComponent, {
 
