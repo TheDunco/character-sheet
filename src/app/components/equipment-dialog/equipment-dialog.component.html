@@ -1,8 +1,53 @@
-<strong mat-dialog-title>{{data.selectedEquipment.name}}</strong>
+<strong mat-dialog-title>{{data.name}}</strong>
+
 <div mat-dialog-content>
-    Weight: {{data.selectedEquipment.weight}}<br>
-    Quantity: {{data.selectedEquipment.quantity}}<br>
-    Carried: {{data.selectedEquipment.carried}}<br>
-    Equipped: {{data.selectedEquipment.equipped}}<br>
-    {{data.selectedEquipment.description}}
+    
+    <mat-form-field class="name font-size">
+        <input matInput [(ngModel)]="data.name" appearance="filled">
+        <mat-label>Name</mat-label>
+    </mat-form-field>
+    
+    <mat-form-field class="name font-size">
+        <input matInput [(ngModel)]="data.quantity" appearance="filled">
+        <mat-label>Quantity</mat-label>
+    </mat-form-field>
+    
+    <mat-form-field class="select font-size">
+        <mat-label>Type</mat-label>
+        <mat-select [(ngModel)]="data.equipType" appearance="fill">
+            <mat-option value="Armor">Armor</mat-option>
+            <mat-option value="Weapon">Weapon</mat-option>
+            <mat-option value="Gear">Gear</mat-option>
+            <mat-option value="Tool">Tool</mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field class="select font-size">
+        <mat-label>Carried</mat-label>
+        <mat-select [(ngModel)]="data.carried" appearance="fill">
+            <mat-option value="Yes">Yes</mat-option>
+            <mat-option value="No">No</mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field class="select font-size">
+        <mat-label>Equipped</mat-label>
+        <mat-select [(ngModel)]="data.equipped" appearance="fill">
+            <mat-option value="Yes">Yes</mat-option>
+            <mat-option value="No">No</mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+    <br>
+    <mat-form-field class="long font-size">
+        <textarea matInput class="desc" [(ngModel)]="data.description" appearance="filled"></textarea>
+        <mat-label>Description</mat-label>
+    </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-button color="warn" (click)="deleteEquipment()">DELETE</button>
+
+    <button mat-button (click)="closeDialog()">CANCEL</button>
+    <button mat-button color="primary" (click)="saveEquipment()">DONE</button>
 </div>

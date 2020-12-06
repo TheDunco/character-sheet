@@ -357,9 +357,45 @@ export class CharacterService {
   exampleEquipment: equipment[] = [this.exampleWeapon,this.exampleArmor,this.exampleGear,this.exampleGear2,this.exampleTool,this.exampleWeapon2];
 
   getEquipment(): equipment[]{
-      
+ 
     return this.exampleEquipment;
 
+  }
+
+  updateEquipment(equipment:equipment, tempEquipment:equipment){
+    const index = this.exampleEquipment.findIndex(item => item.name === equipment.name && 
+      item.description === equipment.description && 
+      item.quantity === equipment.quantity && 
+      item.carried === equipment.carried &&
+      item.weight === equipment.weight &&
+      item.equipped === equipment.equipped &&
+      item.equipType === equipment.equipType);  
+      if (index > -1) {
+        this.exampleEquipment[index].name = tempEquipment.name;
+        this.exampleEquipment[index].description = tempEquipment.description;
+        this.exampleEquipment[index].quantity = tempEquipment.quantity;
+        this.exampleEquipment[index].carried = tempEquipment.carried;
+        this.exampleEquipment[index].weight = tempEquipment.weight;
+        this.exampleEquipment[index].equipped = tempEquipment.equipped;
+        this.exampleEquipment[index].equipType = tempEquipment.equipType;
+        
+      }
+      else{
+        this.exampleEquipment.push(tempEquipment);
+      }
+  }
+
+  deleteEquipment(equipment:equipment){
+    const index = this.exampleEquipment.findIndex(item => item.name === equipment.name && 
+      item.description === equipment.description && 
+      item.quantity === equipment.quantity && 
+      item.carried === equipment.carried &&
+      item.weight === equipment.weight &&
+      item.equipped === equipment.equipped &&
+      item.equipType === equipment.equipType);   
+    if (index > -1) {
+      this.exampleEquipment.splice(index, 1);
+    }
   }
 
   exampleMoney: money = {copperAmount: 0, silverAmount: 2, goldAmount: 35, platinumAmount: 1};
@@ -586,7 +622,7 @@ export interface health {
   deathSaveSuccesses: number
 }
 
-type equipmentType = "Armor" | "Weapon" | "Gear" | "Tool";
+type equipmentType = "Armor" | "Weapon" | "Gear" | "Tool" | "None";
 type yesNo = "Yes" | "No";
 
 export interface money{
