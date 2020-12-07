@@ -11,6 +11,9 @@ import 'firebase/auth';
 
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { user } from '../user-type';
+import { character } from '../character-type';
+import { CharacterService } from '../character.service';
 
 // Thanks so much to Jeff Delany for the Google Auth tutorial!
 // https://fireship.io/lessons/angularfire-google-oauth/
@@ -18,7 +21,7 @@ import { switchMap } from 'rxjs/operators';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-    user$: Observable<any>;
+    user$: Observable<user>;
 
     constructor(
         private afAuth: AngularFireAuth,
@@ -29,7 +32,7 @@ export class AuthService {
         switchMap(user => {
             // Logged in
           if (user) {
-            return this.afs.doc<any>(`users/${user.uid}`).valueChanges();
+            return this.afs.doc<user>(`users/${user.uid}`).valueChanges();
           } else {
             // Logged out
             return of(null);
@@ -43,18 +46,37 @@ export class AuthService {
   async googleSignin() {
     const credential = await this.afAuth.signInWithPopup(this.provider);
     this.router.navigateByUrl('/dashboard')
-    return this.updateUserData(credential.user);
+    let characters: character[]
+    this.user$.subscribe(user => {
+      this.afs.doc<user>(`users/${user.uid}`).valueChanges().subscribe(
+        ref => characters = ref.characters)
+      if (characters !== undefined || characters !== []) {
+        user = {
+          ...credential.user,
+          characters: characters
+        }
+      }
+      else {
+        user = {
+          ...credential.user,
+          characters: []
+        }
+      }
+      return this.updateUserData(user);
+    })
+    
   }
 
-  private updateUserData(user) {
+  private updateUserData(user: user) {
     // Sets user data to firestore on login
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    const userRef: AngularFirestoreDocument<user> = this.afs.doc(`users/${user.uid}`);
 
     const data = { 
       uid: user.uid, 
       email: user.email, 
       displayName: user.displayName, 
-      photoURL: user.photoURL
+      photoURL: user.photoURL,
+      characters: user.characters
     } 
 
     return userRef.set(data, { merge: true })

@@ -1,12 +1,59 @@
+import { AsyncPipe } from '@angular/common';
+import { createUrlResolverWithoutPackagePrefix } from '@angular/compiler';
 import { Injectable, ɵsetCurrentInjector } from '@angular/core';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { ɵangular_packages_platform_browser_platform_browser_k } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth/auth-service';
+import { character } from './character-type';
+import { user } from './user-type';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CharacterService {
-  name = "Mr. Tester";
+  constructor(private db: AngularFirestore, private auth: AuthService) { this.ngOnInit() }
+  
+  userRef: AngularFirestoreDocument<user>
+  
+  async ngOnInit(): Promise<void> {
+    this.auth.user$.subscribe(user => {
+      this.db.doc<user>(`users/${user.uid}`).valueChanges().subscribe(res => {
+        
+        console.log('User Value Changed', `users/${user.uid}`)
+        
+        this.userRef = this.db.doc(`users/${user.uid}`);
+        
+        let data: any;
+        if (res.characters === undefined || res.characters === []) {
+          console.log('User had no character info, or characters was an empty array')
+          data = { 
+            uid: user.uid, 
+            email: user.email, 
+            displayName: user.displayName, 
+            photoURL: user.photoURL,
+            characters: [this.newDefaultCharacter()]
+          }
+        } else {
+          data = {
+            uid: user.uid, 
+            email: user.email, 
+            displayName: user.displayName, 
+            photoURL: user.photoURL,
+            characters: user.characters
+          }
+        }
+        this.userRef.set(data, { merge: true })
+        //initialize all values to selected character values
+        
+        
+      })
+    })
+    
+  }
+
+  
+  name = "Mr. Tester"
   setName(newName: string): void { this.name = newName }
   
   class = "Paladin"
@@ -260,7 +307,6 @@ export class CharacterService {
   exampleAbility: abilities = {name: "Assassinate", summary: "Advantage and automatic critical against surprised creatures.", description: "During its first turn, this creature has advantage on attack rolls against any creature that hasn’t taken a turn. Any hit it scores against a surprised creature is a critical hit."};
   exampleAbility2: abilities =  {name: "Cunning Action", summary: "Use a bonus action to Dash, Disengage, or Hide.",description: "Your quick thinking and agility allow you to move and act quickly. You can take a bonus action on each of your turns in combat. This action can be used only to take the Dash, Disengage, or Hide action."};
   abilityList: abilities[] = [this.exampleAbility,this.exampleAbility2];
-  constructor() { }
 
   getAbilities(): abilities[]{
     return this.abilityList;
@@ -287,72 +333,72 @@ export class CharacterService {
 
   userNotes: note ={nTitle:"This is the first title" , nDescription: "this is the first description" };
   userNotes2: note ={nTitle:"This is the first title2" , nDescription: "this is the first description2" };
-  exampleNote = [this.userNotes , this.userNotes2];
+  notesList = [this.userNotes , this.userNotes2];
 
   getNotes(): note[]{
-    return this.exampleNote;
+    return this.notesList;
   }
 
   addNote(nData: note): void {
-    this.exampleNote.push(nData);
+    this.notesList.push(nData);
   }
 
   updateNote(nData: note, tNote:string, dNote:string):void {
-    const index = this.exampleNote.findIndex(item => item.nTitle === tNote && item.nDescription === dNote);
+    const index = this.notesList.findIndex(item => item.nTitle === tNote && item.nDescription === dNote);
     if (index > -1) {
-      this.exampleNote[index].nTitle = nData.nTitle;
-      this.exampleNote[index].nDescription = nData.nDescription;
+      this.notesList[index].nTitle = nData.nTitle;
+      this.notesList[index].nDescription = nData.nDescription;
     }
     else{
-      this.exampleNote.push(nData);
+      this.notesList.push(nData);
     }
   }
 
   deleteNote(tNote:string, dNote:string){
-    const index = this.exampleNote.findIndex(item => item.nTitle === tNote && item.nDescription === dNote);
+    const index = this.notesList.findIndex(item => item.nTitle === tNote && item.nDescription === dNote);
     if (index > -1) {
       // delete this.exampleNote[index];
-      this.exampleNote.splice(index, 1);
+      this.notesList.splice(index, 1);
     }
   }
 
   cloneNote(oNote:string){
-    const index = this.exampleNote.findIndex(item => item.nTitle === oNote);
-    this.exampleNote.push(this.exampleNote[index]);
+    const index = this.notesList.findIndex(item => item.nTitle === oNote);
+    this.notesList.push(this.notesList[index]);
   }
 
   userFeatExample: feat = {fTitle:"Title", fDescription: "dscription", fDetail:"detail", fSummary: "summary"}
-  userFeat = [this.userFeatExample];
+  featsList = [this.userFeatExample];
 
  
   updateFeat(fData: feat, oFeat:string){
-    const index = this.userFeat.findIndex(item => item.fTitle === oFeat);
+    const index = this.featsList.findIndex(item => item.fTitle === oFeat);
     if (index > -1) {
-      this.userFeat[index].fTitle = fData.fTitle;
-      this.userFeat[index].fDescription = fData.fDescription;
-      this.userFeat[index].fDetail = fData.fDetail;
-      this.userFeat[index].fSummary = fData.fSummary;
+      this.featsList[index].fTitle = fData.fTitle;
+      this.featsList[index].fDescription = fData.fDescription;
+      this.featsList[index].fDetail = fData.fDetail;
+      this.featsList[index].fSummary = fData.fSummary;
       
     }
     else{
-      this.userFeat.push(fData);
+      this.featsList.push(fData);
     }
   }
 
   deleteFeat(oFeat:string){
-    const index = this.userFeat.findIndex(item => item.fTitle === oFeat);
+    const index = this.featsList.findIndex(item => item.fTitle === oFeat);
     if (index > -1) {
-      this.userFeat.splice(index, 1);
+      this.featsList.splice(index, 1);
     }
   }
 
   getFeat(): feat[]{
-    return this.userFeat;
+    return this.featsList;
   }
 
   cloneFeat(oFeat:string){
-    const index = this.userFeat.findIndex(item => item.fTitle === oFeat);
-    this.userFeat.push(this.userFeat[index]);
+    const index = this.featsList.findIndex(item => item.fTitle === oFeat);
+    this.featsList.push(this.featsList[index]);
   }
 
   exampleWeapon: equipment = {name: "Dagger", quantity: 2, carried: "Yes", weight: 1, equipType: "Weapon",description: " Category: Simple Melee Weapon" + '\n' + "Cost: 2gp\n Damage: 1d4 piercing\n Properties:Finesse, light, thrown (range 20/60)", equipped: "Yes"};
@@ -362,16 +408,16 @@ export class CharacterService {
   exampleTool: equipment = {name: "Thieve's Tools", weight: 1, quantity: 1, carried: "Yes", equipType: "Tool", equipped: "No", description: " Cost: 25 gp \n\n This set of tools includes a small file, a set of lock picks, a small mirror mounted on a metal handle, a set of narrow-bladed scissors, and a pair of pliers. Proficiency with these tools lets you add your proficiency bonus to any ability checks you make to disarm traps or open locks"}
   exampleWeapon2: equipment = {name: "Shortbow", weight: 2, quantity: 1, carried: "Yes", equipped: "No", equipType: "Weapon", description: " Category: Simple Ranged\n Cost: 25gp\n Damage: 1d6 piercing\n Properties: Ammunition (range 80/320). two-handed" }
   
-  exampleEquipment: equipment[] = [this.exampleWeapon,this.exampleArmor,this.exampleGear,this.exampleGear2,this.exampleTool,this.exampleWeapon2];
+  equipmentList: equipment[] = [this.exampleWeapon,this.exampleArmor,this.exampleGear,this.exampleGear2,this.exampleTool,this.exampleWeapon2];
 
   getEquipment(): equipment[]{
  
-    return this.exampleEquipment;
+    return this.equipmentList;
 
   }
 
   updateEquipment(equipment:equipment, tempEquipment:equipment){
-    const index = this.exampleEquipment.findIndex(item => item.name === equipment.name && 
+    const index = this.equipmentList.findIndex(item => item.name === equipment.name && 
       item.description === equipment.description && 
       item.quantity === equipment.quantity && 
       item.carried === equipment.carried &&
@@ -379,22 +425,22 @@ export class CharacterService {
       item.equipped === equipment.equipped &&
       item.equipType === equipment.equipType);  
       if (index > -1) {
-        this.exampleEquipment[index].name = tempEquipment.name;
-        this.exampleEquipment[index].description = tempEquipment.description;
-        this.exampleEquipment[index].quantity = tempEquipment.quantity;
-        this.exampleEquipment[index].carried = tempEquipment.carried;
-        this.exampleEquipment[index].weight = tempEquipment.weight;
-        this.exampleEquipment[index].equipped = tempEquipment.equipped;
-        this.exampleEquipment[index].equipType = tempEquipment.equipType;
+        this.equipmentList[index].name = tempEquipment.name;
+        this.equipmentList[index].description = tempEquipment.description;
+        this.equipmentList[index].quantity = tempEquipment.quantity;
+        this.equipmentList[index].carried = tempEquipment.carried;
+        this.equipmentList[index].weight = tempEquipment.weight;
+        this.equipmentList[index].equipped = tempEquipment.equipped;
+        this.equipmentList[index].equipType = tempEquipment.equipType;
         
       }
       else{
-        this.exampleEquipment.push(tempEquipment);
+        this.equipmentList.push(tempEquipment);
       }
   }
 
   deleteEquipment(equipment:equipment){
-    const index = this.exampleEquipment.findIndex(item => item.name === equipment.name && 
+    const index = this.equipmentList.findIndex(item => item.name === equipment.name && 
       item.description === equipment.description && 
       item.quantity === equipment.quantity && 
       item.carried === equipment.carried &&
@@ -402,7 +448,7 @@ export class CharacterService {
       item.equipped === equipment.equipped &&
       item.equipType === equipment.equipType);   
     if (index > -1) {
-      this.exampleEquipment.splice(index, 1);
+      this.equipmentList.splice(index, 1);
     }
   }
 
@@ -583,6 +629,75 @@ export class CharacterService {
     const index = this.spellList.findIndex(item => item.name === sName);
     if (index > -1) {
       this.spellList.splice(index, 1);
+    }
+  }
+  
+  newDefaultCharacter(): character {
+    return {
+      name: "Blank",
+      class: "",
+      xp: 0,
+      level: 1,
+      languages: "",
+      miscProfs: "",
+      health: {
+        hpMax: 10,
+        hpCurrent: 10,
+        hitDiceCurrent: 0,
+        hitDiceMax: 1,
+        deathSaveFails: 0,
+        deathSaveSuccesses: 0,
+        hitDiceType: 8,
+        hpTemp: 0,
+      },
+      abilityScores: {
+        charisma: 10,
+        constitution: 10,
+        dexterity: 10,
+        intelligence: 10,
+        strength: 10,
+        wisdom: 10,
+      },
+      summary: {
+        age: "",
+        alignment: "",
+        background: "",
+        class: "",
+        eyes: "",
+        hair: "",
+        height: "",
+        race: "",
+        skin: "",
+        weight: "",
+        speed: 30,
+      },
+      defenses: {
+        armorBonus: 0,
+        armorName: "",
+        miscBonus: 0,
+        miscName: "",
+        shieldBonus: 0,
+        shieldName: "",
+      },
+      initiative: 0,
+      ac: 10,
+      proficiencies: [""],
+      proficiencyBonus: 2,
+      abilityList: [],
+      notesList: [],
+      featsList: [],
+      equipmentList: [],
+      money: {
+        copperAmount: 0,
+        silverAmount: 0,
+        goldAmount: 0,
+        platinumAmount: 0,
+      },
+      actionList: [],
+      tracklist: [],
+      spellList: [],
+      highestLevelSpell: 0,
+      preppedSpells: 0
     }
   }
 }
