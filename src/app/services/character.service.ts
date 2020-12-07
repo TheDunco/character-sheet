@@ -12,46 +12,7 @@ import { user } from './user-type';
   providedIn: 'root'
 })
 export class CharacterService {
-  constructor(private db: AngularFirestore, private auth: AuthService) { this.ngOnInit() }
-  
-  userRef: AngularFirestoreDocument<user>
-  
-  async ngOnInit(): Promise<void> {
-    this.auth.user$.subscribe(user => {
-      this.db.doc<user>(`users/${user.uid}`).valueChanges().subscribe(res => {
-        
-        console.log('User Value Changed', `users/${user.uid}`)
-        
-        this.userRef = this.db.doc(`users/${user.uid}`);
-        
-        let data: any;
-        if (res.characters === undefined || res.characters === []) {
-          console.log('User had no character info, or characters was an empty array')
-          data = { 
-            uid: user.uid, 
-            email: user.email, 
-            displayName: user.displayName, 
-            photoURL: user.photoURL,
-            characters: [this.newDefaultCharacter()]
-          }
-        } else {
-          data = {
-            uid: user.uid, 
-            email: user.email, 
-            displayName: user.displayName, 
-            photoURL: user.photoURL,
-            characters: user.characters
-          }
-        }
-        this.userRef.set(data, { merge: true })
-        //initialize all values to selected character values
-        
-        
-      })
-    })
-    
-  }
-
+  constructor(private db: AngularFirestore) { }
   
   name = "Mr. Tester"
   setName(newName: string): void { this.name = newName }

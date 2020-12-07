@@ -15,14 +15,20 @@ export class DashboardComponent implements OnInit {
   constructor(
     public auth: AuthService,
     public character: CharacterService,
-    private db: AngularFirestore
+    private db: AngularFirestore,
   ) { }
   userCharacters: character[]
   async ngOnInit(): Promise<void> {
-    await this.auth.user$.subscribe(user => {
-      this.db.doc<user>(`users/${user.uid}`).valueChanges().subscribe(
-        ref => this.userCharacters = ref.characters)
+    const sub = await this.auth.user$.subscribe(user => {
+      if (user) {
+        this.db.doc<user>(`users/${user.uid}`).valueChanges().subscribe(
+          ref => this.userCharacters = ref.characters)
+        console.log(this.userCharacters)
+      } else {
+        console.log("No valid user given in dashboard")
+      }
     })
+    sub.unsubscribe()
   }
 
 }
