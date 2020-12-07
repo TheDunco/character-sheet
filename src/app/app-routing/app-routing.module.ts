@@ -3,18 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { CharacterSheetComponent } from '../pages/character-sheet/character-sheet.component';
 import { DashboardComponent } from '../pages/dashboard/dashboard.component'
 import { LoginComponent } from '../pages/login/login.component';
-import { AuthGuardService } from '../services/auth-guard/auth-guard.service'
+import { AuthGuard } from '../services/auth/auth-guard'
 
 const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuard]
   },
   {
     path: 'character-sheet',
     component: CharacterSheetComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuard]
   },
   {
     path: '',
