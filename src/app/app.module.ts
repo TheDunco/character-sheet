@@ -63,7 +63,6 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CharacterSheetComponent } from './pages/character-sheet/character-sheet.component';
 import { ActionDialogComponent } from './components/action-dialog/action-dialog.component';
 import { LoginComponent } from './pages/login/login.component';
-import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 import { CurrencyDialogComponent } from './components/currency-dialog/currency-dialog.component';
 
 @NgModule({
@@ -122,7 +121,7 @@ import { CurrencyDialogComponent } from './components/currency-dialog/currency-d
     MatAutocompleteModule,
     AppRoutingModule
   ],
-  providers: [AuthGuardService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
