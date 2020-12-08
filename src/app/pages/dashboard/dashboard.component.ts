@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 import { character } from 'src/app/services/character-type';
 import { CharacterService } from 'src/app/services/character.service';
 import { user } from 'src/app/services/user-type';
@@ -15,20 +16,17 @@ export class DashboardComponent implements OnInit {
   constructor(
     public auth: AuthService,
     public character: CharacterService,
-    private db: AngularFirestore,
+    private router: Router
   ) { }
   userCharacters: character[]
-  async ngOnInit(): Promise<void> {
-    const sub = await this.auth.user$.subscribe(user => {
-      if (user) {
-        this.db.doc<user>(`users/${user.uid}`).valueChanges().subscribe(
-          ref => this.userCharacters = ref.characters)
-        console.log(this.userCharacters)
-      } else {
-        console.log("No valid user given in dashboard")
-      }
-    })
-    sub.unsubscribe()
+  async ngOnInit() {
+    // await this.auth.getUserCharacterData()
+    this.userCharacters = this.character.userCharacters
+  }
+  
+  goToCharacterSheet(character: character) {
+    this.character.setCharacterValues(character)
+    this.router.navigate(['character-sheet'])
   }
 
 }

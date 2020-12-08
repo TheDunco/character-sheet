@@ -42,40 +42,33 @@ export class AuthService {
       )
     }
   
-  subscription: any;
-  
   provider = new firebase.auth.GoogleAuthProvider();
+  userData: any;
+
   
   async googleSignin() {
     const credential = await this.afAuth.signInWithPopup(this.provider);
+    const userRef = this.afs.collection('users').doc(`${credential.user.uid}`);
+    const doc = await userRef.ref.get();
     
-    this.subscription = this.user$.subscribe(user => {
-      let userObj: user
-      if (user) {
-        this.afs.doc<user>(`users/${user.uid}`).valueChanges().subscribe(ref => {
-          userObj = {
-            displayName: credential.user.displayName,
-            uid: credential.user.uid,
-            email: credential.user.email,
-            photoURL: credential.user.photoURL,
-            characters: ref.characters
-        }
-        this.updateUserData(userObj);
-      })
-      } else { // New user?
-        console.log("Bad user, creating new?")
+    if (!doc.exists) {
+      console.log('New User!');
         this.updateUserData({
           displayName: credential.user.displayName,
           uid: credential.user.uid,
           email: credential.user.email,
           photoURL: credential.user.photoURL,
           characters: [this.character.newDefaultCharacter()]
-        })
-      }
-    })
+      })
+    } else {
+       this.userData = doc.data()
+      console.log('Existing User!', this.userData);
+    }
+    this.character.userCharacters = this.userData.characters
     this.router.navigateByUrl('/dashboard')
-    
   }
+  
+  
 
   private updateUserData(user: user) {
     // Sets user data to firestore on login
@@ -91,8 +84,6 @@ export class AuthService {
     const userRef: AngularFirestoreDocument<user> = this.afs.doc(`users/${data.uid}`);
     
     userRef.set(data, { merge: true })
-    
-    this.subscription.unsubscribe()
   }
 
   async signOut() {

@@ -5,5 +5,5 @@ export interface user {
     email: string,
     photoURL: string,
     uid: string,
-    characters: character[]
+    characters?: character[]
 }

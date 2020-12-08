@@ -5,6 +5,7 @@ export interface character {
     class: string,
     xp: number,
     level: number,
+    spellcastingAbility: string,
     languages: string,
     miscProfs: string,
     health: health,

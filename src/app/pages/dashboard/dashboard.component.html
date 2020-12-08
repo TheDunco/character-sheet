@@ -7,8 +7,15 @@
     <mat-label class="title">Welcome to the character dashboard {{ user.displayName }}!</mat-label>
     
     <div *ngFor="let character of this.userCharacters">
-        {{character.name}}
+        <mat-card>
+            <mat-card-title>
+                {{character.name}}
+            </mat-card-title>
+            <mat-card-actions>
+                <button class="button" color="primary" mat-raised-button (click)="goToCharacterSheet(character)">Character Sheet</button>
+            </mat-card-actions>
+        </mat-card>
     </div>
-    <button class="button" color="primary" mat-raised-button routerLink="/character-sheet">Character Sheet</button>
+
     <button mat-raised-button color="warn" class="button" (click)="auth.signOut()">Logout</button>
 </div>
