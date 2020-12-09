@@ -13,8 +13,6 @@ import { user } from './user-type';
 })
 export class CharacterService {
   constructor(private db: AngularFirestore) { }
-  
-  userCharacters: character[]
 
   //  ----------- Character Variables  -----------
   
@@ -97,7 +95,7 @@ export class CharacterService {
 
   money: money = {copperAmount: 0, silverAmount: 2, goldAmount: 35, platinumAmount: 1};
   
-  tracklist = [
+  tracklist: trackable[] = [
     {
       name: '1st Level Spell Slots',
       type: 'checkboxes',
@@ -128,7 +126,7 @@ export class CharacterService {
   exampleMagic: action = {name:"Blade of Avernus (Vorpal)",damageType:"Slashing", actionType: "Magic Item", damage: "2d6",description:"Instant decapitation? Yes please!",toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength",damageMisc: 3, hitMisc: 3, fullDamage: "0", fullToHit: "2d6+5"};
   actionList: action[] = [this.exampleMelee,this.exampleMagic, this.exampleMelee2, this.exampleRange, this.exampleMelee3];
 
-  spellList = [
+  spellList:  spell[] = [
     {
       name: "Puppet",
       summary: "Control a creature",
@@ -598,6 +596,7 @@ export class CharacterService {
     this.class = character.class
     this.xp = character.xp
     this.level = character.level
+    this.spellcastingAbility = character.spellcastingAbility
     this.languages = character.languages
     this.miscProfs = character.miscProfs
     this.health = character.health
@@ -618,6 +617,36 @@ export class CharacterService {
     this.spellList = character.spellList
     this.highestLevelSpell = character.highestLevelSpell
     this.preppedSpells = character.preppedSpells
+  }
+  
+  getFullCharacter(): character {
+    return {
+      name: this.name,
+      class: this.class,
+      xp: this.xp,
+      level: this.level,
+      spellcastingAbility: this.spellcastingAbility,
+      languages: this.languages,
+      miscProfs: this.miscProfs,
+      health: this.health,
+      abilityScores: this.abilityScores,
+      summary: this.summary,
+      defenses: this.defenses,
+      initiative: this.initiative,
+      ac: this.ac,
+      proficiencies: this.proficiencies,
+      proficiencyBonus: this.proficiencyBonus,
+      abilityList: this.abilityList,
+      notesList: this.notesList,
+      featsList: this.featsList,
+      equipmentList: this.equipmentList,
+      money: this.money,
+      actionList: this.actionList,
+      tracklist: this.tracklist,
+      spellList: this.spellList,
+      highestLevelSpell: this.highestLevelSpell,
+      preppedSpells: this.preppedSpells,
+    }
   }
   
   newDefaultCharacter(): character {
@@ -673,7 +702,7 @@ export class CharacterService {
       proficiencies: [""],
       proficiencyBonus: 2,
       abilityList: [],
-      notesList: [],
+      notesList: [{nTitle:"Greetings!" , nDescription: "Thank you so much for using our character sheet" }],
       featsList: [],
       equipmentList: [],
       money: {
@@ -682,8 +711,14 @@ export class CharacterService {
         goldAmount: 0,
         platinumAmount: 0,
       },
-      actionList: [],
-      tracklist: [],
+      actionList: [{name: "Unarmed Strike",description:"Your fists",actionType:"Melee",damage: String(this.toMod(this.abilityScores.strength)),damageType:"Bludgeoning",toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0, fullDamage: "0", fullToHit: "0"}],
+      tracklist: [{
+        name: 'Inspiration',
+        type: 'checkboxes',
+        description: 'Inspiration is given out by the DM for good role playing. It allows you to re-roll one d20 roll',
+        max: 1,
+        current: 0
+      }],
       spellList: [],
       highestLevelSpell: 0,
       preppedSpells: 0

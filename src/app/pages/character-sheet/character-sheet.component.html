@@ -8,6 +8,9 @@
             <div class="router-button" >
                 <button mat-raised-button routerLink="/dashboard">Dashboard</button>
             </div>
+            <div class="router-button" >
+                <button mat-raised-button (click)="syncData()">Sync</button>
+            </div>
         </span>
 
         <div fxLayout="row" fxLayout.lt-sm="column" fxLayout.lt-md="column" fxLayoutGap="50px" fxLayoutAlign="center">

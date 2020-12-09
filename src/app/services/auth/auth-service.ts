@@ -52,7 +52,7 @@ export class AuthService {
     const doc = await userRef.ref.get();
     
     if (!doc.exists) {
-      console.log('New User!');
+      // console.log('New User!');
         this.updateUserData({
           displayName: credential.user.displayName,
           uid: credential.user.uid,
@@ -62,15 +62,29 @@ export class AuthService {
       })
     } else {
        this.userData = doc.data()
-      console.log('Existing User!', this.userData);
+      // console.log('Existing User!', this.userData);
     }
-    this.character.userCharacters = this.userData.characters
+    localStorage.setItem("uid", String(credential.user.uid))
+    localStorage.setItem("displayName", String(credential.user.displayName))
+    localStorage.setItem("email", String(credential.user.email))
+    localStorage.setItem("photoURL", String(credential.user.photoURL))
+    
     this.router.navigateByUrl('/dashboard')
   }
   
-  
+  async getUserCharacterData(): Promise<character[]> {
+    const userRef = this.afs.collection('users').doc(`${localStorage.getItem("uid")}`);
+    const doc = await userRef.ref.get();
+    if (!doc.exists) {
+      this.router.navigate(['login'])
+    }
+    else {
+      let ret: any = doc.data()
+      return ret.characters
+    }
+  }
 
-  private updateUserData(user: user) {
+  updateUserData(user: user) {
     // Sets user data to firestore on login
     const data = { 
       uid: user.uid, 
@@ -80,14 +94,87 @@ export class AuthService {
       characters: user.characters
     } 
     
-    console.log('updateUserData', data)
+    // console.log('updateUserData', data)
     const userRef: AngularFirestoreDocument<user> = this.afs.doc(`users/${data.uid}`);
     
     userRef.set(data, { merge: true })
   }
+  
+  async makeNewUserCharacter() {
+    const userRef = this.afs.collection('users').doc(`${localStorage.getItem("uid")}`);
+    const doc = await userRef.ref.get();
+    if (!doc.exists) {
+      this.router.navigate(['login'])
+    }
+    else {
+      const data: any = doc.data()
+      let charactersArray: character[] = data.characters
+      charactersArray.push(this.character.newDefaultCharacter())
+      
+      const newUser: user = {
+        uid: data.uid,
+        email: data.email,
+        displayName: data.displayName,
+        photoURL: data.photoURL,
+        characters: charactersArray
+      }
+      this.updateUserData(newUser)
+    }
+  }
+  
+  async deleteUserCharacter(char: character) {
+    const userRef = this.afs.collection('users').doc(`${localStorage.getItem("uid")}`);
+    const doc = await userRef.ref.get();
+    const data: any = doc.data()
+    let charactersArray: character[] = data.characters
+    
+    let index = charactersArray.findIndex(x => {
+      return x.name == char.name
+    })
+    if (index > -1) {
+      charactersArray.splice(index, 1);
+    }
+    const newUser: user = {
+        uid: data.uid,
+        email: data.email,
+        displayName: data.displayName,
+        photoURL: data.photoURL,
+        characters: charactersArray
+    }
+    this.updateUserData(newUser)
+  }
+  
+  async syncUserCharacter(char: character): Promise<void> {
+      const userRef = this.afs.collection('users').doc(`${localStorage.getItem("uid")}`);
+      const doc = await userRef.ref.get();
+      const data: any = doc.data()
+      let charactersArray: character[] = data.characters
+      
+      let index = charactersArray.findIndex(x => {
+        return x.name == char.name
+      })
+    
+    console.log(index, "That's the index")
+    
+    if (index > -1) {
+      charactersArray[index] = this.character.getFullCharacter();
+    }
+    const newUser: user = {
+        uid: data.uid,
+        email: data.email,
+        displayName: data.displayName,
+        photoURL: data.photoURL,
+        characters: charactersArray
+    }
+    this.updateUserData(newUser)
+    }
 
   async signOut() {
     await this.afAuth.signOut();
+    localStorage.setItem("uid", "")
+    localStorage.setItem("displayName", "")
+    localStorage.setItem("email", "")
+    localStorage.setItem("photoURL", "")
     this.router.navigate(['/login']);
   }
 

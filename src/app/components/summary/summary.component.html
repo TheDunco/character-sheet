@@ -2,6 +2,14 @@
     <mat-icon>refresh</mat-icon>
 </button> -->
 <div class="wrapper">
+    
+    <mat-form-field>
+        <mat-label>
+            Name
+        </mat-label>
+        <input [(ngModel)]="character.name" matInput appearance="filled" (keyup.enter)="setSummary()" />
+    </mat-form-field>
+    
     <mat-form-field>
         <mat-label>
             Age 

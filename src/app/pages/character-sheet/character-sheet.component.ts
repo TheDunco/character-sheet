@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth/auth-service';
 import { CharacterService } from '../../services/character.service';
 
 @Component({
@@ -10,13 +11,11 @@ export class CharacterSheetComponent {
   title = 'Character Sheet';
 
   
-  constructor(public character: CharacterService){}
+  constructor(public character: CharacterService, private auth: AuthService){}
 
-
-  newNoteEntered(){
-
+  syncData() {
+    this.auth.syncUserCharacter(this.character.getFullCharacter())
   }
-  
   
   ngOnInit() {
     this.character.levelSet()
