@@ -1,32 +1,31 @@
-import { AsyncPipe } from '@angular/common';
-import { createUrlResolverWithoutPackagePrefix } from '@angular/compiler';
-import { Injectable, ɵsetCurrentInjector } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { ɵangular_packages_platform_browser_platform_browser_k } from '@angular/platform-browser';
-import { Observable } from 'rxjs';
-import { AuthService } from './auth/auth-service';
+import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 import { character } from './character-type';
-import { user } from './user-type';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CharacterService {
-  constructor(private db: AngularFirestore) { }
+  constructor(private afs: AngularFirestore, private router: Router) { }
 
   //  ----------- Character Variables  -----------
   
   // These were the testing/debugging defaults, they now get overwritten by the setCharacterValues() method
+  //TODO: BUG! If the character sheet is refreshed, these values get reverted
 
-  name = "Mr. Tester"
-  class = "Paladin"
-  xp = 500
-  level = 2
-  spellcastingAbility = "charisma";
-  languages = "Common"
-  miscProfs = "Thieves Tools, Martial Weapons"
+  ID: string
+  name: string = "Mr. Tester"
+  class: string = "Paladin"
+  xp: number = 500
+  level: number = 2
+  spellcastingAbility: string = "charisma";
+  languages: string = "Common"
+  miscProfs: string = "Thieves Tools, Martial Weapons"
   // Health
-  health: health = {
+  health: health
+    = {
     hpCurrent: 30,
     hpMax: 30,
     hpTemp: 10,
@@ -37,7 +36,8 @@ export class CharacterService {
     deathSaveSuccesses: 0
   }
   // Ability Scores
-  abilityScores: abilityScore = {
+  abilityScores: abilityScore
+    = {
     charisma: 10,
     constitution: 10,
     dexterity: 10,
@@ -45,7 +45,8 @@ export class CharacterService {
     strength: 10,
     wisdom: 10,
   }
-  summary: summary = {
+  summary: summary
+    = {
     age: "21",
     height: "5'0\"",
     weight: "150",
@@ -58,7 +59,8 @@ export class CharacterService {
     background: "Acolyte",
     speed: 30,
   }
-  defenses: defense = {
+  defenses: defense
+    = {
     armorName: "Leather Armor",
     armorBonus: 1,
     shieldName: "",
@@ -66,8 +68,8 @@ export class CharacterService {
     miscName: "",
     miscBonus: 0
   }
-  initiative = this.toMod(this.abilityScores.dexterity)
-  ac = this.toMod(this.abilityScores.dexterity) + 10
+  initiative: number = this.toMod(this.abilityScores.dexterity)
+  ac: number = this.toMod(this.abilityScores.dexterity) + 10
   
   exampleAbility: abilities = {name: "Assassinate", summary: "Advantage and automatic critical against surprised creatures.", description: "During its first turn, this creature has advantage on attack rolls against any creature that hasn’t taken a turn. Any hit it scores against a surprised creature is a critical hit."};
   exampleAbility2: abilities =  {name: "Cunning Action", summary: "Use a bonus action to Dash, Disengage, or Hide.",description: "Your quick thinking and agility allow you to move and act quickly. You can take a bonus action on each of your turns in combat. This action can be used only to take the Dash, Disengage, or Hide action."};
@@ -75,14 +77,14 @@ export class CharacterService {
   
   proficiencies: string[] = ["charismaSave", "sleightOfHand", "investigation", "Warhammer"]
   
-  proficiencyBonus = 2;
+  proficiencyBonus: number = 2;
   
   userNotes: note ={nTitle:"This is the first title" , nDescription: "this is the first description" };
   userNotes2: note ={nTitle:"This is the first title2" , nDescription: "this is the first description2" };
-  notesList = [this.userNotes, this.userNotes2];
+  notesList: note[] = [this.userNotes, this.userNotes2];
   
   userFeatExample: feat = {fTitle:"Title", fDescription: "dscription", fDetail:"detail", fSummary: "summary"}
-  featsList = [this.userFeatExample];
+  featsList: feat[] = [this.userFeatExample];
   
   exampleWeapon: equipment = {name: "Dagger", quantity: 2, carried: "Yes", weight: 1, equipType: "Weapon",description: " Category: Simple Melee Weapon" + '\n' + "Cost: 2gp\n Damage: 1d4 piercing\n Properties:Finesse, light, thrown (range 20/60)", equipped: "Yes"};
   exampleArmor: equipment = {equipped: "Yes", name: "Chain Shirt", quantity: 1, carried: "Yes", weight: 20, equipType: "Armor", description: " Type: Medium Armor \n Cost: 50 gp \n Armor Class: 13 \n\n Made of interlocking metal rings, a chain shirt is worn between layers of clothing or leather. This armor offers modest protection to the wearer’s upper body and allows the sound of the rings rubbing against one another to be muffled by outer layers"}
@@ -95,7 +97,8 @@ export class CharacterService {
 
   money: money = {copperAmount: 0, silverAmount: 2, goldAmount: 35, platinumAmount: 1};
   
-  tracklist: trackable[] = [
+  tracklist: trackable[]
+    = [
     {
       name: '1st Level Spell Slots',
       type: 'checkboxes',
@@ -124,9 +127,10 @@ export class CharacterService {
   exampleMelee3: action = {name: "Shortsword",damageType:"Piercing",actionType:"Melee",damage:"1d6",description:"A standard sword", toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0, fullDamage: "1d6+0", fullToHit: "0"};
   exampleRange: action = {name: "Shortbow",damageType:"Piercing",actionType:"Range",damage:"1d6",description:"A standard bow", toHit: this.toMod(this.abilityScores.dexterity), abilityScore: "Dexterity", damageMisc: 0, hitMisc: 0, fullDamage: "1d6", fullToHit: "0"};
   exampleMagic: action = {name:"Blade of Avernus (Vorpal)",damageType:"Slashing", actionType: "Magic Item", damage: "2d6",description:"Instant decapitation? Yes please!",toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength",damageMisc: 3, hitMisc: 3, fullDamage: "0", fullToHit: "2d6+5"};
-  actionList: action[] = [this.exampleMelee,this.exampleMagic, this.exampleMelee2, this.exampleRange, this.exampleMelee3];
+  actionList: action[] //= [this.exampleMelee,this.exampleMagic, this.exampleMelee2, this.exampleRange, this.exampleMelee3];
 
-  spellList:  spell[] = [
+  spellList: spell[]
+    = [
     {
       name: "Puppet",
       summary: "Control a creature",
@@ -171,7 +175,7 @@ export class CharacterService {
   
   
   //  ----------- Character Methods  -----------
-  setName(newName: string): void { this.name = newName }
+  setName(newName: string): void { this.name = newName; console.log(this.name) }
   
   setClass(newClass: string): void { this.class = newClass }
   
@@ -584,10 +588,26 @@ export class CharacterService {
     }
   }
   
-  deleteSpell(sName) {
+  deleteSpell(sName: string) {
     const index = this.spellList.findIndex(item => item.name === sName);
     if (index > -1) {
       this.spellList.splice(index, 1);
+    }
+  }
+  
+  async setValuesToCurrentCharacter(): Promise<void> {
+    const userRef = this.afs.collection('users').doc(`${localStorage.getItem("uid")}`);
+    const doc = await userRef.ref.get();
+    const data: any = doc.data()
+    if (!doc.exists) {
+      let index = data.characters.indexOf(x => x.name === localStorage.getItem("currentCharacterName"))
+      console.log(index)
+      if (index > -1) {
+        console.log("Setting all character data to ", data.characters[index].name)
+        this.setCharacterValues(data.characters[index])
+      }
+    } else {
+      console.log("Doesn't exist", localStorage.getItem("uid"))
     }
   }
   
@@ -617,6 +637,7 @@ export class CharacterService {
     this.spellList = character.spellList
     this.highestLevelSpell = character.highestLevelSpell
     this.preppedSpells = character.preppedSpells
+    this.ID = character.ID
   }
   
   getFullCharacter(): character {
@@ -646,6 +667,7 @@ export class CharacterService {
       spellList: this.spellList,
       highestLevelSpell: this.highestLevelSpell,
       preppedSpells: this.preppedSpells,
+      ID: this.ID
     }
   }
   
@@ -721,7 +743,8 @@ export class CharacterService {
       }],
       spellList: [],
       highestLevelSpell: 0,
-      preppedSpells: 0
+      preppedSpells: 0,
+      ID: uuidv4()
     }
   }
 }

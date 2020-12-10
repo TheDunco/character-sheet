@@ -8,12 +8,12 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
-
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { user } from '../user-type';
 import { character } from '../character-type';
 import { CharacterService } from '../character.service';
+import { isDeepStrictEqual } from 'util';
 
 // Thanks so much to Jeff Delany for the Google Auth tutorial!
 // https://fireship.io/lessons/angularfire-google-oauth/
@@ -65,9 +65,6 @@ export class AuthService {
       // console.log('Existing User!', this.userData);
     }
     localStorage.setItem("uid", String(credential.user.uid))
-    localStorage.setItem("displayName", String(credential.user.displayName))
-    localStorage.setItem("email", String(credential.user.email))
-    localStorage.setItem("photoURL", String(credential.user.photoURL))
     
     this.router.navigateByUrl('/dashboard')
   }
@@ -94,9 +91,9 @@ export class AuthService {
       characters: user.characters
     } 
     
-    // console.log('updateUserData', data)
     const userRef: AngularFirestoreDocument<user> = this.afs.doc(`users/${data.uid}`);
     
+    console.log('Updating user data')
     userRef.set(data, { merge: true })
   }
   
@@ -129,7 +126,7 @@ export class AuthService {
     let charactersArray: character[] = data.characters
     
     let index = charactersArray.findIndex(x => {
-      return x.name == char.name
+      return x.ID == char.ID
     })
     if (index > -1) {
       charactersArray.splice(index, 1);
@@ -144,37 +141,34 @@ export class AuthService {
     this.updateUserData(newUser)
   }
   
-  async syncUserCharacter(char: character): Promise<void> {
+  // Updates the database with the current character
+  async syncUserCharacter(): Promise<void> {
       const userRef = this.afs.collection('users').doc(`${localStorage.getItem("uid")}`);
       const doc = await userRef.ref.get();
       const data: any = doc.data()
       let charactersArray: character[] = data.characters
       
       let index = charactersArray.findIndex(x => {
-        return x.name == char.name
+        return x.ID == this.character.ID
       })
-    
-    console.log(index, "That's the index")
-    
-    if (index > -1) {
-      charactersArray[index] = this.character.getFullCharacter();
-    }
-    const newUser: user = {
-        uid: data.uid,
-        email: data.email,
-        displayName: data.displayName,
-        photoURL: data.photoURL,
-        characters: charactersArray
-    }
-    this.updateUserData(newUser)
+          
+      if (index > -1) {
+        charactersArray[index] = this.character.getFullCharacter();
+      }
+      const newUser: user = {
+          uid: data.uid,
+          email: data.email,
+          displayName: data.displayName,
+          photoURL: data.photoURL,
+          characters: charactersArray
+      }
+      this.updateUserData(newUser)
     }
 
   async signOut() {
     await this.afAuth.signOut();
     localStorage.setItem("uid", "")
-    localStorage.setItem("displayName", "")
-    localStorage.setItem("email", "")
-    localStorage.setItem("photoURL", "")
+
     this.router.navigate(['/login']);
   }
 
