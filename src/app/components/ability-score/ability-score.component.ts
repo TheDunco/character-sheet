@@ -1,12 +1,13 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { CharacterService, abilityScore } from '../../services/character.service';
-import { SkillsComponent } from '../skills/skills.component'
+import { Component, OnInit } from '@angular/core';
+import { CharacterService } from '../../services/character.service';
+
 
 @Component({
   selector: 'app-ability-score',
   templateUrl: './ability-score.component.html',
   styleUrls: ['./ability-score.component.scss']
 })
+
 export class AbilityScoreComponent implements OnInit {
 
   constructor(private character: CharacterService) { }

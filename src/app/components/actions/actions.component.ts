@@ -1,12 +1,8 @@
-import { MatDialog, MatDialogModule, MatDialogConfig } from '@angular/material/dialog';
-import { Component, Input, OnInit } from '@angular/core';
-import { action, CharacterService } from '../../services/character.service';
+import { MatDialog } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
+import { Action, CharacterService } from '../../services/character.service';
 import { ActionDialogComponent } from '../action-dialog/action-dialog.component';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
 import { Observable } from 'rxjs';
-import { throwIfEmpty } from 'rxjs/operators';
-import { AbilityScoreComponent } from '../ability-score/ability-score.component';
 
 
 @Component({
@@ -14,9 +10,10 @@ import { AbilityScoreComponent } from '../ability-score/ability-score.component'
   templateUrl: './actions.component.html',
   styleUrls: ['./actions.component.scss']
 })
+
 export class ActionsComponent implements OnInit {
 
-  actionList: action[] = this.character.getActions();
+  actionList: Action[] = this.character.getActions();
   hasMelee: boolean;
   hasRange: boolean;
   hasMagic: boolean;
@@ -30,10 +27,7 @@ export class ActionsComponent implements OnInit {
     this.updateHeader()
   }
 
- 
-  
-  
-  openDialog(name: string, description: string, actionType: string, damage: string, damageType: string, toHit: number, abilityScore: string, hitMisc: number, damageMisc: number,fullToHit?:string, fullDamage?:string) {
+  openDialog(name: string, description: string, actionType: string, damage: string, damageType: string, toHit: number, abilityScore: string, hitMisc: number, damageMisc: number, fullToHit?: string, fullDamage?: string) {
     this.matDialog.open(ActionDialogComponent, {
       width: '60vmax',
       data: {
@@ -65,7 +59,7 @@ export class ActionsComponent implements OnInit {
     });
   }
 
-  updateHeader(){
+  updateHeader() {
     this.hasMelee = false;
     this.hasRange = false;
     this.hasMagic = false;

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {CharacterService, trackable} from '../../services/character.service';
+import {CharacterService, Trackable} from '../../services/character.service';
 
 
 @Component({
@@ -8,10 +8,11 @@ import {CharacterService, trackable} from '../../services/character.service';
   templateUrl: './trackables-dialog.component.html',
   styleUrls: ['./trackables-dialog.component.scss']
 })
+
 export class TrackablesDialogComponent implements OnInit {
   
   tempName:string;
-  tempTrack: trackable = { name: "", description: "", max: 0, current: 0, type: this.data.type };
+  tempTrack: Trackable = { name: "", description: "", max: 0, current: 0, type: this.data.type };
 
   constructor(
     private character: CharacterService,

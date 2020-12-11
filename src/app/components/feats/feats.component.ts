@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import {feat, CharacterService} from '../../services/character.service';
+import {Feat, CharacterService} from '../../services/character.service';
 import { FeatDialogComponent } from '../feat-dialog/feat-dialog.component';
 import { MatDialog} from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-feats',
   templateUrl: './feats.component.html',
   styleUrls: ['./feats.component.scss']
 })
+
 export class FeatsComponent implements OnInit {
 
   constructor(private character: CharacterService, private matDialog: MatDialog) { }
 
-  featList: feat[] = this.character.getFeat();
+  featList: Feat[] = this.character.getFeat();
   title:string;
   description:string;
   detail:string;

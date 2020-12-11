@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CharacterService } from 'src/app/services/character.service';
 
+
 @Component({
   selector: 'app-hit-dice',
   templateUrl: './hit-dice.component.html',
   styleUrls: ['./hit-dice.component.scss']
 })
+
 export class HitDiceComponent implements OnInit {
 
   constructor(private character: CharacterService) { }

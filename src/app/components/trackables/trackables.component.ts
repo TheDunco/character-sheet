@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CharacterService, trackable} from '../../services/character.service';
+import { CharacterService,Trackable} from '../../services/character.service';
 import { MatDialog} from '@angular/material/dialog';
 import { TrackablesDialogComponent } from '../trackables-dialog/trackables-dialog.component';
 
@@ -9,6 +9,7 @@ import { TrackablesDialogComponent } from '../trackables-dialog/trackables-dialo
   templateUrl: './trackables.component.html',
   styleUrls: ['./trackables.component.scss']
 })
+
 export class TrackablesComponent implements OnInit {
 
   constructor(private character: CharacterService, private matDialog: MatDialog) { }
@@ -23,13 +24,13 @@ export class TrackablesComponent implements OnInit {
     return Array(n)
   }
   
-  addCurrent(track: trackable): void {
+  addCurrent(track: Trackable): void {
     if (track.current + 1 <= track.max) {
       track.current += 1
     }
   }
   
-  subtractCurrent(track: trackable): void {
+  subtractCurrent(track: Trackable): void {
     if (track.current - 1 >= 0) {
       track.current -= 1
     }

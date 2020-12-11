@@ -8,506 +8,25 @@ import { Observable } from 'rxjs';
 export class CharacterService {
   name = "Mr. Tester";
   setName(newName: string): void { this.name = newName }
-  
+
   class = "Paladin"
   setClass(newClass: string): void { this.class = newClass }
-  
+
   xp = 500
-  setXP(newXP: number): void {
-    this.xp = newXP;
-    this.levelSet()
-  }
-  
   level = 2
-  
-  spellcastingAbility = "charisma";
-   setSpellCastingAbility(newAb: string): void {
-    this.spellcastingAbility = newAb;
-  }
-  
-  languages = "Common"
-  setLanguages(newLanguages: string): void { this.languages = newLanguages }
-  miscProfs = "Thieves Tools, Martial Weapons"
-  setMiscProfs(newProfs: string): void { this.miscProfs = newProfs }
-  
-  changeProf(name: string): void {
-    if (this.isProficient(name)) {
-      this.removeProficiency(name)
-    }
-    else {
-      this.addProficiency(name)
-    }
-  }
-  
-  
-  levelSet(): void {
-    if (this.xp >= 0 && this.xp < 300) {
-      this.level = 1; 
-      this.proficiencyBonus = 2;
-    } else
-    if (this.xp >= 300 && this.xp < 900) {
-      this.level = 2; 
-      this.proficiencyBonus = 2;
-    } else
-    if (this.xp >= 900 && this.xp < 2700) {
-      this.level = 3;
-      this.proficiencyBonus = 2;
-    } else
-    if (this.xp >= 2700 && this.xp < 6500) {
-      this.level = 4; 
-      this.proficiencyBonus = 2;
-    } else
-    if (this.xp >= 6500 && this.xp < 14000) {
-      this.level = 5; 
-      this.proficiencyBonus = 3;
-    } else
-    if (this.xp >= 14000 && this.xp < 23000) {
-      this.level = 6; 
-      this.proficiencyBonus = 3;
-    } else
-    if (this.xp <= 23000 && this.xp < 34000) {
-      this.level = 7; 
-      this.proficiencyBonus = 3;
-    } else
-    if (this.xp >= 34000 && this.xp < 48000) {
-      this.level = 8; 
-      this.proficiencyBonus = 3;
-    } else
-    if (this.xp >= 48000 && this.xp < 64000) {
-      this.level = 9; 
-      this.proficiencyBonus = 4;
-    } else
-    if (this.xp >= 64000 && this.xp < 85000) {
-      this.level = 10; 
-      this.proficiencyBonus = 4;
-    } else
-      if (this.xp >= 85000 && this.xp < 100000) {
-      this.level = 11;
-      this.proficiencyBonus = 4;
-    } else
-    if (this.xp >= 100000 && this.xp < 120000) {
-      this.level = 12; 
-      this.proficiencyBonus = 4;
-    } else
-    if (this.xp >= 120000 && this.xp < 140000) {
-      this.level = 13; 
-      this.proficiencyBonus = 5;
-    } else
-    if (this.xp >= 140000 && this.xp < 165000) {
-      this.level = 14; 
-      this.proficiencyBonus = 5;
-    } else
-    if (this.xp >= 165000 && this.xp < 195000) {
-      this.level = 15; 
-      this.proficiencyBonus = 5;
-    } else
-    if (this.xp >= 195000 && this.xp < 225000) {
-      this.level = 16; 
-      this.proficiencyBonus = 5;
-    } else
-    if (this.xp >= 225000 && this.xp < 265000) {
-      this.level = 17; 
-      this.proficiencyBonus = 6;
-    } else
-    if (this.xp >= 265000 && this.xp < 305000) {
-      this.level = 18; 
-      this.proficiencyBonus = 6;
-    } else
-    if (this.xp >= 305000 && this.xp < 355000) {
-      this.level = 19; 
-      this.proficiencyBonus = 6;
-    } else
-    if (this.xp >= 355000) {
-      this.level = 20;
-      this.proficiencyBonus = 6;
-    }
-    else {
-      this.level = 0;
-      this.proficiencyBonus = 0;
-    }
-    this.health.hitDiceMax = this.level;
-  }
-  
-  // Health
-  health: health = {
-    hpCurrent: 30,
-    hpMax: 30,
-    hpTemp: 10,
-    hitDiceCurrent: 0,
-    hitDiceMax: 3,
-    hitDiceType: 8,
-    deathSaveFails: 0,
-    deathSaveSuccesses: 0
-  }
-  getHealth(): health {
-    return this.health
-  }
-  setHealth(newHealth: health) {
-    this.health = newHealth;
-  }
-  
-  // Ability Scores
-  abilityScores: abilityScore = {
-    charisma: 10,
-    constitution: 10,
-    dexterity: 10,
-    intelligence: 10,
-    strength: 10,
-    wisdom: 10,
-  }
-  
-  getAbilityScores(): abilityScore {
-    return this.abilityScores
-  }
-  getAbilityScore(which: string): number {
-    switch (which) {
-      case 'charisma': return this.abilityScores.charisma;
-      case 'constitution': return this.abilityScores.constitution;
-      case 'dexterity': return this.abilityScores.dexterity;
-      case 'intelligence': return this.abilityScores.intelligence;
-      case 'strength': return this.abilityScores.strength;
-      case 'wisdom': return this.abilityScores.wisdom;
-    }
-  }
-  setAbilityScores(newScores: abilityScore) {
-    this.abilityScores = newScores;
-  }
-  
-   summary: summary = {
-    age: "21",
-    height: "5'0\"",
-    weight: "150",
-    eyes: "Blue",
-    hair: "Brown",
-    skin: "White",
-    race: "Human",
-    class: "Paladin",
-    alignment: "Neutral", //(dropdown eventually)
-    background: "Acolyte",
-    speed: 30,
-   }
-  
-  
-  setSummary(newSum: summary): void {
-    this.summary = newSum;
-  }
 
-  
-  defenses: defense = {
-    armorName: "Leather Armor",
-    armorBonus: 1,
-    shieldName: "",
-    shieldBonus: 0,
-    miscName: "",
-    miscBonus: 0
-  }
-  
-  initiative = this.toMod(this.abilityScores.dexterity)
-  ac = this.toMod(this.abilityScores.dexterity) + 10
-  
-  updateAC(): void {
-    let bonus  = 10
-    bonus += +this.defenses.armorBonus;
-    bonus += +this.defenses.shieldBonus;
-    bonus += +this.defenses.miscBonus;
-    
-    this.ac = this.toMod(this.abilityScores.dexterity) + bonus
-    this.initiative = this.toMod(this.abilityScores.dexterity)
-    
-  }
-  
-  // Proficiencies
-  proficiencies: string[] = ["charismaSave", "sleightOfHand", "investigation", "Warhammer"]
-  
-  // Will eventually be based off of level
-  proficiencyBonus = 2;
-  getProficiencyBonus(): number {
-    return this.proficiencyBonus;
-  }
-  addProficiency(name: string): void {
-    this.proficiencies.push(name)
-  }
-  removeProficiency(name: string): void {
-    const index = this.proficiencies.findIndex(item => item == name);
-    if (index > -1) {
-      this.proficiencies.splice(index, 1);
-    }
-  }
-  
-  isProficient(x: string): boolean {
-    return this.proficiencies.includes(x);
-  }
-  
-  toMod(score: number): number {
-    if (score == 1) {return -5}
-    if (score == 2 || score == 3) {return -4}
-    if (score == 4 || score == 5) {return -3}
-    if (score == 6 || score == 7) {return -2}
-    if (score == 8 || score == 9) {return -1}
-    if (score == 10 || score == 11) {return 0}
-    if (score == 12 || score == 13) {return 1}
-    if (score == 14 || score == 15) {return 2}
-    if (score == 16 || score == 17) {return 3}
-    if (score == 18 || score == 19) {return 4}
-    if (score == 20 || score == 21) {return 5}
-    if (score == 22 || score == 23) {return 6}
-    if (score == 24 || score == 25) {return 7}
-    if (score == 26 || score == 27) {return 8}
-    if (score == 28 || score == 29) {return 9}
-    if (score == 30) {return 10}
-  }
-  
-  exampleAbility: abilities = {name: "Assassinate", summary: "Advantage and automatic critical against surprised creatures.", description: "During its first turn, this creature has advantage on attack rolls against any creature that hasn’t taken a turn. Any hit it scores against a surprised creature is a critical hit."};
-  exampleAbility2: abilities =  {name: "Cunning Action", summary: "Use a bonus action to Dash, Disengage, or Hide.",description: "Your quick thinking and agility allow you to move and act quickly. You can take a bonus action on each of your turns in combat. This action can be used only to take the Dash, Disengage, or Hide action."};
-  abilityList: abilities[] = [this.exampleAbility,this.exampleAbility2];
-  constructor() { }
+  exampleAbility: Ability = { name: "Assassinate", summary: "Advantage and automatic critical against surprised creatures.", description: "During its first turn, this creature has advantage on attack rolls against any creature that hasn’t taken a turn. Any hit it scores against a surprised creature is a critical hit." };
+  exampleAbility2: Ability = { name: "Cunning Action", summary: "Use a bonus action to Dash, Disengage, or Hide.", description: "Your quick thinking and agility allow you to move and act quickly. You can take a bonus action on each of your turns in combat. This action can be used only to take the Dash, Disengage, or Hide action." };
+  abilityList: Ability[] = [this.exampleAbility, this.exampleAbility2];
 
-  getAbilities(): abilities[]{
-    return this.abilityList;
-  }
+  exampleWeapon: Equipment = { name: "Dagger", quantity: 2, carried: "Yes", weight: 1, equipType: "Weapon", description: " Category: Simple Melee Weapon" + '\n' + "Cost: 2gp\n Damage: 1d4 piercing\n Properties:Finesse, light, thrown (range 20/60)", equipped: "Yes" };
+  exampleArmor: Equipment = { equipped: "Yes", name: "Chain Shirt", quantity: 1, carried: "Yes", weight: 20, equipType: "Armor", description: " Type: Medium Armor \n Cost: 50 gp \n Armor Class: 13 \n\n Made of interlocking metal rings, a chain shirt is worn between layers of clothing or leather. This armor offers modest protection to the wearer’s upper body and allows the sound of the rings rubbing against one another to be muffled by outer layers" }
+  exampleGear: Equipment = { name: "Digsuise kit", quantity: 1, carried: "Yes", weight: 3, equipType: "Gear", equipped: "No", description: " Cost: 25gp  This pouch of cosmetics, hair dye, and small props lets you create disguises that change your physical appearance. Proficiency with this kit lets you add your proficiency bonus to any ability checks you make to create a visual disguise" }
+  exampleGear2: Equipment = { name: "Explorer's Pack", quantity: 1, carried: "Yes", weight: 3, equipType: "Gear", equipped: "No", description: " Cost: 10gp \n\n Includes a backpack, a bedroll, a mess kit, a tinderbox, 10 torches, 10 days of rations, and a waterskin. The pack also has 50 feet of hempen rope strapped to the side of it" };
+  exampleTool: Equipment = { name: "Thieve's Tools", weight: 1, quantity: 1, carried: "Yes", equipType: "Tool", equipped: "No", description: " Cost: 25 gp \n\n This set of tools includes a small file, a set of lock picks, a small mirror mounted on a metal handle, a set of narrow-bladed scissors, and a pair of pliers. Proficiency with these tools lets you add your proficiency bonus to any ability checks you make to disarm traps or open locks" }
+  exampleWeapon2: Equipment = { name: "Shortbow", weight: 2, quantity: 1, carried: "Yes", equipped: "No", equipType: "Weapon", description: " Category: Simple Ranged\n Cost: 25gp\n Damage: 1d6 piercing\n Properties: Ammunition (range 80/320). two-handed" }
+  exampleEquipment: Equipment[] = [this.exampleWeapon, this.exampleArmor, this.exampleGear, this.exampleGear2, this.exampleTool, this.exampleWeapon2];
 
-  updateAbility(nAbility: abilities, oAbilityName: string) {
-    const index = this.abilityList.findIndex(item => item.name === oAbilityName);
-    if (index > -1) {
-      this.abilityList[index].name = nAbility.name;
-      this.abilityList[index].summary = nAbility.summary;
-      this.abilityList[index].description = nAbility.description;
-    }
-    else{
-      this.abilityList.push(nAbility);
-    }
-  }
-
-  deleteAbility(aName) {
-    const index = this.abilityList.findIndex(item => item.name === aName);
-    if (index > -1) {
-      this.abilityList.splice(index, 1);
-    }
-  }
-
-  userNotes: note ={nTitle:"This is the first title" , nDescription: "this is the first description" };
-  userNotes2: note ={nTitle:"This is the first title2" , nDescription: "this is the first description2" };
-  exampleNote = [this.userNotes , this.userNotes2];
-
-  getNotes(): note[]{
-    return this.exampleNote;
-  }
-
-  addNote(nData: note): void {
-    this.exampleNote.push(nData);
-  }
-
-  updateNote(nData: note, tNote:string, dNote:string):void {
-    const index = this.exampleNote.findIndex(item => item.nTitle === tNote && item.nDescription === dNote);
-    if (index > -1) {
-      this.exampleNote[index].nTitle = nData.nTitle;
-      this.exampleNote[index].nDescription = nData.nDescription;
-    }
-    else{
-      this.exampleNote.push(nData);
-    }
-  }
-
-  deleteNote(tNote:string, dNote:string){
-    const index = this.exampleNote.findIndex(item => item.nTitle === tNote && item.nDescription === dNote);
-    if (index > -1) {
-      // delete this.exampleNote[index];
-      this.exampleNote.splice(index, 1);
-    }
-  }
-
-  cloneNote(oNote:string){
-    const index = this.exampleNote.findIndex(item => item.nTitle === oNote);
-    this.exampleNote.push(this.exampleNote[index]);
-  }
-
-  userFeatExample: feat = {fTitle:"Title", fDescription: "dscription", fDetail:"detail", fSummary: "summary"}
-  userFeat = [this.userFeatExample];
-
- 
-  updateFeat(fData: feat, oFeat:string){
-    const index = this.userFeat.findIndex(item => item.fTitle === oFeat);
-    if (index > -1) {
-      this.userFeat[index].fTitle = fData.fTitle;
-      this.userFeat[index].fDescription = fData.fDescription;
-      this.userFeat[index].fDetail = fData.fDetail;
-      this.userFeat[index].fSummary = fData.fSummary;
-      
-    }
-    else{
-      this.userFeat.push(fData);
-    }
-  }
-
-  deleteFeat(oFeat:string){
-    const index = this.userFeat.findIndex(item => item.fTitle === oFeat);
-    if (index > -1) {
-      this.userFeat.splice(index, 1);
-    }
-  }
-
-  getFeat(): feat[]{
-    return this.userFeat;
-  }
-
-  cloneFeat(oFeat:string){
-    const index = this.userFeat.findIndex(item => item.fTitle === oFeat);
-    this.userFeat.push(this.userFeat[index]);
-  }
-
-  exampleWeapon: equipment = {name: "Dagger", quantity: 2, carried: "Yes", weight: 1, equipType: "Weapon",description: " Category: Simple Melee Weapon" + '\n' + "Cost: 2gp\n Damage: 1d4 piercing\n Properties:Finesse, light, thrown (range 20/60)", equipped: "Yes"};
-  exampleArmor: equipment = {equipped: "Yes", name: "Chain Shirt", quantity: 1, carried: "Yes", weight: 20, equipType: "Armor", description: " Type: Medium Armor \n Cost: 50 gp \n Armor Class: 13 \n\n Made of interlocking metal rings, a chain shirt is worn between layers of clothing or leather. This armor offers modest protection to the wearer’s upper body and allows the sound of the rings rubbing against one another to be muffled by outer layers"}
-  exampleGear: equipment = {name: "Digsuise kit", quantity: 1, carried: "Yes", weight: 3, equipType: "Gear",equipped: "No", description: " Cost: 25gp  This pouch of cosmetics, hair dye, and small props lets you create disguises that change your physical appearance. Proficiency with this kit lets you add your proficiency bonus to any ability checks you make to create a visual disguise"}
-  exampleGear2: equipment = {name: "Explorer's Pack", quantity: 1, carried: "Yes", weight: 3, equipType: "Gear",equipped: "No", description: " Cost: 10gp \n\n Includes a backpack, a bedroll, a mess kit, a tinderbox, 10 torches, 10 days of rations, and a waterskin. The pack also has 50 feet of hempen rope strapped to the side of it"};
-  exampleTool: equipment = {name: "Thieve's Tools", weight: 1, quantity: 1, carried: "Yes", equipType: "Tool", equipped: "No", description: " Cost: 25 gp \n\n This set of tools includes a small file, a set of lock picks, a small mirror mounted on a metal handle, a set of narrow-bladed scissors, and a pair of pliers. Proficiency with these tools lets you add your proficiency bonus to any ability checks you make to disarm traps or open locks"}
-  exampleWeapon2: equipment = {name: "Shortbow", weight: 2, quantity: 1, carried: "Yes", equipped: "No", equipType: "Weapon", description: " Category: Simple Ranged\n Cost: 25gp\n Damage: 1d6 piercing\n Properties: Ammunition (range 80/320). two-handed" }
-  
-  exampleEquipment: equipment[] = [this.exampleWeapon,this.exampleArmor,this.exampleGear,this.exampleGear2,this.exampleTool,this.exampleWeapon2];
-
-  getEquipment(): equipment[]{
- 
-    return this.exampleEquipment;
-
-  }
-
-  updateEquipment(equipment:equipment, tempEquipment:equipment){
-    const index = this.exampleEquipment.findIndex(item => item.name === equipment.name && 
-      item.description === equipment.description && 
-      item.quantity === equipment.quantity && 
-      item.carried === equipment.carried &&
-      item.weight === equipment.weight &&
-      item.equipped === equipment.equipped &&
-      item.equipType === equipment.equipType);  
-      if (index > -1) {
-        this.exampleEquipment[index].name = tempEquipment.name;
-        this.exampleEquipment[index].description = tempEquipment.description;
-        this.exampleEquipment[index].quantity = tempEquipment.quantity;
-        this.exampleEquipment[index].carried = tempEquipment.carried;
-        this.exampleEquipment[index].weight = tempEquipment.weight;
-        this.exampleEquipment[index].equipped = tempEquipment.equipped;
-        this.exampleEquipment[index].equipType = tempEquipment.equipType;
-        
-      }
-      else{
-        this.exampleEquipment.push(tempEquipment);
-      }
-  }
-
-  deleteEquipment(equipment:equipment){
-    const index = this.exampleEquipment.findIndex(item => item.name === equipment.name && 
-      item.description === equipment.description && 
-      item.quantity === equipment.quantity && 
-      item.carried === equipment.carried &&
-      item.weight === equipment.weight &&
-      item.equipped === equipment.equipped &&
-      item.equipType === equipment.equipType);   
-    if (index > -1) {
-      this.exampleEquipment.splice(index, 1);
-    }
-  }
-
-  money: money = {copperAmount: 0, silverAmount: 2, goldAmount: 35, platinumAmount: 1};
-  
-  getMoney(): money{
-    return this.money;
-  }
-  
-  setMoney(newMoney: money) {
-    this.money = newMoney
-  }
-
-  exampleMelee: action = {name: "Unarmed Strike",description:"Your fists",actionType:"Melee",damage: String(this.toMod(this.abilityScores.strength)),damageType:"Bludgeoning",toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0, fullDamage: "0", fullToHit: "0"};
-  exampleMelee2: action = {name: "Warhammer",damageType:"Bludgeoning",actionType:"Melee",damage:"1d10",description:"A big hammer", toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0, fullDamage: "1d10+0", fullToHit: "0"};
-  exampleMelee3: action = {name: "Shortsword",damageType:"Piercing",actionType:"Melee",damage:"1d6",description:"A standard sword", toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0, fullDamage: "1d6+0", fullToHit: "0"};
-  exampleRange: action = {name: "Shortbow",damageType:"Piercing",actionType:"Range",damage:"1d6",description:"A standard bow", toHit: this.toMod(this.abilityScores.dexterity), abilityScore: "Dexterity", damageMisc: 0, hitMisc: 0, fullDamage: "1d6", fullToHit: "0"};
-  exampleMagic: action = {name:"Blade of Avernus (Vorpal)",damageType:"Slashing", actionType: "Magic Item", damage: "2d6",description:"Instant decapitation? Yes please!",toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength",damageMisc: 3, hitMisc: 3, fullDamage: "0", fullToHit: "2d6+5"};
-  actionList: action[] = [this.exampleMelee,this.exampleMagic, this.exampleMelee2, this.exampleRange, this.exampleMelee3];
-
-  getActions(): action[]{
-    return this.actionList;
-  }
-
-  updateAction(nAction: action, oActionName: string) {
-    const index = this.actionList.findIndex(item => item.name === oActionName);
-    if (index > -1) {
-      this.actionList[index].name = nAction.name;
-      this.actionList[index].actionType = nAction.actionType;
-      this.actionList[index].description = nAction.description;
-      this.actionList[index].damage = nAction.damage;
-      this.actionList[index].damageType = nAction.damageType;
-      this.actionList[index].damageMisc = nAction.damageMisc;
-      this.actionList[index].hitMisc = nAction.hitMisc;
-      this.actionList[index].fullDamage = nAction.fullDamage;
-      this.actionList[index].fullToHit = nAction.fullToHit;
-    }
-    else{
-      this.actionList.push(nAction);
-    }
-  }
-
-  deleteAction(aName) {
-    const index = this.actionList.findIndex(item => item.name === aName);
-    if (index > -1) {
-      this.actionList.splice(index, 1);
-    }
-  }
-
-  tracklist = [
-    {
-      name: '1st Level Spell Slots',
-      type: 'checkboxes',
-      description: '',
-      max: 4,
-      current: 2
-    },
-    {
-      name: '2nd Level Spell Slots',
-      type: 'checkboxes',
-      description: '2nd levels',
-      max: 2,
-      current: 1
-    },
-    {
-      name: 'Exhaustion Levels',
-      type: 'number',
-      description: 'Levels of exhaustion',
-      max: 6,
-      current: 0
-    }
-  ]
-  
-  setTrackList(newList: trackable[]): void {
-    this.tracklist = newList;
-  }
-  
-  updateTrackable(tData: trackable, oTrack:string){
-    const index = this.tracklist.findIndex(item => item.name === oTrack);
-    if (index > -1) {
-      this.tracklist[index].name = tData.name;
-      this.tracklist[index].type = tData.type;
-      this.tracklist[index].description = tData.description;
-      this.tracklist[index].max = tData.max;
-      this.tracklist[index].current = tData.current;
-    }
-    else{
-      this.tracklist.push(tData);
-    }
-  }
-
-  deleteTrack(oTrack:string){
-    const index = this.tracklist.findIndex(item => item.name === oTrack);
-    if (index > -1) {
-      this.tracklist.splice(index, 1);
-    }
-  }
-
-  cloneTrack(oTrack:string){
-    const index = this.tracklist.findIndex(item => item.name === oTrack);
-    if (index > -1) {
-      this.tracklist.push(this.tracklist[index]);
-    }
-  }
-  
   spellList = [
     {
       name: "Puppet",
@@ -544,13 +63,487 @@ export class CharacterService {
       school: "Conjuration",
       srdUrl: "misty-step",
       summary: "Self V ",
-    }, 
-    
+    },
+
   ]
-  
+
   highestLevelSpell: number = 0;
   preppedSpells: number = 0;
-  
+
+  tracklist = [
+    {
+      name: '1st Level Spell Slots',
+      type: 'checkboxes',
+      description: '',
+      max: 4,
+      current: 2
+    },
+    {
+      name: '2nd Level Spell Slots',
+      type: 'checkboxes',
+      description: '2nd levels',
+      max: 2,
+      current: 1
+    },
+    {
+      name: 'Exhaustion Levels',
+      type: 'number',
+      description: 'Levels of exhaustion',
+      max: 6,
+      current: 0
+    }
+  ]
+
+  spellcastingAbility = "charisma";
+
+
+
+  setXP(newXP: number): void {
+    this.xp = newXP;
+    this.levelSet()
+  }
+  setSpellCastingAbility(newAb: string): void {
+    this.spellcastingAbility = newAb;
+  }
+
+  languages = "Common"
+  setLanguages(newLanguages: string): void { this.languages = newLanguages }
+  miscProfs = "Thieves Tools, Martial Weapons"
+  setMiscProfs(newProfs: string): void { this.miscProfs = newProfs }
+
+  userNotes: Note = { nTitle: "This is the first title", nDescription: "this is the first description" };
+  userNotes2: Note = { nTitle: "This is the first title2", nDescription: "this is the first description2" };
+  exampleNote = [this.userNotes, this.userNotes2];
+
+  changeProf(name: string): void {
+    if (this.isProficient(name)) {
+      this.removeProficiency(name)
+    }
+    else {
+      this.addProficiency(name)
+    }
+  }
+
+  setSummary(newSum: Summary): void {
+    this.summary = newSum;
+  }
+
+  getHealth(): Health {
+    return this.health
+  }
+
+  setHealth(newHealth: Health) {
+    this.health = newHealth;
+  }
+
+  getAbilityScores(): AbilityScore {
+    return this.abilityScores
+  }
+
+  getAbilityScore(which: string): number {
+    switch (which) {
+      case 'charisma': return this.abilityScores.charisma;
+      case 'constitution': return this.abilityScores.constitution;
+      case 'dexterity': return this.abilityScores.dexterity;
+      case 'intelligence': return this.abilityScores.intelligence;
+      case 'strength': return this.abilityScores.strength;
+      case 'wisdom': return this.abilityScores.wisdom;
+    }
+  }
+  setAbilityScores(newScores: AbilityScore) {
+    this.abilityScores = newScores;
+  }
+
+  levelSet(): void {
+    if (this.xp >= 0 && this.xp < 300) {
+      this.level = 1;
+      this.proficiencyBonus = 2;
+    } else
+      if (this.xp >= 300 && this.xp < 900) {
+        this.level = 2;
+        this.proficiencyBonus = 2;
+      } else
+        if (this.xp >= 900 && this.xp < 2700) {
+          this.level = 3;
+          this.proficiencyBonus = 2;
+        } else
+          if (this.xp >= 2700 && this.xp < 6500) {
+            this.level = 4;
+            this.proficiencyBonus = 2;
+          } else
+            if (this.xp >= 6500 && this.xp < 14000) {
+              this.level = 5;
+              this.proficiencyBonus = 3;
+            } else
+              if (this.xp >= 14000 && this.xp < 23000) {
+                this.level = 6;
+                this.proficiencyBonus = 3;
+              } else
+                if (this.xp <= 23000 && this.xp < 34000) {
+                  this.level = 7;
+                  this.proficiencyBonus = 3;
+                } else
+                  if (this.xp >= 34000 && this.xp < 48000) {
+                    this.level = 8;
+                    this.proficiencyBonus = 3;
+                  } else
+                    if (this.xp >= 48000 && this.xp < 64000) {
+                      this.level = 9;
+                      this.proficiencyBonus = 4;
+                    } else
+                      if (this.xp >= 64000 && this.xp < 85000) {
+                        this.level = 10;
+                        this.proficiencyBonus = 4;
+                      } else
+                        if (this.xp >= 85000 && this.xp < 100000) {
+                          this.level = 11;
+                          this.proficiencyBonus = 4;
+                        } else
+                          if (this.xp >= 100000 && this.xp < 120000) {
+                            this.level = 12;
+                            this.proficiencyBonus = 4;
+                          } else
+                            if (this.xp >= 120000 && this.xp < 140000) {
+                              this.level = 13;
+                              this.proficiencyBonus = 5;
+                            } else
+                              if (this.xp >= 140000 && this.xp < 165000) {
+                                this.level = 14;
+                                this.proficiencyBonus = 5;
+                              } else
+                                if (this.xp >= 165000 && this.xp < 195000) {
+                                  this.level = 15;
+                                  this.proficiencyBonus = 5;
+                                } else
+                                  if (this.xp >= 195000 && this.xp < 225000) {
+                                    this.level = 16;
+                                    this.proficiencyBonus = 5;
+                                  } else
+                                    if (this.xp >= 225000 && this.xp < 265000) {
+                                      this.level = 17;
+                                      this.proficiencyBonus = 6;
+                                    } else
+                                      if (this.xp >= 265000 && this.xp < 305000) {
+                                        this.level = 18;
+                                        this.proficiencyBonus = 6;
+                                      } else
+                                        if (this.xp >= 305000 && this.xp < 355000) {
+                                          this.level = 19;
+                                          this.proficiencyBonus = 6;
+                                        } else
+                                          if (this.xp >= 355000) {
+                                            this.level = 20;
+                                            this.proficiencyBonus = 6;
+                                          }
+                                          else {
+                                            this.level = 0;
+                                            this.proficiencyBonus = 0;
+                                          }
+    this.health.hitDiceMax = this.level;
+  }
+
+  // Health
+  health: Health = {
+    hpCurrent: 30,
+    hpMax: 30,
+    hpTemp: 10,
+    hitDiceCurrent: 0,
+    hitDiceMax: 3,
+    hitDiceType: 8,
+    deathSaveFails: 0,
+    deathSaveSuccesses: 0
+  }
+
+  // Ability Scores
+  abilityScores: AbilityScore = {
+    charisma: 10,
+    constitution: 10,
+    dexterity: 10,
+    intelligence: 10,
+    strength: 10,
+    wisdom: 10,
+  }
+
+  summary: Summary = {
+    age: "21",
+    height: "5'0\"",
+    weight: "150",
+    eyes: "Blue",
+    hair: "Brown",
+    skin: "White",
+    race: "Human",
+    class: "Paladin",
+    alignment: "Neutral", //(dropdown eventually)
+    background: "Acolyte",
+    speed: 30,
+  }
+
+  defenses: Defense = {
+    armorName: "Leather Armor",
+    armorBonus: 1,
+    shieldName: "",
+    shieldBonus: 0,
+    miscName: "",
+    miscBonus: 0
+  }
+
+  initiative = this.toMod(this.abilityScores.dexterity)
+  ac = this.toMod(this.abilityScores.dexterity) + 10
+
+  updateAC(): void {
+    let bonus = 10
+    bonus += +this.defenses.armorBonus;
+    bonus += +this.defenses.shieldBonus;
+    bonus += +this.defenses.miscBonus;
+
+    this.ac = this.toMod(this.abilityScores.dexterity) + bonus
+    this.initiative = this.toMod(this.abilityScores.dexterity)
+
+  }
+
+  // Proficiencies
+  proficiencies: string[] = ["charismaSave", "sleightOfHand", "investigation", "Warhammer"]
+
+  // Will eventually be based off of level
+  proficiencyBonus = 2;
+  getProficiencyBonus(): number {
+    return this.proficiencyBonus;
+  }
+  addProficiency(name: string): void {
+    this.proficiencies.push(name)
+  }
+  removeProficiency(name: string): void {
+    const index = this.proficiencies.findIndex(item => item == name);
+    if (index > -1) {
+      this.proficiencies.splice(index, 1);
+    }
+  }
+
+  isProficient(x: string): boolean {
+    return this.proficiencies.includes(x);
+  }
+
+  toMod(score: number): number {
+    if (score == 1) { return -5 }
+    if (score == 2 || score == 3) { return -4 }
+    if (score == 4 || score == 5) { return -3 }
+    if (score == 6 || score == 7) { return -2 }
+    if (score == 8 || score == 9) { return -1 }
+    if (score == 10 || score == 11) { return 0 }
+    if (score == 12 || score == 13) { return 1 }
+    if (score == 14 || score == 15) { return 2 }
+    if (score == 16 || score == 17) { return 3 }
+    if (score == 18 || score == 19) { return 4 }
+    if (score == 20 || score == 21) { return 5 }
+    if (score == 22 || score == 23) { return 6 }
+    if (score == 24 || score == 25) { return 7 }
+    if (score == 26 || score == 27) { return 8 }
+    if (score == 28 || score == 29) { return 9 }
+    if (score == 30) { return 10 }
+  }
+
+  getAbilities(): Ability[] {
+    return this.abilityList;
+  }
+
+  updateAbility(nAbility: Ability, oAbilityName: string) {
+    const index = this.abilityList.findIndex(item => item.name === oAbilityName);
+    if (index > -1) {
+      this.abilityList[index].name = nAbility.name;
+      this.abilityList[index].summary = nAbility.summary;
+      this.abilityList[index].description = nAbility.description;
+    }
+    else {
+      this.abilityList.push(nAbility);
+    }
+  }
+
+  deleteAbility(aName) {
+    const index = this.abilityList.findIndex(item => item.name === aName);
+    if (index > -1) {
+      this.abilityList.splice(index, 1);
+    }
+  }
+
+  getNotes(): Note[] {
+    return this.exampleNote;
+  }
+
+  addNote(nData: Note): void {
+    this.exampleNote.push(nData);
+  }
+
+  updateNote(nData: Note, tNote: string, dNote: string): void {
+    const index = this.exampleNote.findIndex(item => item.nTitle === tNote && item.nDescription === dNote);
+    if (index > -1) {
+      this.exampleNote[index].nTitle = nData.nTitle;
+      this.exampleNote[index].nDescription = nData.nDescription;
+    }
+    else {
+      this.exampleNote.push(nData);
+    }
+  }
+
+  deleteNote(tNote: string, dNote: string) {
+    const index = this.exampleNote.findIndex(item => item.nTitle === tNote && item.nDescription === dNote);
+    if (index > -1) {
+      // delete this.exampleNote[index];
+      this.exampleNote.splice(index, 1);
+    }
+  }
+
+  cloneNote(oNote: string) {
+    const index = this.exampleNote.findIndex(item => item.nTitle === oNote);
+    this.exampleNote.push(this.exampleNote[index]);
+  }
+
+  userFeatExample: Feat = { fTitle: "Title", fDescription: "dscription", fDetail: "detail", fSummary: "summary" }
+  userFeat = [this.userFeatExample];
+
+
+  updateFeat(fData: Feat, oFeat: string) {
+    const index = this.userFeat.findIndex(item => item.fTitle === oFeat);
+    if (index > -1) {
+      this.userFeat[index].fTitle = fData.fTitle;
+      this.userFeat[index].fDescription = fData.fDescription;
+      this.userFeat[index].fDetail = fData.fDetail;
+      this.userFeat[index].fSummary = fData.fSummary;
+
+    }
+    else {
+      this.userFeat.push(fData);
+    }
+  }
+
+  deleteFeat(oFeat: string) {
+    const index = this.userFeat.findIndex(item => item.fTitle === oFeat);
+    if (index > -1) {
+      this.userFeat.splice(index, 1);
+    }
+  }
+
+  getFeat(): Feat[] {
+    return this.userFeat;
+  }
+
+  cloneFeat(oFeat: string) {
+    const index = this.userFeat.findIndex(item => item.fTitle === oFeat);
+    this.userFeat.push(this.userFeat[index]);
+  }
+
+  getEquipment(): Equipment[] {
+
+    return this.exampleEquipment;
+
+  }
+
+  updateEquipment(equipment: Equipment, tempEquipment: Equipment) {
+    const index = this.exampleEquipment.findIndex(item => item.name === equipment.name &&
+      item.description === equipment.description &&
+      item.quantity === equipment.quantity &&
+      item.carried === equipment.carried &&
+      item.weight === equipment.weight &&
+      item.equipped === equipment.equipped &&
+      item.equipType === equipment.equipType);
+    if (index > -1) {
+      this.exampleEquipment[index].name = tempEquipment.name;
+      this.exampleEquipment[index].description = tempEquipment.description;
+      this.exampleEquipment[index].quantity = tempEquipment.quantity;
+      this.exampleEquipment[index].carried = tempEquipment.carried;
+      this.exampleEquipment[index].weight = tempEquipment.weight;
+      this.exampleEquipment[index].equipped = tempEquipment.equipped;
+      this.exampleEquipment[index].equipType = tempEquipment.equipType;
+
+    }
+    else {
+      this.exampleEquipment.push(tempEquipment);
+    }
+  }
+
+  deleteEquipment(equipment: Equipment) {
+    const index = this.exampleEquipment.findIndex(item => item.name === equipment.name &&
+      item.description === equipment.description &&
+      item.quantity === equipment.quantity &&
+      item.carried === equipment.carried &&
+      item.weight === equipment.weight &&
+      item.equipped === equipment.equipped &&
+      item.equipType === equipment.equipType);
+    if (index > -1) {
+      this.exampleEquipment.splice(index, 1);
+    }
+  }
+
+  money: Money = { copperAmount: 0, silverAmount: 2, goldAmount: 35, platinumAmount: 1 };
+
+  getMoney(): Money {
+    return this.money;
+  }
+
+  setMoney(newMoney: Money) {
+    this.money = newMoney
+  }
+
+  getActions(): Action[] {
+    return this.actionList;
+  }
+
+  updateAction(nAction: Action, oActionName: string) {
+    const index = this.actionList.findIndex(item => item.name === oActionName);
+    if (index > -1) {
+      this.actionList[index].name = nAction.name;
+      this.actionList[index].actionType = nAction.actionType;
+      this.actionList[index].description = nAction.description;
+      this.actionList[index].damage = nAction.damage;
+      this.actionList[index].damageType = nAction.damageType;
+      this.actionList[index].damageMisc = nAction.damageMisc;
+      this.actionList[index].hitMisc = nAction.hitMisc;
+      this.actionList[index].fullDamage = nAction.fullDamage;
+      this.actionList[index].fullToHit = nAction.fullToHit;
+    }
+    else {
+      this.actionList.push(nAction);
+    }
+  }
+
+  deleteAction(aName) {
+    const index = this.actionList.findIndex(item => item.name === aName);
+    if (index > -1) {
+      this.actionList.splice(index, 1);
+    }
+  }
+
+  setTrackList(newList: Trackable[]): void {
+    this.tracklist = newList;
+  }
+
+  updateTrackable(tData: Trackable, oTrack: string) {
+    const index = this.tracklist.findIndex(item => item.name === oTrack);
+    if (index > -1) {
+      this.tracklist[index].name = tData.name;
+      this.tracklist[index].type = tData.type;
+      this.tracklist[index].description = tData.description;
+      this.tracklist[index].max = tData.max;
+      this.tracklist[index].current = tData.current;
+    }
+    else {
+      this.tracklist.push(tData);
+    }
+  }
+
+  deleteTrack(oTrack: string) {
+    const index = this.tracklist.findIndex(item => item.name === oTrack);
+    if (index > -1) {
+      this.tracklist.splice(index, 1);
+    }
+  }
+
+  cloneTrack(oTrack: string) {
+    const index = this.tracklist.findIndex(item => item.name === oTrack);
+    if (index > -1) {
+      this.tracklist.push(this.tracklist[index]);
+    }
+  }
+
   updateHighestLevelSpell() {
     this.preppedSpells = 0;
     this.spellList.forEach((spell) => {
@@ -562,8 +555,8 @@ export class CharacterService {
       }
     })
   }
-  
-  updateSpell(nSpell: spell, oSpellName: string) {
+
+  updateSpell(nSpell: Spell, oSpellName: string) {
     const index = this.spellList.findIndex(item => item.name === oSpellName);
     if (index > -1) {
       this.spellList[index].name = nSpell.name;
@@ -574,20 +567,29 @@ export class CharacterService {
       this.spellList[index].school = nSpell.school;
       this.spellList[index].srdUrl = nSpell.srdUrl;
     }
-    else{
+    else {
       this.spellList.push(nSpell);
     }
   }
-  
+
   deleteSpell(sName) {
     const index = this.spellList.findIndex(item => item.name === sName);
     if (index > -1) {
       this.spellList.splice(index, 1);
     }
   }
+
+  exampleMelee: Action = { name: "Unarmed Strike", description: "Your fists", actionType: "Melee", damage: String(this.toMod(this.abilityScores.strength)), damageType: "Bludgeoning", toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0, fullDamage: "0", fullToHit: "0" };
+  exampleMelee2: Action = { name: "Warhammer", damageType: "Bludgeoning", actionType: "Melee", damage: "1d10", description: "A big hammer", toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0, fullDamage: "1d10+0", fullToHit: "0" };
+  exampleMelee3: Action = { name: "Shortsword", damageType: "Piercing", actionType: "Melee", damage: "1d6", description: "A standard sword", toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0, fullDamage: "1d6+0", fullToHit: "0" };
+  exampleRange: Action = { name: "Shortbow", damageType: "Piercing", actionType: "Range", damage: "1d6", description: "A standard bow", toHit: this.toMod(this.abilityScores.dexterity), abilityScore: "Dexterity", damageMisc: 0, hitMisc: 0, fullDamage: "1d6", fullToHit: "0" };
+  exampleMagic: Action = { name: "Blade of Avernus (Vorpal)", damageType: "Slashing", actionType: "Magic Item", damage: "2d6", description: "Instant decapitation? Yes please!", toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 3, hitMisc: 3, fullDamage: "0", fullToHit: "2d6+5" };
+  actionList: Action[] = [this.exampleMelee, this.exampleMagic, this.exampleMelee2, this.exampleRange, this.exampleMelee3];
 }
 
-export interface defense {
+
+
+export interface Defense {
   armorName: string,
   armorBonus: number,
   shieldName: string,
@@ -596,7 +598,7 @@ export interface defense {
   miscBonus: number,
 }
 
-export interface spell {
+export interface Spell {
   name: string,
   summary: string,
   description: string,
@@ -606,7 +608,7 @@ export interface spell {
   srdUrl: string
 }
 
-export interface abilityScore {
+export interface AbilityScore {
   charisma: number,
   constitution: number,
   dexterity: number,
@@ -615,52 +617,48 @@ export interface abilityScore {
   wisdom: number
 }
 
-// Might not need these, probably can just make string arrays
-export interface languages {
+export interface Languages {
   languages: string
 }
-export interface miscProficiency {
+export interface MiscProficiency {
   miscProf: string
 }
 
-export interface abilities{
+export interface Ability {
   name: string,
   summary: string,
   description: string
 }
 
-export interface health {
+export interface Health {
   hpCurrent: number,
   hpMax: number,
   hpTemp: number,
   hitDiceCurrent: number,
   hitDiceMax: number,
   hitDiceType: number,
-  deathSaveFails:number,
+  deathSaveFails: number,
   deathSaveSuccesses: number
 }
 
-type equipmentType = "Armor" | "Weapon" | "Gear" | "Tool" | "None";
-type yesNo = "Yes" | "No";
-
-export interface money{
+export interface Money {
   copperAmount: number;
   silverAmount: number;
   goldAmount: number;
   platinumAmount: number;
 }
 
-export interface equipment{
+export interface Equipment {
   name: string;
   description: string,
   quantity: number
-  carried: yesNo;
+  carried: "Yes" | "No";
   weight: number;
-  equipType: equipmentType;
-  equipped: yesNo;
+  equipType: "Tool" | "Gear" | "Weapon" | "Armor" | "None";
+  equipped: "Yes" | "No";
 }
 
-export interface summary {
+export interface Summary {
   age: string,
   height: string,
   weight: string,
@@ -674,28 +672,26 @@ export interface summary {
   speed: number,
 }
 
-export interface level {
+export interface Level {
   xp: number,
   level: number,
   class: number
 }
 
 
-export interface note {
+export interface Note {
   nTitle: string,
   nDescription: string
 }
 
-export interface feat {
+export interface Feat {
   fTitle: string,
   fDescription: string,
   fDetail: string,
   fSummary: string
 }
 
-// This is subject to change and could get more complex if we wanted to 
-// (by including a dice roller or something)
-export interface action {
+export interface Action {
   name: string,
   description: string,
   actionType: "Power" | "Spell" | "Melee" | "Magic Item" | "Range" | "Potion" | "Special";
@@ -709,7 +705,7 @@ export interface action {
   fullDamage?: string
 }
 
-export interface trackable {
+export interface Trackable {
   name: string,
   type: 'checkboxes' | 'number',
   description: string,

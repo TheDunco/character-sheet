@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {CharacterService, note} from '../../services/character.service';
+import {CharacterService, Note} from '../../services/character.service';
 
 
 @Component({
@@ -8,11 +8,12 @@ import {CharacterService, note} from '../../services/character.service';
   templateUrl: './note-dialog.component.html',
   styleUrls: ['./note-dialog.component.scss']
 })
+
 export class NoteDialogComponent implements OnInit {
   
   tempTitle:string;
   tempDescription:string;
-  tempNote: note= {nTitle: "", nDescription: ""};
+  tempNote: Note= {nTitle: "", nDescription: ""};
 
   constructor(
     private character: CharacterService,

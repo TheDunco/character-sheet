@@ -3,11 +3,13 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CharacterService } from 'src/app/services/character.service';
 import { EquipmentComponent } from '../equipment/equipment.component';
 
+
 @Component({
   selector: 'app-currency-dialog',
   templateUrl: './currency-dialog.component.html',
   styleUrls: ['./currency-dialog.component.scss']
 })
+
 export class CurrencyDialogComponent implements OnInit {
 
   constructor(

@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CharacterService, note } from 'src/app/services/character.service';
+import { CharacterService } from 'src/app/services/character.service';
 import { SpellsDialogComponent } from '../spells-dialog/spells-dialog.component';
+
 
 @Component({
   selector: 'app-spells',
   templateUrl: './spells.component.html',
   styleUrls: ['./spells.component.scss']
 })
+
 export class SpellsComponent implements OnInit {
 
 constructor(public character: CharacterService, private matDialog: MatDialog) { }
