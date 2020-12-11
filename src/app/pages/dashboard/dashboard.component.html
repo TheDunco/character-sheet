@@ -5,6 +5,21 @@
     fxFill>
 
     <mat-label class="title">Welcome to the character dashboard {{ user.displayName }}!</mat-label>
-    <button class="button" color="primary" mat-raised-button routerLink="/character-sheet">Character Sheet</button>
+    
+    <div *ngFor="let character of this.userCharacters">
+        <mat-card class="card">
+            <mat-card-title>
+                {{character.name}}
+            </mat-card-title>
+            <mat-card-actions>
+                <button class="button" color="primary" mat-button (click)="goToCharacterSheet(character)">Character Sheet</button>
+                <button class="button" color="warn" mat-button (click)="deleteCharacter(character)">Delete</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <button mat-icon-button (click)="makeNewCharacter()">
+        <mat-icon>add</mat-icon>
+    </button>
+
     <button mat-raised-button color="warn" class="button" (click)="auth.signOut()">Logout</button>
 </div>

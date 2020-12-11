@@ -64,6 +64,7 @@ import { CharacterSheetComponent } from './pages/character-sheet/character-sheet
 import { ActionDialogComponent } from './components/action-dialog/action-dialog.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CurrencyDialogComponent } from './components/currency-dialog/currency-dialog.component';
+import { NameChangeDialogComponent } from './components/name-change-dialog/name-change-dialog.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { CurrencyDialogComponent } from './components/currency-dialog/currency-d
     CharacterSheetComponent,
     ActionDialogComponent,
     LoginComponent,
-    CurrencyDialogComponent
+    CurrencyDialogComponent,
+    NameChangeDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -119,7 +121,7 @@ import { CurrencyDialogComponent } from './components/currency-dialog/currency-d
     MatSlideToggleModule,
     HttpClientModule,
     MatAutocompleteModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
