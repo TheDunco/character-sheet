@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {money,equipment, CharacterService} from '../../services/character.service';
-import { MatDialog, MatDialogModule, MatDialogConfig } from '@angular/material/dialog';
+import { Money, Equipment, CharacterService } from '../../services/character.service';
+import { MatDialog } from '@angular/material/dialog';
 import { EquipmentDialogComponent } from '../equipment-dialog/equipment-dialog.component';
 import { CurrencyDialogComponent } from '../currency-dialog/currency-dialog.component';
 
@@ -11,8 +11,8 @@ import { CurrencyDialogComponent } from '../currency-dialog/currency-dialog.comp
 })
 export class EquipmentComponent implements OnInit {
   totalWeight: number = 0;
-  moneyPouch: money = this.character.getMoney();
-  equipmentList: equipment[] = this.character.getEquipment();
+  moneyPouch: Money = this.character.getMoney();
+  equipmentList: Equipment[] = this.character.getEquipment();
 
   constructor(private character: CharacterService, private matDialog: MatDialog) { }
 
@@ -29,7 +29,7 @@ export class EquipmentComponent implements OnInit {
 
   }
   
-  openEquipmentDialog(equipment: equipment) {
+  openEquipmentDialog(equipment: Equipment) {
     this.matDialog.open(EquipmentDialogComponent, {
 
       width: '60vmax',

@@ -1,9 +1,8 @@
 import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CharacterService, spell } from 'src/app/services/character.service';
+import { CharacterService, Spell } from 'src/app/services/character.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-spells-dialog',
@@ -13,7 +12,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export class SpellsDialogComponent implements OnInit, AfterViewInit {
   
   tempName:string;
-  tempSpell: spell = {
+  tempSpell: Spell = {
         name: this.data.name,
         summary: this.data.summary,
         description: this.data.description,

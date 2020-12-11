@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {CharacterService, feat} from '../../services/character.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {CharacterService, Feat } from '../../services/character.service';
 
 @Component({
   selector: 'app-feat-dialog',
@@ -10,7 +10,7 @@ import {CharacterService, feat} from '../../services/character.service';
 export class FeatDialogComponent implements OnInit {
 
   tempTitle:string;
-  tempFeat: feat= {fTitle: "", fDescription: "", fSummary: "", fDetail:""};
+  tempFeat: Feat= {fTitle: "", fDescription: "", fSummary: "", fDetail:""};
 
   constructor(
     private character: CharacterService,

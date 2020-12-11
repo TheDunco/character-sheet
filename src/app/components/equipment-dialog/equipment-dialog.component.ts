@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import { CharacterService,equipment } from 'src/app/services/character.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { CharacterService, Equipment } from 'src/app/services/character.service';
 import { EquipmentComponent } from '../equipment/equipment.component';
 
 @Component({
@@ -12,7 +12,7 @@ export class EquipmentDialogComponent implements OnInit {
 
   tempName:string;
   tempDescription:string;
-  tempEquip: equipment = {name: "", description: "", quantity: 0, carried: "No", weight:0, equipType:"None", equipped:"No"};
+  tempEquip: Equipment = {name: "", description: "", quantity: 0, carried: "No", weight:0, equipType:"None", equipped:"No"};
 
   constructor(
     private character: CharacterService,

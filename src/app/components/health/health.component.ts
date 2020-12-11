@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CharacterService, health } from '../../services/character.service'
+import { CharacterService, Health } from '../../services/character.service'
 
 @Component({
   selector: 'app-health',
@@ -10,7 +10,7 @@ export class HealthComponent implements OnInit {
 
   constructor(private character: CharacterService) { }
 
-  health = this.character.getHealth();
+  health: Health = this.character.getHealth();
   //TODO: This will have to get moved to the character service at some point
   hp = this.health.hpCurrent;
   tempHP = this.health.hpTemp;
