@@ -24,7 +24,7 @@ export class CharacterService {
   languages: string = "Common"
   miscProfs: string = "Thieves Tools, Martial Weapons"
   // Health
-  health: health
+  health: Health
     = {
     hpCurrent: 30,
     hpMax: 30,
@@ -36,7 +36,7 @@ export class CharacterService {
     deathSaveSuccesses: 0
   }
   // Ability Scores
-  abilityScores: abilityScore
+  abilityScores: AbilityScore
     = {
     charisma: 10,
     constitution: 10,
@@ -45,7 +45,7 @@ export class CharacterService {
     strength: 10,
     wisdom: 10,
   }
-  summary: summary
+  summary: Summary
     = {
     age: "21",
     height: "5'0\"",
@@ -59,7 +59,7 @@ export class CharacterService {
     background: "Acolyte",
     speed: 30,
   }
-  defenses: defense
+  defenses: Defense
     = {
     armorName: "Leather Armor",
     armorBonus: 1,
@@ -71,33 +71,33 @@ export class CharacterService {
   initiative: number = this.toMod(this.abilityScores.dexterity)
   ac: number = this.toMod(this.abilityScores.dexterity) + 10
   
-  exampleAbility: abilities = {name: "Assassinate", summary: "Advantage and automatic critical against surprised creatures.", description: "During its first turn, this creature has advantage on attack rolls against any creature that hasn’t taken a turn. Any hit it scores against a surprised creature is a critical hit."};
-  exampleAbility2: abilities =  {name: "Cunning Action", summary: "Use a bonus action to Dash, Disengage, or Hide.",description: "Your quick thinking and agility allow you to move and act quickly. You can take a bonus action on each of your turns in combat. This action can be used only to take the Dash, Disengage, or Hide action."};
-  abilityList: abilities[] = [this.exampleAbility, this.exampleAbility2];
+  exampleAbility: Ability = {name: "Assassinate", summary: "Advantage and automatic critical against surprised creatures.", description: "During its first turn, this creature has advantage on attack rolls against any creature that hasn’t taken a turn. Any hit it scores against a surprised creature is a critical hit."};
+  exampleAbility2: Ability =  {name: "Cunning Action", summary: "Use a bonus action to Dash, Disengage, or Hide.",description: "Your quick thinking and agility allow you to move and act quickly. You can take a bonus action on each of your turns in combat. This action can be used only to take the Dash, Disengage, or Hide action."};
+  abilityList: Ability[] = [this.exampleAbility, this.exampleAbility2];
   
   proficiencies: string[] = ["charismaSave", "sleightOfHand", "investigation", "Warhammer"]
   
   proficiencyBonus: number = 2;
   
-  userNotes: note ={nTitle:"This is the first title" , nDescription: "this is the first description" };
-  userNotes2: note ={nTitle:"This is the first title2" , nDescription: "this is the first description2" };
-  notesList: note[] = [this.userNotes, this.userNotes2];
+  userNotes: Note ={nTitle:"This is the first title" , nDescription: "this is the first description" };
+  userNotes2: Note ={nTitle:"This is the first title2" , nDescription: "this is the first description2" };
+  notesList: Note[] = [this.userNotes, this.userNotes2];
   
-  userFeatExample: feat = {fTitle:"Title", fDescription: "dscription", fDetail:"detail", fSummary: "summary"}
-  featsList: feat[] = [this.userFeatExample];
+  userFeatExample: Feat = {fTitle:"Title", fDescription: "dscription", fDetail:"detail", fSummary: "summary"}
+  featsList: Feat[] = [this.userFeatExample];
   
-  exampleWeapon: equipment = {name: "Dagger", quantity: 2, carried: "Yes", weight: 1, equipType: "Weapon",description: " Category: Simple Melee Weapon" + '\n' + "Cost: 2gp\n Damage: 1d4 piercing\n Properties:Finesse, light, thrown (range 20/60)", equipped: "Yes"};
-  exampleArmor: equipment = {equipped: "Yes", name: "Chain Shirt", quantity: 1, carried: "Yes", weight: 20, equipType: "Armor", description: " Type: Medium Armor \n Cost: 50 gp \n Armor Class: 13 \n\n Made of interlocking metal rings, a chain shirt is worn between layers of clothing or leather. This armor offers modest protection to the wearer’s upper body and allows the sound of the rings rubbing against one another to be muffled by outer layers"}
-  exampleGear: equipment = {name: "Digsuise kit", quantity: 1, carried: "Yes", weight: 3, equipType: "Gear",equipped: "No", description: " Cost: 25gp  This pouch of cosmetics, hair dye, and small props lets you create disguises that change your physical appearance. Proficiency with this kit lets you add your proficiency bonus to any ability checks you make to create a visual disguise"}
-  exampleGear2: equipment = {name: "Explorer's Pack", quantity: 1, carried: "Yes", weight: 3, equipType: "Gear",equipped: "No", description: " Cost: 10gp \n\n Includes a backpack, a bedroll, a mess kit, a tinderbox, 10 torches, 10 days of rations, and a waterskin. The pack also has 50 feet of hempen rope strapped to the side of it"};
-  exampleTool: equipment = {name: "Thieve's Tools", weight: 1, quantity: 1, carried: "Yes", equipType: "Tool", equipped: "No", description: " Cost: 25 gp \n\n This set of tools includes a small file, a set of lock picks, a small mirror mounted on a metal handle, a set of narrow-bladed scissors, and a pair of pliers. Proficiency with these tools lets you add your proficiency bonus to any ability checks you make to disarm traps or open locks"}
-  exampleWeapon2: equipment = {name: "Shortbow", weight: 2, quantity: 1, carried: "Yes", equipped: "No", equipType: "Weapon", description: " Category: Simple Ranged\n Cost: 25gp\n Damage: 1d6 piercing\n Properties: Ammunition (range 80/320). two-handed" }
+  exampleWeapon: Equipment = {name: "Dagger", quantity: 2, carried: "Yes", weight: 1, equipType: "Weapon",description: " Category: Simple Melee Weapon" + '\n' + "Cost: 2gp\n Damage: 1d4 piercing\n Properties:Finesse, light, thrown (range 20/60)", equipped: "Yes"};
+  exampleArmor: Equipment = {equipped: "Yes", name: "Chain Shirt", quantity: 1, carried: "Yes", weight: 20, equipType: "Armor", description: " Type: Medium Armor \n Cost: 50 gp \n Armor Class: 13 \n\n Made of interlocking metal rings, a chain shirt is worn between layers of clothing or leather. This armor offers modest protection to the wearer’s upper body and allows the sound of the rings rubbing against one another to be muffled by outer layers"}
+  exampleGear: Equipment = {name: "Digsuise kit", quantity: 1, carried: "Yes", weight: 3, equipType: "Gear",equipped: "No", description: " Cost: 25gp  This pouch of cosmetics, hair dye, and small props lets you create disguises that change your physical appearance. Proficiency with this kit lets you add your proficiency bonus to any ability checks you make to create a visual disguise"}
+  exampleGear2: Equipment = {name: "Explorer's Pack", quantity: 1, carried: "Yes", weight: 3, equipType: "Gear",equipped: "No", description: " Cost: 10gp \n\n Includes a backpack, a bedroll, a mess kit, a tinderbox, 10 torches, 10 days of rations, and a waterskin. The pack also has 50 feet of hempen rope strapped to the side of it"};
+  exampleTool: Equipment = {name: "Thieve's Tools", weight: 1, quantity: 1, carried: "Yes", equipType: "Tool", equipped: "No", description: " Cost: 25 gp \n\n This set of tools includes a small file, a set of lock picks, a small mirror mounted on a metal handle, a set of narrow-bladed scissors, and a pair of pliers. Proficiency with these tools lets you add your proficiency bonus to any ability checks you make to disarm traps or open locks"}
+  exampleWeapon2: Equipment = {name: "Shortbow", weight: 2, quantity: 1, carried: "Yes", equipped: "No", equipType: "Weapon", description: " Category: Simple Ranged\n Cost: 25gp\n Damage: 1d6 piercing\n Properties: Ammunition (range 80/320). two-handed" }
   
-  equipmentList: equipment[] = [this.exampleWeapon,this.exampleArmor,this.exampleGear,this.exampleGear2,this.exampleTool,this.exampleWeapon2];
+  equipmentList: Equipment[] = [this.exampleWeapon,this.exampleArmor,this.exampleGear,this.exampleGear2,this.exampleTool,this.exampleWeapon2];
 
-  money: money = {copperAmount: 0, silverAmount: 2, goldAmount: 35, platinumAmount: 1};
+  money: Money = {copperAmount: 0, silverAmount: 2, goldAmount: 35, platinumAmount: 1};
   
-  tracklist: trackable[]
+  tracklist: Trackable[]
     = [
     {
       name: '1st Level Spell Slots',
@@ -122,14 +122,14 @@ export class CharacterService {
     }
   ]
   
-  exampleMelee: action = {name: "Unarmed Strike",description:"Your fists",actionType:"Melee",damage: String(this.toMod(this.abilityScores.strength)),damageType:"Bludgeoning",toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0, fullDamage: "0", fullToHit: "0"};
-  exampleMelee2: action = {name: "Warhammer",damageType:"Bludgeoning",actionType:"Melee",damage:"1d10",description:"A big hammer", toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0, fullDamage: "1d10+0", fullToHit: "0"};
-  exampleMelee3: action = {name: "Shortsword",damageType:"Piercing",actionType:"Melee",damage:"1d6",description:"A standard sword", toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0, fullDamage: "1d6+0", fullToHit: "0"};
-  exampleRange: action = {name: "Shortbow",damageType:"Piercing",actionType:"Range",damage:"1d6",description:"A standard bow", toHit: this.toMod(this.abilityScores.dexterity), abilityScore: "Dexterity", damageMisc: 0, hitMisc: 0, fullDamage: "1d6", fullToHit: "0"};
-  exampleMagic: action = {name:"Blade of Avernus (Vorpal)",damageType:"Slashing", actionType: "Magic Item", damage: "2d6",description:"Instant decapitation? Yes please!",toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength",damageMisc: 3, hitMisc: 3, fullDamage: "0", fullToHit: "2d6+5"};
-  actionList: action[] //= [this.exampleMelee,this.exampleMagic, this.exampleMelee2, this.exampleRange, this.exampleMelee3];
+  exampleMelee: Action = {name: "Unarmed Strike",description:"Your fists",actionType:"Melee",damage: String(this.toMod(this.abilityScores.strength)),damageType:"Bludgeoning",toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0, fullDamage: "0", fullToHit: "0"};
+  exampleMelee2: Action = {name: "Warhammer",damageType:"Bludgeoning",actionType:"Melee",damage:"1d10",description:"A big hammer", toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0, fullDamage: "1d10+0", fullToHit: "0"};
+  exampleMelee3: Action = {name: "Shortsword",damageType:"Piercing",actionType:"Melee",damage:"1d6",description:"A standard sword", toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength", damageMisc: 0, hitMisc: 0, fullDamage: "1d6+0", fullToHit: "0"};
+  exampleRange: Action = {name: "Shortbow",damageType:"Piercing",actionType:"Range",damage:"1d6",description:"A standard bow", toHit: this.toMod(this.abilityScores.dexterity), abilityScore: "Dexterity", damageMisc: 0, hitMisc: 0, fullDamage: "1d6", fullToHit: "0"};
+  exampleMagic: Action = {name:"Blade of Avernus (Vorpal)",damageType:"Slashing", actionType: "Magic Item", damage: "2d6",description:"Instant decapitation? Yes please!",toHit: this.toMod(this.abilityScores.strength), abilityScore: "Strength",damageMisc: 3, hitMisc: 3, fullDamage: "0", fullToHit: "2d6+5"};
+  actionList: Action[] //= [this.exampleMelee,this.exampleMagic, this.exampleMelee2, this.exampleRange, this.exampleMelee3];
 
-  spellList: spell[]
+  spellList: Spell[]
     = [
     {
       name: "Puppet",
@@ -288,14 +288,14 @@ export class CharacterService {
     this.health.hitDiceMax = this.level;
   }
   
-  getHealth(): health {
+  getHealth(): Health {
     return this.health
   }
-  setHealth(newHealth: health) {
+  setHealth(newHealth: Health) {
     this.health = newHealth;
   }
   
-  getAbilityScores(): abilityScore {
+  getAbilityScores(): AbilityScore {
     return this.abilityScores
   }
   getAbilityScore(which: string): number {
@@ -308,11 +308,11 @@ export class CharacterService {
       case 'wisdom': return this.abilityScores.wisdom;
     }
   }
-  setAbilityScores(newScores: abilityScore) {
+  setAbilityScores(newScores: AbilityScore) {
     this.abilityScores = newScores;
   }
   
-  setSummary(newSum: summary): void {
+  setSummary(newSum: Summary): void {
     this.summary = newSum;
   }
 
@@ -363,11 +363,11 @@ export class CharacterService {
     if (score == 30) {return 10}
   }
   
-  getAbilities(): abilities[]{
+  getAbilities(): Ability[]{
     return this.abilityList;
   }
 
-  updateAbility(nAbility: abilities, oAbilityName: string) {
+  updateAbility(nAbility: Ability, oAbilityName: string) {
     const index = this.abilityList.findIndex(item => item.name === oAbilityName);
     if (index > -1) {
       this.abilityList[index].name = nAbility.name;
@@ -386,15 +386,15 @@ export class CharacterService {
     }
   }
 
-  getNotes(): note[]{
+  getNotes(): Note[]{
     return this.notesList;
   }
 
-  addNote(nData: note): void {
+  addNote(nData: Note): void {
     this.notesList.push(nData);
   }
 
-  updateNote(nData: note, tNote:string, dNote:string):void {
+  updateNote(nData: Note, tNote:string, dNote:string):void {
     const index = this.notesList.findIndex(item => item.nTitle === tNote && item.nDescription === dNote);
     if (index > -1) {
       this.notesList[index].nTitle = nData.nTitle;
@@ -418,7 +418,7 @@ export class CharacterService {
     this.notesList.push(this.notesList[index]);
   }
   
-  updateFeat(fData: feat, oFeat:string){
+  updateFeat(fData: Feat, oFeat:string){
     const index = this.featsList.findIndex(item => item.fTitle === oFeat);
     if (index > -1) {
       this.featsList[index].fTitle = fData.fTitle;
@@ -439,7 +439,7 @@ export class CharacterService {
     }
   }
 
-  getFeat(): feat[]{
+  getFeat(): Feat[]{
     return this.featsList;
   }
 
@@ -448,13 +448,13 @@ export class CharacterService {
     this.featsList.push(this.featsList[index]);
   }
 
-  getEquipment(): equipment[]{
+  getEquipment(): Equipment[]{
  
     return this.equipmentList;
 
   }
 
-  updateEquipment(equipment:equipment, tempEquipment:equipment){
+  updateEquipment(equipment:Equipment, tempEquipment:Equipment){
     const index = this.equipmentList.findIndex(item => item.name === equipment.name && 
       item.description === equipment.description && 
       item.quantity === equipment.quantity && 
@@ -477,7 +477,7 @@ export class CharacterService {
       }
   }
 
-  deleteEquipment(equipment:equipment){
+  deleteEquipment(equipment:Equipment){
     const index = this.equipmentList.findIndex(item => item.name === equipment.name && 
       item.description === equipment.description && 
       item.quantity === equipment.quantity && 
@@ -490,20 +490,20 @@ export class CharacterService {
     }
   }
 
-  getMoney(): money{
+  getMoney(): Money{
     return this.money;
   }
   
-  setMoney(newMoney: money) {
+  setMoney(newMoney: Money) {
     this.money = newMoney
   }
 
   
-  getActions(): action[]{
+  getActions(): Action[]{
     return this.actionList;
   }
 
-  updateAction(nAction: action, oActionName: string) {
+  updateAction(nAction: Action, oActionName: string) {
     const index = this.actionList.findIndex(item => item.name === oActionName);
     if (index > -1) {
       this.actionList[index].name = nAction.name;
@@ -528,11 +528,11 @@ export class CharacterService {
     }
   }
   
-  setTrackList(newList: trackable[]): void {
+  setTrackList(newList: Trackable[]): void {
     this.tracklist = newList;
   }
   
-  updateTrackable(tData: trackable, oTrack:string){
+  updateTrackable(tData: Trackable, oTrack:string){
     const index = this.tracklist.findIndex(item => item.name === oTrack);
     if (index > -1) {
       this.tracklist[index].name = tData.name;
@@ -572,7 +572,7 @@ export class CharacterService {
     })
   }
   
-  updateSpell(nSpell: spell, oSpellName: string) {
+  updateSpell(nSpell: Spell, oSpellName: string) {
     const index = this.spellList.findIndex(item => item.name === oSpellName);
     if (index > -1) {
       this.spellList[index].name = nSpell.name;
@@ -750,7 +750,7 @@ export class CharacterService {
 }
 
 //  ----------- Character Type Interfaces  -----------
-export interface defense {
+export interface Defense {
   armorName: string,
   armorBonus: number,
   shieldName: string,
@@ -759,7 +759,7 @@ export interface defense {
   miscBonus: number,
 }
 
-export interface spell {
+export interface Spell {
   name: string,
   summary: string,
   description: string,
@@ -769,7 +769,7 @@ export interface spell {
   srdUrl: string
 }
 
-export interface abilityScore {
+export interface AbilityScore {
   charisma: number,
   constitution: number,
   dexterity: number,
@@ -778,17 +778,17 @@ export interface abilityScore {
   wisdom: number
 }
 
-export interface miscProficiency {
+export interface MiscProficiency {
   miscProf: string
 }
 
-export interface abilities{
+export interface Ability{
   name: string,
   summary: string,
   description: string
 }
 
-export interface health {
+export interface Health {
   hpCurrent: number,
   hpMax: number,
   hpTemp: number,
@@ -799,27 +799,24 @@ export interface health {
   deathSaveSuccesses: number
 }
 
-type equipmentType = "Armor" | "Weapon" | "Gear" | "Tool" | "None";
-type yesNo = "Yes" | "No";
-
-export interface money{
+export interface Money{
   copperAmount: number;
   silverAmount: number;
   goldAmount: number;
   platinumAmount: number;
 }
 
-export interface equipment{
+export interface Equipment{
   name: string;
   description: string,
   quantity: number
-  carried: yesNo;
+  carried: "Yes" | "No";
   weight: number;
-  equipType: equipmentType;
-  equipped: yesNo;
+  equipType: "Armor" | "Weapon" | "Gear" | "Tool" | "None";
+  equipped: "Yes" | "No";
 }
 
-export interface summary {
+export interface Summary {
   age: string,
   height: string,
   weight: string,
@@ -833,26 +830,26 @@ export interface summary {
   speed: number,
 }
 
-export interface level {
+export interface Level {
   xp: number,
   level: number,
   class: number
 }
 
 
-export interface note {
+export interface Note {
   nTitle: string,
   nDescription: string
 }
 
-export interface feat {
+export interface Feat {
   fTitle: string,
   fDescription: string,
   fDetail: string,
   fSummary: string
 }
 
-export interface action {
+export interface Action {
   name: string,
   description: string,
   actionType: "Power" | "Spell" | "Melee" | "Magic Item" | "Range" | "Potion" | "Special";
@@ -866,7 +863,7 @@ export interface action {
   fullDamage?: string
 }
 
-export interface trackable {
+export interface Trackable {
   name: string,
   type: 'checkboxes' | 'number',
   description: string,

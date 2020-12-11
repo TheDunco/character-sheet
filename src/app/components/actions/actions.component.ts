@@ -1,13 +1,8 @@
-import { MatDialog, MatDialogModule, MatDialogConfig } from '@angular/material/dialog';
-import { Component, Input, OnInit } from '@angular/core';
-import { action, CharacterService } from '../../services/character.service';
+import { MatDialog } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
+import { Action, CharacterService } from '../../services/character.service';
 import { ActionDialogComponent } from '../action-dialog/action-dialog.component';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
 import { Observable } from 'rxjs';
-import { throwIfEmpty } from 'rxjs/operators';
-import { AbilityScoreComponent } from '../ability-score/ability-score.component';
-
 
 @Component({
   selector: 'app-actions',
@@ -16,7 +11,7 @@ import { AbilityScoreComponent } from '../ability-score/ability-score.component'
 })
 export class ActionsComponent implements OnInit {
 
-  actionList: action[] = this.character.getActions();
+  actionList: Action[] = this.character.getActions();
   hasMelee: boolean;
   hasRange: boolean;
   hasMagic: boolean;

@@ -1,4 +1,4 @@
-import { abilities, abilityScore, action, defense, equipment, feat, health, money, note, spell, summary, trackable } from './character.service';
+import { Ability, AbilityScore, Action, Defense, Equipment, Feat, Health, Money, Note, Spell, Summary, Trackable } from './character.service';
 
 export interface character {
     name: string
@@ -8,22 +8,22 @@ export interface character {
     spellcastingAbility: string,
     languages: string,
     miscProfs: string,
-    health: health,
-    abilityScores: abilityScore,
-    summary: summary,
-    defenses: defense,
+    health: Health,
+    abilityScores: AbilityScore,
+    summary: Summary,
+    defenses: Defense,
     initiative: number,
     ac: number,
     proficiencies: string[],
     proficiencyBonus: number,
-    abilityList: abilities[],
-    notesList: note[],
-    featsList: feat[],
-    equipmentList: equipment[],
-    money: money,
-    actionList: action[],
-    tracklist: trackable[],
-    spellList: spell[],
+    abilityList: Ability[],
+    notesList: Note[],
+    featsList: Feat[],
+    equipmentList: Equipment[],
+    money: Money,
+    actionList: Action[],
+    tracklist: Trackable[],
+    spellList: Spell[],
     highestLevelSpell: number,
     preppedSpells: number,
     ID: string

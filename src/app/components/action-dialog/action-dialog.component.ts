@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {MAT_DIALOG_DATA,MatDialogRef} from '@angular/material/dialog';
-import { action, CharacterService } from '../../services/character.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Action, CharacterService } from '../../services/character.service';
 
 @Component({
   selector: 'app-action-dialog',
@@ -10,7 +10,7 @@ import { action, CharacterService } from '../../services/character.service';
 export class ActionDialogComponent implements OnInit {
 
   tempName:string;
-  tempAction: action = {
+  tempAction: Action = {
     name: this.data.name,
     damage: this.data.damage,
     actionType: this.data.actionType,

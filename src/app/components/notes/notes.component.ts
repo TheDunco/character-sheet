@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {note, CharacterService} from '../../services/character.service';
+import { Note, CharacterService } from '../../services/character.service';
 import { NoteDialogComponent } from '../note-dialog/note-dialog.component';
-import { MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -13,7 +13,7 @@ export class NotesComponent implements OnInit {
 
   constructor(private character: CharacterService, private matDialog: MatDialog) { }
 
-  noteList: note[] = this.character.getNotes();
+  noteList: Note[] = this.character.getNotes();
   title:string;
   description:string;
   ngOnInit(): void {

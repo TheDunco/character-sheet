@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import {abilities, CharacterService} from '../../services/character.service';
-import { MatDialog, MatDialogModule, MatDialogConfig } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
+import {Ability, CharacterService} from '../../services/character.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AbilityDialogComponent } from '../ability-dialog/ability-dialog.component';
 
 @Component({
@@ -10,7 +10,7 @@ import { AbilityDialogComponent } from '../ability-dialog/ability-dialog.compone
 })
 export class AbilitiesComponent implements OnInit {
 
-  abilityList: abilities[] = this.character.getAbilities();
+  abilityList: Ability[] = this.character.getAbilities();
 
   constructor(private character: CharacterService, private matDialog: MatDialog ) { 
   }

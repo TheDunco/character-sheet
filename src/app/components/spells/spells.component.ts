@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CharacterService, note } from 'src/app/services/character.service';
+import { CharacterService, Note } from 'src/app/services/character.service';
 import { SpellsDialogComponent } from '../spells-dialog/spells-dialog.component';
 
 @Component({

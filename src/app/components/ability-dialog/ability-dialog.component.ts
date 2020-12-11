@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {MAT_DIALOG_DATA,MatDialogRef} from '@angular/material/dialog';
-import { abilities, CharacterService } from '../../services/character.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Ability, CharacterService } from '../../services/character.service';
 
 @Component({
   selector: 'app-ability-dialog',
@@ -10,13 +10,11 @@ import { abilities, CharacterService } from '../../services/character.service';
 export class AbilityDialogComponent implements OnInit {
   
   tempName:string;
-  tempAbility: abilities = {
+  tempAbility: Ability = {
         name: this.data.name,
         summary: this.data.summary,
         description: this.data.description
   };
-
-
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
