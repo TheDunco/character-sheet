@@ -9,26 +9,25 @@ import { CharacterService, Trackable } from '../../services/character.service';
   styleUrls: ['./trackables-dialog.component.scss']
 })
 export class TrackablesDialogComponent implements OnInit {
-  
-  tempName:string;
-  tempTrack: Trackable = { name: "", description: "", max: 0, current: 0, type: this.data.type };
-
   constructor(
     private character: CharacterService,
     public trackDialog: MatDialogRef<TrackablesDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {}
-
+    @Inject(MAT_DIALOG_DATA) public data: any
+    ) { }
+    
   ngOnInit(): void {
     this.tempName = this.data.title;
   }
-
-  closeDialog(){
-    this.trackDialog.close();
-  }
-  
+    
+  tempName:string;
+  tempTrack: Trackable = { name: "", description: "", max: 0, current: 0, type: this.data.type };
   max: number = this.data.max
   current = this.data.max
   selectedType: 'checkboxes' | 'number' = this.data.type
+  
+  closeDialog(){
+    this.trackDialog.close();
+  }
   
   saveTrack() {
     let current: number

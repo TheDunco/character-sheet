@@ -8,14 +8,6 @@ import { Ability, CharacterService } from '../../services/character.service';
   styleUrls: ['./ability-dialog.component.scss']
 })
 export class AbilityDialogComponent implements OnInit {
-  
-  tempName:string;
-  tempAbility: Ability = {
-        name: this.data.name,
-        summary: this.data.summary,
-        description: this.data.description
-  };
-
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public abilityDialog: MatDialogRef<AbilityDialogComponent>,
@@ -26,6 +18,13 @@ export class AbilityDialogComponent implements OnInit {
     this.tempName=this.data.name;
     console.log(this.data.description);
   }
+  
+  tempName:string;
+  tempAbility: Ability = {
+    name: this.data.name,
+    summary: this.data.summary,
+    description: this.data.description
+  };
 
   closeDialog(){
     this.abilityDialog.close();

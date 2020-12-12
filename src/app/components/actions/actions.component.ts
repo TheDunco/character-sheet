@@ -10,7 +10,12 @@ import { Observable } from 'rxjs';
   styleUrls: ['./actions.component.scss']
 })
 export class ActionsComponent implements OnInit {
-
+  constructor(private character: CharacterService, private matDialog: MatDialog) {
+    this.updateHeader()
+  }
+  
+  ngOnInit(): void { }
+  
   actionList: Action[] = this.character.getActions();
   hasMelee: boolean;
   hasRange: boolean;
@@ -20,13 +25,6 @@ export class ActionsComponent implements OnInit {
   hasPower: boolean;
   hasSpell: boolean;
   test: Observable<any>;
-
-  constructor(private character: CharacterService, private matDialog: MatDialog) {
-    this.updateHeader()
-  }
-
- 
-  
   
   openDialog(name: string, description: string, actionType: string, damage: string, damageType: string, toHit: number, abilityScore: string, hitMisc: number, damageMisc: number,fullToHit?:string, fullDamage?:string) {
     this.matDialog.open(ActionDialogComponent, {
@@ -100,8 +98,5 @@ export class ActionsComponent implements OnInit {
         }
       }
     }
-  }
-  ngOnInit(): void {
-
   }
 }

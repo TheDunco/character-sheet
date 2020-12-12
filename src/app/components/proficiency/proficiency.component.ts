@@ -7,18 +7,16 @@ import { CharacterService } from 'src/app/services/character.service';
   styleUrls: ['./proficiency.component.scss']
 })
 export class ProficiencyComponent implements OnInit {
-
   constructor(public character: CharacterService) { }
-
+  
+  ngOnInit(): void { this.update() }
+  
   profBonus: number
   selectedAbility = this.character.spellcastingAbility;
-  
   // Spell save DC = 8 + proficiency bonus + spellcasting mod
   spellSaveDC: number;
-  
   // Spell attack = spellcasting mod + proficiency bonus
   attackBonus: number;
-  
   languages = this.character.languages
   miscProfs = this.character.miscProfs
   
@@ -38,7 +36,4 @@ export class ProficiencyComponent implements OnInit {
     // Spell attack = spellcasting mod + proficiency bonus
     this.attackBonus = this.character.toMod(this.character.getAbilityScore(this.selectedAbility)) + this.character.proficiencyBonus;
   }
-  ngOnInit(): void { this.update()
-  }
-
 }

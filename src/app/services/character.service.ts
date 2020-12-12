@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { character } from './character-type';
+import { Character } from './character-type';
 import { v4 as uuidv4 } from 'uuid';
 
 @Injectable({
@@ -10,11 +10,10 @@ import { v4 as uuidv4 } from 'uuid';
 export class CharacterService {
   constructor(private afs: AngularFirestore, private router: Router) { }
 
-  //  ----------- Character Variables  -----------
-  
-  // These were the testing/debugging defaults, they now get overwritten by the setCharacterValues() method
   //TODO: BUG! If the character sheet is refreshed, these values get reverted
-
+  
+  //  ----------- Character Variables  -----------
+  // These were the testing/debugging defaults, they now get overwritten by the setCharacterValues() method
   ID: string
   name: string = "Mr. Tester"
   class: string = "Paladin"
@@ -23,6 +22,7 @@ export class CharacterService {
   spellcastingAbility: string = "charisma";
   languages: string = "Common"
   miscProfs: string = "Thieves Tools, Martial Weapons"
+  
   // Health
   health: Health
     = {
@@ -611,7 +611,7 @@ export class CharacterService {
     }
   }
   
-  setCharacterValues(character: character) {
+  setCharacterValues(character: Character) {
     this.name = character.name
     this.class = character.class
     this.xp = character.xp
@@ -640,7 +640,7 @@ export class CharacterService {
     this.ID = character.ID
   }
   
-  getFullCharacter(): character {
+  getFullCharacter(): Character {
     return {
       name: this.name,
       class: this.class,
@@ -671,7 +671,7 @@ export class CharacterService {
     }
   }
   
-  newDefaultCharacter(): character {
+  newDefaultCharacter(): Character {
     return {
       name: "Blank",
       class: "",

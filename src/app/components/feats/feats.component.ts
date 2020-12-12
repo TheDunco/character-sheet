@@ -9,17 +9,15 @@ import { MatDialog} from '@angular/material/dialog';
   styleUrls: ['./feats.component.scss']
 })
 export class FeatsComponent implements OnInit {
-
   constructor(private character: CharacterService, private matDialog: MatDialog) { }
+  
+  ngOnInit(): void { }
 
   featList: Feat[] = this.character.getFeat();
   title:string;
   description:string;
   detail:string;
   summary:string;
-
-  ngOnInit(): void {
-  }
 
   openFeatDialog(featTitle:string, featDescription:string, featDetail:string, featSummary:string){
     this.matDialog.open(FeatDialogComponent, {
@@ -31,8 +29,8 @@ export class FeatsComponent implements OnInit {
         summary: featSummary
       }
     });
-
   }
+  
   openNewFeatDialog(){
     this.matDialog.open(FeatDialogComponent, {
        width: '60vmax',
@@ -44,6 +42,4 @@ export class FeatsComponent implements OnInit {
       }
      });
   }
-
-
 }

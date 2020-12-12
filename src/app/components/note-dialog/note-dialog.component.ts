@@ -9,21 +9,20 @@ import { CharacterService, Note } from '../../services/character.service';
   styleUrls: ['./note-dialog.component.scss']
 })
 export class NoteDialogComponent implements OnInit {
-  
-  tempTitle:string;
-  tempDescription:string;
-  tempNote: Note= {nTitle: "", nDescription: ""};
-
   constructor(
     private character: CharacterService,
     public noteDialog: MatDialogRef<NoteDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {}
-
+    
   ngOnInit(): void {
     this.tempTitle = this.data.title;
     this.tempDescription = this.data.description;
   }
-
+    
+  tempTitle:string;
+  tempDescription:string;
+  tempNote: Note = { nTitle: "", nDescription: "" };
+  
   closeDialog(){
     this.noteDialog.close();
   }

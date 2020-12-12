@@ -8,7 +8,17 @@ import { Action, CharacterService } from '../../services/character.service';
   styleUrls: ['./action-dialog.component.scss']
 })
 export class ActionDialogComponent implements OnInit {
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public actionDialog: MatDialogRef<ActionDialogComponent>,
+    public character: CharacterService
+  ) {}
 
+  ngOnInit(): void {
+    this.tempName = this.data.name;
+    this.calcFulls()
+  }
+  
   tempName:string;
   tempAction: Action = {
     name: this.data.name,
@@ -21,19 +31,6 @@ export class ActionDialogComponent implements OnInit {
     hitMisc: this.data.hitMisc,
     damageMisc: this.data.damageMisc
   };
-
-
-
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    public actionDialog: MatDialogRef<ActionDialogComponent>,
-    public character: CharacterService
-  ) {}
-
-  ngOnInit(): void {
-    this.tempName = this.data.name;
-    this.calcFulls()
-  }
 
   closeDialog(){
     this.actionDialog.close();

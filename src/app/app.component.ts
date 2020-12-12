@@ -6,18 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Character Sheet';
+  title = 'The Book of Names';
 
+  constructor() {}
   
-  constructor(){}
-
-
-  newNoteEntered(){
-
-  }
-  
-  
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }
 

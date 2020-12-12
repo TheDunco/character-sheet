@@ -9,11 +9,6 @@ import { EquipmentComponent } from '../equipment/equipment.component';
   styleUrls: ['./equipment-dialog.component.scss']
 })
 export class EquipmentDialogComponent implements OnInit {
-
-  tempName:string;
-  tempDescription:string;
-  tempEquip: Equipment = {name: "", description: "", quantity: 0, carried: "No", weight:0, equipType:"None", equipped:"No"};
-
   constructor(
     private character: CharacterService,
     @Inject(MAT_DIALOG_DATA) public data: any, 
@@ -24,6 +19,10 @@ export class EquipmentDialogComponent implements OnInit {
     this.tempName = this.data.name;
     this.tempDescription = this.data.description;
   }
+  
+  tempName:string;
+  tempDescription:string;
+  tempEquip: Equipment = {name: "", description: "", quantity: 0, carried: "No", weight:0, equipType:"None", equipped:"No"};
   
   closeDialog(){
     this.equipDialog.close();
@@ -39,7 +38,4 @@ export class EquipmentDialogComponent implements OnInit {
     this.character.deleteEquipment(this.data.equipment);
     this.equipDialog.close();
   } 
-
- 
-
 }

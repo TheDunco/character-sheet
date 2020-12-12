@@ -9,14 +9,13 @@ import { AbilityDialogComponent } from '../ability-dialog/ability-dialog.compone
   styleUrls: ['./abilities.component.scss']
 })
 export class AbilitiesComponent implements OnInit {
-
+  constructor(private character: CharacterService, private matDialog: MatDialog) { }
+  
+  ngOnInit(): void { }
+  
   abilityList: Ability[] = this.character.getAbilities();
-
-  constructor(private character: CharacterService, private matDialog: MatDialog ) { 
-  }
-
+  
   openDialog(name: string, summary: string, description: string) {
-    const dialogConfig = new MatDialogConfig()
     this.matDialog.open(AbilityDialogComponent, {
       width: '60vmax',
       data: {
@@ -37,8 +36,5 @@ export class AbilitiesComponent implements OnInit {
        description: "",
      }
     });
- }
-  ngOnInit(): void {
   }
-
 }

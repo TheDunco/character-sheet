@@ -12,12 +12,12 @@ import { MatDialog } from '@angular/material/dialog';
 export class NotesComponent implements OnInit {
 
   constructor(private character: CharacterService, private matDialog: MatDialog) { }
-
+  
+  ngOnInit(): void { }
+  
   noteList: Note[] = this.character.getNotes();
   title:string;
   description:string;
-  ngOnInit(): void {
-  }
 
   openNoteDialog(noteTitle:string, noteDescription:string){
     this.matDialog.open(NoteDialogComponent, {
@@ -27,16 +27,15 @@ export class NotesComponent implements OnInit {
         description: noteDescription
       }
     });
-
   }
+  
   openNewNoteDialog(){
-     this.matDialog.open(NoteDialogComponent, {
-       width: '60vmax',
-       data: {
+    this.matDialog.open(NoteDialogComponent, {
+      width: '60vmax',
+      data: {
         title: "",
         description: ""
-      }
-     });
+      } 
+    });
   }
-
 }

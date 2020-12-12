@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-// import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 
@@ -10,10 +9,9 @@ import 'firebase/auth';
 
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { user } from '../user-type';
-import { character } from '../character-type';
+import { User } from '../user-type';
+import { Character } from '../character-type';
 import { CharacterService } from '../character.service';
-import { isDeepStrictEqual } from 'util';
 
 // Thanks so much to Jeff Delany for the Google Auth tutorial!
 // https://fireship.io/lessons/angularfire-google-oauth/
@@ -21,38 +19,37 @@ import { isDeepStrictEqual } from 'util';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-    user$: Observable<user>;
-
-    constructor(
-      private afAuth: AngularFireAuth,
-      private afs: AngularFirestore,
-      private router: Router,
-      private character: CharacterService
-    ) { 
-      this.user$ = this.afAuth.authState.pipe(
-        switchMap(user => {
-            // Logged in
-          if (user) {
-            return this.afs.doc<user>(`users/${user.uid}`).valueChanges();
-          } else {
-            // Logged out
-            return of(null);
-          }
-        })
-      )
-    }
-  
+  user$: Observable<User>;
   provider = new firebase.auth.GoogleAuthProvider();
   userData: any;
-
   
+  constructor(
+    private afAuth: AngularFireAuth,
+    private afs: AngularFirestore,
+    private router: Router,
+    private character: CharacterService
+  ) { 
+    this.user$ = this.afAuth.authState.pipe(
+      switchMap(user => {
+          // Logged in
+        if (user) {
+          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+        } else {
+          // Logged out
+          return of(null);
+        }
+      })
+    )
+  }
+  
+  // Sign in with Google
   async googleSignin() {
     const credential = await this.afAuth.signInWithPopup(this.provider);
     const userRef = this.afs.collection('users').doc(`${credential.user.uid}`);
     const doc = await userRef.ref.get();
     
     if (!doc.exists) {
-      // console.log('New User!');
+      // New user
         this.updateUserData({
           displayName: credential.user.displayName,
           uid: credential.user.uid,
@@ -61,17 +58,21 @@ export class AuthService {
           characters: [this.character.newDefaultCharacter()]
       })
     } else {
-       this.userData = doc.data()
-      // console.log('Existing User!', this.userData);
+      // Existing user
+      this.userData = doc.data()
     }
+    
+    // Store the uid of the current user in localstorage for further use
     localStorage.setItem("uid", String(credential.user.uid))
     
     this.router.navigateByUrl('/dashboard')
   }
   
-  async getUserCharacterData(): Promise<character[]> {
+  // Gets all of the characters that the current user has
+  async getUserCharacterData(): Promise<Character[]> {
     const userRef = this.afs.collection('users').doc(`${localStorage.getItem("uid")}`);
     const doc = await userRef.ref.get();
+    
     if (!doc.exists) {
       this.router.navigate(['login'])
     }
@@ -81,8 +82,8 @@ export class AuthService {
     }
   }
 
-  updateUserData(user: user) {
-    // Sets user data to firestore on login
+  // Uploads local user data (including characters) to Firestore
+  updateUserData(user: User) {
     const data = { 
       uid: user.uid, 
       email: user.email, 
@@ -91,12 +92,13 @@ export class AuthService {
       characters: user.characters
     } 
     
-    const userRef: AngularFirestoreDocument<user> = this.afs.doc(`users/${data.uid}`);
+    const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${data.uid}`);
     
     console.log('Updating user data')
     userRef.set(data, { merge: true })
   }
   
+  // Make a new default character with the character service and upload it to Firestore
   async makeNewUserCharacter() {
     const userRef = this.afs.collection('users').doc(`${localStorage.getItem("uid")}`);
     const doc = await userRef.ref.get();
@@ -105,10 +107,10 @@ export class AuthService {
     }
     else {
       const data: any = doc.data()
-      let charactersArray: character[] = data.characters
+      let charactersArray: Character[] = data.characters
       charactersArray.push(this.character.newDefaultCharacter())
       
-      const newUser: user = {
+      const newUser: User = {
         uid: data.uid,
         email: data.email,
         displayName: data.displayName,
@@ -119,19 +121,22 @@ export class AuthService {
     }
   }
   
-  async deleteUserCharacter(char: character) {
+  // Deletes a character from the local character array and updates Firestore
+  async deleteUserCharacter(char: Character) {
     const userRef = this.afs.collection('users').doc(`${localStorage.getItem("uid")}`);
     const doc = await userRef.ref.get();
     const data: any = doc.data()
-    let charactersArray: character[] = data.characters
+    let charactersArray: Character[] = data.characters
     
+    // Ge the index of the character the user wants to deletef
     let index = charactersArray.findIndex(x => {
       return x.ID == char.ID
     })
+    
     if (index > -1) {
       charactersArray.splice(index, 1);
     }
-    const newUser: user = {
+      const newUser: User = {
         uid: data.uid,
         email: data.email,
         displayName: data.displayName,
@@ -142,11 +147,12 @@ export class AuthService {
   }
   
   // Updates the database with the current character
+  // This function is called every 10 seconds from the character sheet
   async syncUserCharacter(): Promise<void> {
       const userRef = this.afs.collection('users').doc(`${localStorage.getItem("uid")}`);
       const doc = await userRef.ref.get();
       const data: any = doc.data()
-      let charactersArray: character[] = data.characters
+      let charactersArray: Character[] = data.characters
       
       let index = charactersArray.findIndex(x => {
         return x.ID == this.character.ID
@@ -155,7 +161,7 @@ export class AuthService {
       if (index > -1) {
         charactersArray[index] = this.character.getFullCharacter();
       }
-      const newUser: user = {
+      const newUser: User = {
           uid: data.uid,
           email: data.email,
           displayName: data.displayName,

@@ -9,30 +9,15 @@ import { CharacterService, Summary } from 'src/app/services/character.service';
 export class SummaryComponent implements OnInit {
 
   constructor(public character: CharacterService) { }
+  
+  ngOnInit(): void {
+    this.update()
+  }
 
   localSummary: Summary;
   xp: number;
   level: number;
   profBonus: number;
-  
-  update(): void {
-    this.localSummary = this.character.summary
-    this.xp = this.character.xp
-    this.level = this.character.level
-    this.profBonus = this.character.proficiencyBonus
-  }
-  
-  setSummary(): void {
-    this.character.setXP(this.xp)
-    this.xp = this.character.xp
-    this.level = this.character.level
-    this.profBonus = this.character.proficiencyBonus
-    this.character.setSummary(this.localSummary)
-  }
-  ngOnInit(): void {
-    this.update()
-  }
-  
   levels = [
     { xp: 0, level: 1 },
     { xp: 300,	level: 2 },
@@ -55,5 +40,23 @@ export class SummaryComponent implements OnInit {
     { xp: 305000,	level: 19 },
     { xp: 355000,	level: 20 },
   ]
+  
+  update(): void {
+    this.localSummary = this.character.summary
+    this.xp = this.character.xp
+    this.level = this.character.level
+    this.profBonus = this.character.proficiencyBonus
+  }
+  
+  setSummary(): void {
+    this.character.setXP(this.xp)
+    this.xp = this.character.xp
+    this.level = this.character.level
+    this.profBonus = this.character.proficiencyBonus
+    this.character.setSummary(this.localSummary)
+  }
+
+  
+  
 
 }
