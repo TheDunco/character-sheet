@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { CharacterSheetComponent } from '../pages/character-sheet/character-sheet.component';
 import { DashboardComponent } from '../pages/dashboard/dashboard.component'
 import { LoginComponent } from '../pages/login/login.component';
-import { AuthGuard } from '../services/auth/auth-guard'
 import { AngularFireAuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);

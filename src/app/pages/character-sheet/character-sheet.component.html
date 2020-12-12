@@ -5,12 +5,12 @@
             <h1>
                 <a (click)="openNameDialog()">{{this.character.name}}</a>, Level {{this.character.level}} {{this.character.class}}
             </h1>
-            <div class="router-button" >
+            <span class="router-button" >
                 <button mat-raised-button routerLink="/dashboard">Dashboard</button>
-            </div>
-            <div class="router-button" >
-                <button mat-raised-button (click)="syncData()">Sync</button>
-            </div>
+            </span>
+            <span class="router-button" >
+                <button mat-raised-button (click)="syncData()">Manual Sync</button>
+            </span>
         </span>
 
         <div fxLayout="row" fxLayout.lt-sm="column" fxLayout.lt-md="column" fxLayoutGap="50px" fxLayoutAlign="center">
