@@ -7,8 +7,9 @@ import { CharacterService } from 'src/app/services/character.service';
   styleUrls: ['./death-saves.component.scss']
 })
 export class DeathSavesComponent implements OnInit {
-
   constructor(private character: CharacterService) { }
+  
+  ngOnInit(): void { }
 
   localHealth = this.character.health
   
@@ -43,9 +44,4 @@ export class DeathSavesComponent implements OnInit {
     }
      this.updateHealth()
   }
-  
-  ngOnInit(): void {
-    
-  }
-
 }

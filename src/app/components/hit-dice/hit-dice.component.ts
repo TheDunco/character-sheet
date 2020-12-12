@@ -7,9 +7,10 @@ import { CharacterService } from 'src/app/services/character.service';
   styleUrls: ['./hit-dice.component.scss']
 })
 export class HitDiceComponent implements OnInit {
-
   constructor(private character: CharacterService) { }
-
+  
+  ngOnInit(): void { }
+  
   localHealth = this.character.health
   
   gainHD() {
@@ -36,10 +37,7 @@ export class HitDiceComponent implements OnInit {
   }
   
   shortRest(): void {
+    // TODO: Implement this!
     console.log('Short Rest')
   }
-  
-  ngOnInit(): void {
-  }
-
 }

@@ -8,10 +8,6 @@ import {CharacterService, Feat } from '../../services/character.service';
   styleUrls: ['./feat-dialog.component.scss']
 })
 export class FeatDialogComponent implements OnInit {
-
-  tempTitle:string;
-  tempFeat: Feat= {fTitle: "", fDescription: "", fSummary: "", fDetail:""};
-
   constructor(
     private character: CharacterService,
     public featDialog: MatDialogRef<FeatDialogComponent>,
@@ -20,12 +16,14 @@ export class FeatDialogComponent implements OnInit {
   ngOnInit(): void {
     this.tempTitle = this.data.title;
   }
+  
+  tempTitle:string;
+  tempFeat: Feat= {fTitle: "", fDescription: "", fSummary: "", fDetail:""};
 
   closeDialog(){
     this.featDialog.close();
   }
 
-  
   saveFeat(){
     this.tempFeat = {fTitle: this.data.title, fDescription: this.data.description, fSummary: this.data.summary, fDetail: this.data.detail};
     this.character.updateFeat(this.tempFeat, this.tempTitle);
@@ -40,5 +38,4 @@ export class FeatDialogComponent implements OnInit {
   cloneFeat(){
     this.character.cloneFeat(this.tempTitle);
   }
-
 }

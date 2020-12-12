@@ -8,10 +8,11 @@ import { CharacterService } from 'src/app/services/character.service';
   styleUrls: ['./name-change-dialog.component.scss']
 })
 export class NameChangeDialogComponent implements OnInit {
-  newName: string
-
   constructor(private character: CharacterService,public dialog: MatDialogRef<NameChangeDialogComponent>) { }
+  
   ngOnInit(): void { }
+  
+  newName: string
   
   changeName() {
     this.character.setName(this.newName)

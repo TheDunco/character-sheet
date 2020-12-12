@@ -9,14 +9,12 @@ import { EquipmentComponent } from '../equipment/equipment.component';
   styleUrls: ['./currency-dialog.component.scss']
 })
 export class CurrencyDialogComponent implements OnInit {
-
   constructor(
     private character: CharacterService,
     @Inject(MAT_DIALOG_DATA) public data: any, 
     private currDialog: MatDialogRef<EquipmentComponent>,) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
   
   inputCurrency: number = 0;
   money = this.character.money

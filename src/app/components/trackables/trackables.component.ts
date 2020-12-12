@@ -10,15 +10,13 @@ import { TrackablesDialogComponent } from '../trackables-dialog/trackables-dialo
   styleUrls: ['./trackables.component.scss']
 })
 export class TrackablesComponent implements OnInit {
-
   constructor(private character: CharacterService, private matDialog: MatDialog) { }
+  ngOnInit(): void { }
 
   tracklist = this.character.tracklist
   title: string;
   description: string;
-  ngOnInit(): void {
-  }
-  
+
   makeArray(n: number): number[] {
     return Array(n)
   }

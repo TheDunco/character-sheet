@@ -7,9 +7,12 @@ import { CharacterService } from 'src/app/services/character.service';
   styleUrls: ['./skills.component.scss']
 })
 export class SkillsComponent implements OnInit {
-
   constructor(public character: CharacterService) { }
-
+  
+  ngOnInit(): void { 
+    this.updateSkills();
+  }
+  
   passiveInvestigation: number
   passivePerception: number
   acrobatics: number
@@ -58,9 +61,4 @@ export class SkillsComponent implements OnInit {
     this.stealth = this.character.toMod(this.character.abilityScores.dexterity) + (this.character.isProficient('stealth') ? this.character.proficiencyBonus : 0);
     this.survival = this.character.toMod(this.character.abilityScores.wisdom) + (this.character.isProficient('survival') ? this.character.proficiencyBonus : 0);
   }
-  
-  ngOnInit(): void { 
-    this.updateSkills();
-  }
-
 }

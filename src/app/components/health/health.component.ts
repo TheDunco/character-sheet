@@ -9,20 +9,18 @@ import { CharacterService, Health } from '../../services/character.service'
 export class HealthComponent implements OnInit {
 
   constructor(private character: CharacterService) { }
-
+  
+  ngOnInit(): void {
+    this.updateHealth();
+  }
+  
   health: Health = this.character.getHealth();
-  //TODO: This will have to get moved to the character service at some point
   hp = this.health.hpCurrent;
   tempHP = this.health.hpTemp;
   inputHP: string;
   inputHealthDamage: number;
   healthPercent: number;
   progressColor = "primary";
-
-  ngOnInit(): void {
-    this.updateHealth();
-  }
-
 
   gainHP(): void {
     if (this.hp + 1 <= this.health.hpMax) {
@@ -86,5 +84,4 @@ export class HealthComponent implements OnInit {
   refresh(): void {
     this.health = this.character.health
   }
-
 }

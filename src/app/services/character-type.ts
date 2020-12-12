@@ -1,6 +1,6 @@
 import { Ability, AbilityScore, Action, Defense, Equipment, Feat, Health, Money, Note, Spell, Summary, Trackable } from './character.service';
 
-export interface character {
+export interface Character {
     name: string
     class: string,
     xp: number,

@@ -10,15 +10,15 @@ import { CurrencyDialogComponent } from '../currency-dialog/currency-dialog.comp
   styleUrls: ['./equipment.component.scss']
 })
 export class EquipmentComponent implements OnInit {
-  totalWeight: number = 0;
-  moneyPouch: Money = this.character.getMoney();
-  equipmentList: Equipment[] = this.character.getEquipment();
-
   constructor(private character: CharacterService, private matDialog: MatDialog) { }
 
   ngOnInit(): void {
     this.updateWeight()
   }
+  
+  totalWeight: number = 0;
+  moneyPouch: Money = this.character.getMoney();
+  equipmentList: Equipment[] = this.character.getEquipment();
 
   updateWeight(): void {
     this.totalWeight = 0;
@@ -26,7 +26,6 @@ export class EquipmentComponent implements OnInit {
       this.totalWeight += (this.equipmentList[i].weight * this.equipmentList[i].quantity)
     }
     this.totalWeight += this.moneyPouch.copperAmount * 0.02 + this.moneyPouch.silverAmount * 0.02 + this.moneyPouch.goldAmount * 0.02 + this.moneyPouch.platinumAmount * 0.02
-
   }
   
   openEquipmentDialog(equipment: Equipment) {
@@ -71,7 +70,6 @@ export class EquipmentComponent implements OnInit {
       }
     });
   }
-
 }
 
 

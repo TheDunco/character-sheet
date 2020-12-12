@@ -3,8 +3,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { NameChangeDialogComponent } from 'src/app/components/name-change-dialog/name-change-dialog.component';
 import { AuthService } from 'src/app/services/auth/auth-service';
-import { character } from 'src/app/services/character-type';
-import { user } from 'src/app/services/user-type';
+import { Character } from 'src/app/services/character-type';
+import { User } from 'src/app/services/user-type';
 import { CharacterService } from '../../services/character.service';
 
 @Component({
@@ -42,10 +42,9 @@ export class CharacterSheetComponent implements OnInit, OnDestroy {
   }
   
   ngOnDestroy() {
-  if (this.interval) {
-    clearInterval(this.interval);
-  }
-}
-
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+  } 
 }
 

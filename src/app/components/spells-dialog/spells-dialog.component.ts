@@ -10,39 +10,39 @@ import { Observable } from 'rxjs';
   styleUrls: ['./spells-dialog.component.scss']
 })
 export class SpellsDialogComponent implements OnInit, AfterViewInit {
-  
-  tempName:string;
-  tempSpell: Spell = {
-        name: this.data.name,
-        summary: this.data.summary,
-        description: this.data.description,
-        level: this.data.level,
-        prepared: this.data.prepared,
-        school: this.data.school,
-        srdUrl: this.data.srdUrl
-  };
-
   constructor(
     private character: CharacterService,
     private http: HttpClient,
     public spellDialog: MatDialogRef<SpellsDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {}
-
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+  
+  ngOnInit(): void {
+    this.tempName = this.data.name;
+    this.getRestData()
+  }
+    
+  ngAfterViewInit(): void {
+    this.getRestData()
+  }
+  
+  tempName:string;
+  tempSpell: Spell = {
+    name: this.data.name,
+    summary: this.data.summary,
+    description: this.data.description,
+    level: this.data.level,
+    prepared: this.data.prepared,
+    school: this.data.school,
+    srdUrl: this.data.srdUrl
+  };
+  
   resolveItems(): Observable<any> {
+    // Code based off of https://angular.io/tutorial/toh-pt6
     // this.http is a HttpClient library provide by @angular/common
     // we are calling .get() method over this.http object
     // this .get() method takes URL to call API
     this.tempSpell.srdUrl = this.tempSpell.srdUrl.toLowerCase().trim().replace(' ', '-')
     return this.http.get("https://www.dnd5eapi.co/api/spells/" + this.tempSpell.srdUrl);
-    }
-    
-  ngOnInit(): void {
-    this.tempName = this.data.name;
-    this.getRestData()
-  }
-  
-  ngAfterViewInit(): void {
-    this.getRestData()
   }
   
   getRestData(): void {
@@ -76,7 +76,6 @@ export class SpellsDialogComponent implements OnInit, AfterViewInit {
   saveSpell(){
     this.character.updateSpell(this.tempSpell, this.tempName);
     this.character.updateHighestLevelSpell();
-    // console.log(this.character);
     this.spellDialog.close();
   }
 
