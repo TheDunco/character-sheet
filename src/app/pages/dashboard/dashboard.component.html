@@ -6,17 +6,22 @@
 
     <mat-label class="title">The Book of Names Character Dashboard</mat-label>
     
-    <div *ngFor="let character of this.userCharacters">
+    <span 
+    *ngFor="let character of this.userCharacters"
+    fxLayout="row" fxLayoutAlign="center center">
         <mat-card class="card">
             <mat-card-title>
                 {{character.name}}
             </mat-card-title>
+            <mat-card-content>
+                <img [src]="this.character.imageLink"/>
+            </mat-card-content>
             <mat-card-actions>
                 <button class="button" color="primary" mat-button (click)="goToCharacterSheet(character)">Character Sheet</button>
                 <button class="button" color="warn" mat-button (click)="deleteCharacter(character)">Delete</button>
             </mat-card-actions>
         </mat-card>
-    </div>
+    </span>
     <button mat-icon-button (click)="makeNewCharacter()">
         <mat-icon>add</mat-icon>
     </button>

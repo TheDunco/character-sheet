@@ -1,6 +1,6 @@
 <div *ngFor="let note of noteList">
 
-    <p><a (click)="openNoteDialog(note.nTitle, note.nDescription)"><strong>{{note.nTitle}}</strong> - {{note.nDescription}}</a></p>
+    <p><a (click)="openNoteDialog(note.nTitle, note.nDescription)"><strong>{{note.nTitle}}</strong></a></p>
 
 </div>
 <button mat-icon-button (click)="openNewNoteDialog()">

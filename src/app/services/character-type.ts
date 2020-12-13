@@ -26,5 +26,6 @@ export interface Character {
     spellList: Spell[],
     highestLevelSpell: number,
     preppedSpells: number,
-    ID: string
+    ID: string,
+    imageLink: string
 }

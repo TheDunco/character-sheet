@@ -168,8 +168,8 @@ export class AuthService {
           photoURL: data.photoURL,
           characters: charactersArray
       }
-      this.updateUserData(newUser)
-    }
+    this.updateUserData(newUser)
+  }
 
   async signOut() {
     await this.afAuth.signOut();

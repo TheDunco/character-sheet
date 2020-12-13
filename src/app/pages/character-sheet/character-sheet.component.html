@@ -3,7 +3,7 @@
     <div fxLayout="column" fxLayout.lt-sm="column" fxLayout.lt-md="column" fxLayoutGap="50px" fxLayoutAlign="start">
         <span>
             <h1>
-                <a (click)="openNameDialog()">{{this.character.name}}</a>, Level {{this.character.level}} {{this.character.class}}
+                <a class="name" (click)="openNameDialog()">{{this.character.name}}</a>, Level {{this.character.level}} {{this.character.class}}
             </h1>
             <span class="router-button" >
                 <button mat-raised-button routerLink="/dashboard">Dashboard</button>

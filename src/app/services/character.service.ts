@@ -23,6 +23,8 @@ export class CharacterService {
   languages: string = "Common"
   miscProfs: string = "Thieves Tools, Martial Weapons"
   
+  imageLink: string = "https://m.mythcreants.com/wp-content/uploads/2013/10/mysterman-180x135.png"
+  
   // Health
   health: Health
     = {
@@ -667,7 +669,8 @@ export class CharacterService {
       spellList: this.spellList,
       highestLevelSpell: this.highestLevelSpell,
       preppedSpells: this.preppedSpells,
-      ID: this.ID
+      ID: this.ID,
+      imageLink: this.imageLink,
     }
   }
   
@@ -744,7 +747,8 @@ export class CharacterService {
       spellList: [],
       highestLevelSpell: 0,
       preppedSpells: 0,
-      ID: uuidv4()
+      ID: uuidv4(),
+      imageLink: "https://m.mythcreants.com/wp-content/uploads/2013/10/mysterman-180x135.png"
     }
   }
 }

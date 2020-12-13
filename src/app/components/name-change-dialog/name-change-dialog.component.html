@@ -1,6 +1,11 @@
 <div fxLayout="column" fxLayoutAlign="center center">
     <mat-form-field>
         <mat-label>New Name</mat-label>
-        <input matInput [(ngModel)]="newName" (keyup.enter)="changeName()">
+        <input matInput [(ngModel)]="newName" [placeholder]="character.name" (keyup.enter)="changeName()">
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-label>Image Link</mat-label>
+        <input matInput [(ngModel)]="newImage" [placeholder]="character.imageLink" (keyup.enter)="changeImage()">
     </mat-form-field>
 </div>
