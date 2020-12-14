@@ -640,6 +640,7 @@ export class CharacterService {
     this.highestLevelSpell = character.highestLevelSpell
     this.preppedSpells = character.preppedSpells
     this.ID = character.ID
+    this.imageLink = character.imageLink
   }
   
   getFullCharacter(): Character {
