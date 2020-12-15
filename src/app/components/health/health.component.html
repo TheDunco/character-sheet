@@ -6,16 +6,16 @@
         <mat-icon>arrow_circle_down</mat-icon>
     </button>
     
-    <input matInput [(ngModel)]="inputHP" (keyup.enter)="setHP()" class="hp-counter mainHealth" placeholder={{hp}}/>
+    <input matInput [(ngModel)]="inputHP" (keyup.enter)="setHP()" class="hp-counter mainHealth" placeholder={{this.character.health.hpCurrent}}/>
     <span class="total-hp"> 
         <span class="slash">
             <label class="slash">/</label>
         </span>
-        <input matInput class="mainHealth" [(ngModel)]="this.health.hpMax"/>
+        <input matInput class="mainHealth" [(ngModel)]="this.character.health.hpMax"/>
     </span>
     
     <label class="tempLabel">Temp: </label>
-    <input matInput [(ngModel)]="tempHP" class="temp"/>
+    <input matInput [(ngModel)]="this.character.health.hpTemp" class="temp"/>
     
     <input matInput [(ngModel)]="inputHealthDamage" class="health-damage" placeholder="Health/Damage"/>
     
