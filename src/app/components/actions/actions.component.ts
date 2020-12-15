@@ -26,7 +26,19 @@ export class ActionsComponent implements OnInit {
   hasSpell: boolean;
   test: Observable<any>;
   
-  openDialog(name: string, description: string, actionType: string, damage: string, damageType: string, toHit: number, abilityScore: string, hitMisc: number, damageMisc: number,fullToHit?:string, fullDamage?:string) {
+  openDialog(
+    name: string,
+    description: string,
+    actionType: string,
+    damage: string,
+    damageType: string,
+    toHit: number,
+    abilityScore: string,
+    hitMisc: number,
+    damageMisc: number,
+    fullToHit: string,
+    fullDamage: string
+  ) {
     this.matDialog.open(ActionDialogComponent, {
       width: '60vmax',
       data: {

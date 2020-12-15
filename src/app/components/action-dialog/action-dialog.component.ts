@@ -19,7 +19,7 @@ export class ActionDialogComponent implements OnInit {
     this.calcFulls()
   }
   
-  tempName:string;
+  tempName: string;
   tempAction: Action = {
     name: this.data.name,
     damage: this.data.damage,
@@ -29,7 +29,9 @@ export class ActionDialogComponent implements OnInit {
     toHit: this.data.toHit,
     abilityScore: this.data.abilityScore,
     hitMisc: this.data.hitMisc,
-    damageMisc: this.data.damageMisc
+    damageMisc: this.data.damageMisc,
+    fullDamage: this.data.fullDamage,
+    fullToHit: this.data.fullToHit
   };
 
   closeDialog(){
@@ -61,6 +63,7 @@ export class ActionDialogComponent implements OnInit {
       this.tempAction.fullDamage = String(this.tempAction.damage + '+' + this.character.toMod(this.character.abilityScores.wisdom))
       this.tempAction.fullToHit = String(this.character.toMod(this.character.abilityScores.wisdom) + +this.tempAction.hitMisc + +(this.character.isProficient(this.tempAction.name) ? +this.character.proficiencyBonus : 0))
     }
+    console.log(this.tempAction.abilityScore)
   }
 
   saveAction() {

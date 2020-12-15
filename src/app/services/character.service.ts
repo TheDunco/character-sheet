@@ -519,6 +519,7 @@ export class CharacterService {
       this.actionList[index].damageType = nAction.damageType;
       this.actionList[index].damageMisc = nAction.damageMisc;
       this.actionList[index].hitMisc = nAction.hitMisc;
+      this.actionList[index].abilityScore = nAction.abilityScore;
       this.actionList[index].fullDamage = nAction.fullDamage;
       this.actionList[index].fullToHit = nAction.fullToHit;
     }
@@ -868,8 +869,8 @@ export interface Action {
   abilityScore: "Charisma" | "Constitution" | "Dexterity" | "Intelligence" | "Strength" | "Wisdom",
   damageMisc: number,
   hitMisc: number,
-  fullToHit?: string,
-  fullDamage?: string
+  fullToHit: string,
+  fullDamage: string
 }
 
 export interface Trackable {
