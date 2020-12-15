@@ -17,126 +17,342 @@
     <span>
         <mat-checkbox [checked]="this.character.isProficient('acrobatics')" (change)="this.changeProf('acrobatics')">
         </mat-checkbox>
-        <small>{{acrobatics}} Acrobatics (Dex)</small>
+        
+        <button
+            class="menu-button" 
+            mat-button 
+            [matMenuTriggerFor]="menuAcrobatics" 
+            [ngClass]="{'exp': this.character.isProficient('acrobaticsExp'), 'half': this.character.isProficient('acrobaticsHalf')}"
+        >
+            <mat-label>{{acrobatics}} Acrobatics (Dex)</mat-label>
+        </button>
+        <mat-menu #menuAcrobatics="matMenu">
+            <button mat-button class="menu-int-button" color="primary" (click)="this.changeSpecProf('acrobatics', 'Exp')">Expertise</button>
+            <button mat-button class="menu-int-button" color="accent" (click)="this.changeSpecProf('acrobatics', 'Half')">Half Proficient</button>
+        </mat-menu>
     </span>
     <br>
 
     <span>
         <mat-checkbox [checked]="this.character.isProficient('animalHandling')"
             (change)="this.changeProf('animalHandling')"></mat-checkbox>
-        <small>{{animalHandling}} Animal Handling (Wis)</small>
+            
+            <button
+            class="menu-button" 
+            mat-button 
+            [matMenuTriggerFor]="menuAnimal" 
+            [ngClass]="{'exp': this.character.isProficient('animalHandlingExp'), 'half': this.character.isProficient('animalHandlingHalf')}"
+            >
+            <mat-label>{{animalHandling}} Animal Handling (Wis)</mat-label>
+        </button>
+        <mat-menu #menuAnimal="matMenu">
+            <button mat-button class="menu-int-button" color="primary" (click)="this.changeSpecProf('animalHandling', 'Exp')">Expertise</button>
+            <button mat-button class="menu-int-button" color="accent" (click)="this.changeSpecProf('animalHandling', 'Half')">Half Proficient</button>
+        </mat-menu>
     </span>
     <br>
 
     <span>
         <mat-checkbox [checked]="this.character.isProficient('arcana')" (change)="this.changeProf('arcana')">
         </mat-checkbox>
-        <small>{{arcana}} Arcana (Int)</small>
+        
+        <button
+        class="menu-button" 
+        mat-button 
+        [matMenuTriggerFor]="menuArcana" 
+        [ngClass]="{'exp': this.character.isProficient('arcanaExp'), 'half': this.character.isProficient('arcanaHalf')}"
+        >
+        <mat-label>{{arcana}} Arcana (Int)</mat-label>
+        </button>
+        <mat-menu #menuArcana="matMenu">
+            <button mat-button class="menu-int-button" color="primary" (click)="this.changeSpecProf('arcana', 'Exp')">Expertise</button>
+            <button mat-button class="menu-int-button" color="accent" (click)="this.changeSpecProf('arcana', 'Half')">Half Proficient</button>
+        </mat-menu>
     </span>
     <br>
 
     <span>
         <mat-checkbox [checked]="this.character.isProficient('athletics')" (change)="this.changeProf('athletics')">
         </mat-checkbox>
-        <small>{{athletics}} Athletics (Str)</small>
+        
+        <button
+        class="menu-button" 
+        mat-button 
+        [matMenuTriggerFor]="menuAthletics" 
+        [ngClass]="{'exp': this.character.isProficient('athleticsExp'), 'half': this.character.isProficient('athleticsHalf')}"
+        >
+        <mat-label>{{athletics}} Athletics (Str)</mat-label>
+        </button>
+        <mat-menu #menuAthletics="matMenu">
+            <button mat-button class="menu-int-button" color="primary" (click)="this.changeSpecProf('athletics', 'Exp')">Expertise</button>
+            <button mat-button class="menu-int-button" color="accent" (click)="this.changeSpecProf('athletics', 'Half')">Half Proficient</button>
+        </mat-menu>
     </span>
     <br>
 
     <span>
         <mat-checkbox [checked]="this.character.isProficient('deception')" (change)="this.changeProf('deception')">
         </mat-checkbox>
-        <small>{{deception}} Deception (Cha)</small>
+        
+        <button
+        class="menu-button" 
+        mat-button 
+        [matMenuTriggerFor]="menuDeception" 
+        [ngClass]="{'exp': this.character.isProficient('deceptionExp'), 'half': this.character.isProficient('deceptionHalf')}"
+        >
+        <mat-label>{{deception}} Deception (Cha)</mat-label>
+        </button>
+        <mat-menu #menuDeception="matMenu">
+            <button mat-button class="menu-int-button" color="primary" (click)="this.changeSpecProf('deception', 'Exp')">Expertise</button>
+            <button mat-button class="menu-int-button" color="accent" (click)="this.changeSpecProf('deception', 'Half')">Half Proficient</button>
+        </mat-menu>
     </span>
     <br>
 
     <span>
         <mat-checkbox [checked]="this.character.isProficient('history')" (change)="this.changeProf('history')">
         </mat-checkbox>
-        <small>{{history}} History (Int)</small>
+        
+        <button
+        class="menu-button" 
+        mat-button 
+        [matMenuTriggerFor]="menuHistory" 
+        [ngClass]="{'exp': this.character.isProficient('historyExp'), 'half': this.character.isProficient('historyHalf')}"
+        >
+        <mat-label>{{history}} History (Int)</mat-label>
+        </button>
+        <mat-menu #menuHistory="matMenu">
+            <button mat-button class="menu-int-button" color="primary" (click)="this.changeSpecProf('history', 'Exp')">Expertise</button>
+            <button mat-button class="menu-int-button" color="accent" (click)="this.changeSpecProf('history', 'Half')">Half Proficient</button>
+        </mat-menu>
     </span>
     <br>
 
     <span>
         <mat-checkbox [checked]="this.character.isProficient('insight')" (change)="this.changeProf('insight')">
         </mat-checkbox>
-        <small>{{insight}} Insight (Wis)</small>
+        
+        <button
+        class="menu-button" 
+        mat-button 
+        [matMenuTriggerFor]="menuInsight" 
+        [ngClass]="{'exp': this.character.isProficient('insightExp'), 'half': this.character.isProficient('insightHalf')}"
+        >
+        <mat-label>{{insight}} Insight (Wis)</mat-label>
+        </button>
+        <mat-menu #menuInsight="matMenu">
+            <button mat-button class="menu-int-button" color="primary" (click)="this.changeSpecProf('insight', 'Exp')">Expertise</button>
+            <button mat-button class="menu-int-button" color="accent" (click)="this.changeSpecProf('insight', 'Half')">Half Proficient</button>
+        </mat-menu>
     </span>
     <br>
 
     <span>
         <mat-checkbox [checked]="this.character.isProficient('intimidation')"
             (change)="this.changeProf('intimidation')"></mat-checkbox>
-        <small>{{intimidation}} Intimidation (Cha)</small>
+            
+            <button
+            class="menu-button" 
+            mat-button 
+            [matMenuTriggerFor]="menuIntimidation" 
+            [ngClass]="{'exp': this.character.isProficient('intimidationExp'), 'half': this.character.isProficient('intimidationHalf')}"
+            >
+            <mat-label>{{intimidation}} Intimidation (Cha)</mat-label>
+        </button>
+        <mat-menu #menuIntimidation="matMenu">
+            <button mat-button class="menu-int-button" color="primary" (click)="this.changeSpecProf('intimidation', 'Exp')">Expertise</button>
+            <button mat-button class="menu-int-button" color="accent" (click)="this.changeSpecProf('intimidation', 'Half')">Half Proficient</button>
+        </mat-menu>
     </span>
     <br>
 
     <span>
         <mat-checkbox [checked]="this.character.isProficient('investigation')"
             (change)="this.changeProf('investigation')"></mat-checkbox>
-        <small>{{investigation}} Investigation (Int)</small>
+            
+            <button
+            class="menu-button" 
+            mat-button 
+            [matMenuTriggerFor]="menuInvestigation" 
+            [ngClass]="{'exp': this.character.isProficient('investigationExp'), 'half': this.character.isProficient('investigationHalf')}"
+            >
+            <mat-label>{{investigation}} Investigation (Int)</mat-label>
+        </button>
+        <mat-menu #menuInvestigation="matMenu">
+            <button mat-button class="menu-int-button" color="primary" (click)="this.changeSpecProf('investigation', 'Exp')">Expertise</button>
+            <button mat-button class="menu-int-button" color="accent" (click)="this.changeSpecProf('investigation', 'Half')">Half Proficient</button>
+        </mat-menu>
     </span>
     <br>
 
     <span>
         <mat-checkbox [checked]="this.character.isProficient('medicine')" (change)="this.changeProf('medicine')">
         </mat-checkbox>
-        <small>{{medicine}} Medicine (Wis)</small>
+        
+        <button
+        class="menu-button" 
+        mat-button 
+        [matMenuTriggerFor]="menuMedicine" 
+        [ngClass]="{'exp': this.character.isProficient('medicineExp'), 'half': this.character.isProficient('medicineHalf')}"
+        >
+        <mat-label>{{medicine}} Medicine (Wis)</mat-label>
+        </button>
+        <mat-menu #menuMedicine="matMenu">
+            <button mat-button class="menu-int-button" color="primary" (click)="this.changeSpecProf('medicine', 'Exp')">Expertise</button>
+            <button mat-button class="menu-int-button" color="accent" (click)="this.changeSpecProf('medicine', 'Half')">Half Proficient</button>
+        </mat-menu>
     </span>
     <br>
 
     <span>
         <mat-checkbox [checked]="this.character.isProficient('nature')" (change)="this.changeProf('nature')">
         </mat-checkbox>
-        <small>{{nature}} Nature (Int)</small>
+        
+        <button
+        class="menu-button" 
+        mat-button 
+        [matMenuTriggerFor]="menuNature" 
+        [ngClass]="{'exp': this.character.isProficient('natureExp'), 'half': this.character.isProficient('natureHalf')}"
+        >
+        <mat-label>{{nature}} Nature (Int)</mat-label>
+        </button>
+        <mat-menu #menuNature="matMenu">
+            <button mat-button class="menu-int-button" color="primary" (click)="this.changeSpecProf('nature', 'Exp')">Expertise</button>
+            <button mat-button class="menu-int-button" color="accent" (click)="this.changeSpecProf('nature', 'Half')">Half Proficient</button>
+        </mat-menu>
     </span>
     <br>
 
     <span>
         <mat-checkbox [checked]="this.character.isProficient('perception')" (change)="this.changeProf('perception')">
         </mat-checkbox>
-        <small>{{perception}} Perception (Wis)</small>
+        
+        <button
+        class="menu-button" 
+        mat-button 
+        [matMenuTriggerFor]="menuPerception" 
+        [ngClass]="{'exp': this.character.isProficient('perceptionExp'), 'half': this.character.isProficient('perceptionHalf')}"
+        >
+        <mat-label>{{perception}} Perception (Wis)</mat-label>
+        </button>
+        <mat-menu #menuPerception="matMenu">
+            <button mat-button class="menu-int-button" color="primary" (click)="this.changeSpecProf('perception', 'Exp')">Expertise</button>
+            <button mat-button class="menu-int-button" color="accent" (click)="this.changeSpecProf('perception', 'Half')">Half Proficient</button>
+        </mat-menu>
     </span>
     <br>
 
     <span>
         <mat-checkbox [checked]="this.character.isProficient('performance')" (change)="this.changeProf('performance')">
         </mat-checkbox>
-        <small>{{performance}} Performance (Cha)</small>
+        
+        <button
+        class="menu-button" 
+        mat-button 
+        [matMenuTriggerFor]="menuPerformance" 
+        [ngClass]="{'exp': this.character.isProficient('performanceExp'), 'half': this.character.isProficient('performanceHalf')}"
+        >
+        <mat-label>{{performance}} Performance (Cha)</mat-label>
+        </button>
+        <mat-menu #menuPerformance="matMenu">
+            <button mat-button class="menu-int-button" color="primary" (click)="this.changeSpecProf('performance', 'Exp')">Expertise</button>
+            <button mat-button class="menu-int-button" color="accent" (click)="this.changeSpecProf('performance', 'Half')">Half Proficient</button>
+        </mat-menu>
     </span>
     <br>
 
     <span>
         <mat-checkbox [checked]="this.character.isProficient('persuasion')" (change)="this.changeProf('persuasion')">
         </mat-checkbox>
-        <small>{{persuasion}} Persuasion (Cha)</small>
+        
+        <button
+        class="menu-button" 
+        mat-button 
+        [matMenuTriggerFor]="menuPersuasion" 
+        [ngClass]="{'exp': this.character.isProficient('persuasionExp'), 'half': this.character.isProficient('persuasionHalf')}"
+        >
+        <mat-label>{{persuasion}} Persuasion (Cha)</mat-label>
+        </button>
+        <mat-menu #menuPersuasion="matMenu">
+            <button mat-button class="menu-int-button" color="primary" (click)="this.changeSpecProf('persuasion', 'Exp')">Expertise</button>
+            <button mat-button class="menu-int-button" color="accent" (click)="this.changeSpecProf('persuasion', 'Half')">Half Proficient</button>
+        </mat-menu>
     </span>
     <br>
 
     <span>
         <mat-checkbox [checked]="this.character.isProficient('religion')" (change)="this.changeProf('religion')">
         </mat-checkbox>
-        <small>{{religion}} Religion (Int)</small>
+        
+        <button
+        class="menu-button" 
+        mat-button 
+        [matMenuTriggerFor]="menuReligion" 
+        [ngClass]="{'exp': this.character.isProficient('religionExp'), 'half': this.character.isProficient('religionHalf')}"
+        >
+        <mat-label>{{religion}} Religion (Int)</mat-label>
+        </button>
+        <mat-menu #menuReligion="matMenu">
+            <button mat-button class="menu-int-button" color="primary" (click)="this.changeSpecProf('religion', 'Exp')">Expertise</button>
+            <button mat-button class="menu-int-button" color="accent" (click)="this.changeSpecProf('religion', 'Half')">Half Proficient</button>
+        </mat-menu>
     </span>
     <br>
 
     <span>
         <mat-checkbox [checked]="this.character.isProficient('sleightOfHand')"
             (change)="this.changeProf('sleightOfHand')"></mat-checkbox>
-        <small>{{sleightOfHand}} Sleight of Hand (Dex)</small>
+            
+            <button
+            class="menu-button" 
+            mat-button 
+            [matMenuTriggerFor]="menuSleight" 
+            [ngClass]="{'exp': this.character.isProficient('sleightOfHandExp'), 'half': this.character.isProficient('sleightOfHandHalf')}"
+            >
+            <mat-label>{{sleightOfHand}} Sleight of Hand (Dex)</mat-label>
+        </button>
+        <mat-menu #menuSleight="matMenu">
+            <button mat-button class="menu-int-button" color="primary" (click)="this.changeSpecProf('sleightOfHand', 'Exp')">Expertise</button>
+            <button mat-button class="menu-int-button" color="accent" (click)="this.changeSpecProf('sleightOfHand', 'Half')">Half Proficient</button>
+        </mat-menu>
     </span>
     <br>
 
     <span>
         <mat-checkbox [checked]="this.character.isProficient('stealth')" (change)="this.changeProf('stealth')">
         </mat-checkbox>
-        <small>{{stealth}} Stealth (Dex)</small>
+        
+        <button
+        class="menu-button" 
+        mat-button 
+        [matMenuTriggerFor]="menuStealth" 
+        [ngClass]="{'exp': this.character.isProficient('stealthExp'), 'half': this.character.isProficient('stealthHalf')}"
+        >
+        <mat-label>{{stealth}} Stealth (Dex)</mat-label>
+        </button>
+        <mat-menu #menuStealth="matMenu">
+            <button mat-button class="menu-int-button" color="primary" (click)="this.changeSpecProf('stealth', 'Exp')">Expertise</button>
+            <button mat-button class="menu-int-button" color="accent" (click)="this.changeSpecProf('stealth', 'Half')">Half Proficient</button>
+        </mat-menu>
     </span>
     <br>
 
     <span>
         <mat-checkbox [checked]="this.character.isProficient('survival')" (change)="this.changeProf('survival')">
         </mat-checkbox>
-        <small>{{survival}} Survival (Wis)</small>
+        
+        <button
+        class="menu-button" 
+        mat-button 
+        [matMenuTriggerFor]="menuSurvival" 
+        [ngClass]="{'exp': this.character.isProficient('survivalExp'), 'half': this.character.isProficient('survivalHalf')}"
+        >
+        <mat-label>{{survival}} Survival (Wis)</mat-label>
+        </button>
+        <mat-menu #menuSurvival="matMenu">
+            <button mat-button class="menu-int-button" color="primary" (click)="this.changeSpecProf('survival', 'Exp')"> class="menu-int-button"Expertise</button>
+            <button mat-button class="menu-int-button" color="accent" (click)="this.changeSpecProf('survival', 'Half')"> class="menu-int-button"Half Proficient</button>
+        </mat-menu>
     </span>
 
 

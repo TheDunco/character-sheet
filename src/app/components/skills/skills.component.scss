@@ -9,3 +9,34 @@ span {
 mat-checkbox {
   margin-right: 10px;
 }
+
+button {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.menu-button {
+  padding-left: -20px;
+  margin-top: -7px;
+  margin-bottom: -7px;
+}
+
+.half {
+  color: #ff4081;
+}
+
+.exp {
+  color: #3f51b5;
+}
+
+mat-label {
+  font-size: 1.2rem;
+}
+
+.menu-int-button {
+  margin-top: 6px;
+}
+
+* {
+  white-space: nowrap;
+}

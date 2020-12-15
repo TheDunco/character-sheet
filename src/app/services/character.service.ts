@@ -193,14 +193,7 @@ export class CharacterService {
   setLanguages(newLanguages: string): void { this.languages = newLanguages }
   setMiscProfs(newProfs: string): void { this.miscProfs = newProfs }
   
-  changeProf(name: string): void {
-    if (this.isProficient(name)) {
-      this.removeProficiency(name)
-    }
-    else {
-      this.addProficiency(name)
-    }
-  }
+
   
   levelSet(): void {
     if (this.xp >= 0 && this.xp < 300) {
@@ -332,9 +325,11 @@ export class CharacterService {
   getProficiencyBonus(): number {
     return this.proficiencyBonus;
   }
+  
   addProficiency(name: string): void {
     this.proficiencies.push(name)
   }
+  
   removeProficiency(name: string): void {
     const index = this.proficiencies.findIndex(item => item == name);
     if (index > -1) {
@@ -344,6 +339,15 @@ export class CharacterService {
   
   isProficient(x: string): boolean {
     return this.proficiencies.includes(x);
+  }
+  
+  changeProf(name: string): void {
+    if (this.isProficient(name)) {
+      this.removeProficiency(name)
+    }
+    else {
+      this.addProficiency(name)
+    }
   }
   
   toMod(score: number): number {

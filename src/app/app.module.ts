@@ -29,6 +29,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 // Components
@@ -116,6 +117,7 @@ import { NameChangeDialogComponent } from './components/name-change-dialog/name-
     HttpClientModule,
     MatAutocompleteModule,
     AppRoutingModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
