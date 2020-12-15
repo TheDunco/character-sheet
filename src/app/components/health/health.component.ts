@@ -72,6 +72,7 @@ export class HealthComponent implements OnInit {
   }
   
   updateHealth(): void {
+    this.health.hpCurrent = this.hp
     this.character.setHealth(this.health)
     this.healthPercent = (this.hp / this.health.hpMax) * 100
     if (this.healthPercent <= 50) {
