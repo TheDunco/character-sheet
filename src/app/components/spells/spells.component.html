@@ -6,9 +6,8 @@
     <div *ngFor="let spell of this.character.spellList">
         <div *ngIf="spell.level === 0">
             <p>
-                <mat-checkbox (change)="this.character.updateHighestLevelSpell()" [checked]="spell.prepared" [(ngModel)]="spell.prepared"></mat-checkbox>
                 <a (click)="openSpellDialog(spell.name, spell.summary, spell.description, spell.level, spell.prepared, spell.school, spell.srdUrl)">
-                    <mat-label [ngClass]="{'prepared': spell.prepared}">{{spell.name}}</mat-label> - {{spell.summary}}
+                    <mat-label class="prepared">{{spell.name}}</mat-label> - {{spell.summary}}
                 </a>
             </p>
         </div>
