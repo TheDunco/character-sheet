@@ -48,7 +48,14 @@ export class SummaryComponent implements OnInit {
     this.profBonus = this.character.proficiencyBonus
   }
   
+  setXP(): void {
+    this.character.levelSet()
+    this.xp = this.character.xp
+    this.level = this.character.level
+  }
+  
   setSummary(): void {
+    this.xp = this.levels[this.level - 1].xp
     this.character.setXP(this.xp)
     this.xp = this.character.xp
     this.level = this.character.level

@@ -13,7 +13,7 @@ label {
 }
 
 .abSelect {
-  width: 40%;
+  width: 50%;
 }
 
 mat-label {
@@ -26,11 +26,15 @@ mat-select {
   font-size: 1.3rem;
 }
 
+mat-form-field {
+  width: 100%;
+}
+
 .languages {
-  width: 75%;
+  height: 100px;
 }
 
 textarea {
-  height: 50px;
+  height: 200px;
   font-size: 1.2rem;
 }

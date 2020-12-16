@@ -19,14 +19,14 @@
     <label><label class="number">{{attackBonus}} </label> Attack Bonus</label>
     <br>
     <br>
-    <mat-form-field appearance="fill" class="languages">
+    <mat-form-field appearance="fill">
         <mat-label>Languages</mat-label>
-        <textarea matInput [(ngModel)]="languages" (change)="update()"></textarea>
+        <textarea matInput class="languages" [(ngModel)]="languages" (change)="update()"></textarea>
     </mat-form-field>
     
     <br>
     <br>
-    <mat-form-field appearance="fill" class="languages">
+    <mat-form-field appearance="fill" class="proficiencies">
         <mat-label>Proficiencies</mat-label>
         <textarea matInput [(ngModel)]="miscProfs" (change)="update()"></textarea>
     </mat-form-field>
