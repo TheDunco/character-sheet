@@ -1,27 +1,18 @@
-# CharacterSheet
+## CharacterSheet
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+# What is this? 
+A full fledged D&D character sheet. It's not perfect, but it's mine (ours)!
 
-## Development server
+# Why?
+I don't use D&D Beyond because of it's restrictiveness, and I don't like how Ember's RPG Vault doesn't do certain things for you. 
+Therefore, when I needed an idea for a final project for my Web Development class, I figured this would be the perfect thing to work on! We learned Angular with the Google Firebase/Cloud Firestore framework, which we used for user data storage and authentication.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Release
+The latest production release of the character sheet can be found at https://character-sheet-d0d6d.web.app/
 
-## Code scaffolding
+# Notes and Features
+You can look up spells when adding them through the D&D 5e SRD API via their name. It will auto-format input text to the format the API likes.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The actions component is still a bit buggy and the "To hit" modifiers are usually wrong.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The "Trackables" component can be used to track status effects as well as spell slots/exhaustion levels...
