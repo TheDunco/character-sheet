@@ -36,6 +36,16 @@ export class SpellsDialogComponent implements OnInit, AfterViewInit {
     srdUrl: this.data.srdUrl
   };
   
+  currentSpell: Spell = {
+    name: this.data.name,
+    summary: this.data.summary,
+    description: this.data.description,
+    level: this.data.level,
+    prepared: this.data.prepared,
+    school: this.data.school,
+    srdUrl: this.data.srdUrl
+  }
+  
   resolveItems(): Observable<any> {
     // Code based off of https://angular.io/tutorial/toh-pt6
     // this.http is a HttpClient library provide by @angular/common
@@ -48,7 +58,7 @@ export class SpellsDialogComponent implements OnInit, AfterViewInit {
   getRestData(): void {
     if (this.tempSpell.srdUrl !== "") {
       this.resolveItems().subscribe(data => {
-        console.log(data)
+        // console.log(data)
         this.tempSpell.name = data.name
         this.tempSpell.level = data.level
         this.tempSpell.summary = data.range + ' ' + data.components + ' ' + (data.damage !== undefined ? data.damage.damage_type.name : "" ) 
@@ -74,7 +84,7 @@ export class SpellsDialogComponent implements OnInit, AfterViewInit {
   }
 
   saveSpell(){
-    this.character.updateSpell(this.tempSpell, this.tempName);
+    this.character.updateSpell(this.tempSpell, this.currentSpell);
     this.character.updateHighestLevelSpell();
     this.spellDialog.close();
   }

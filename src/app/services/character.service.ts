@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Character } from './character-type';
 import { v4 as uuidv4 } from 'uuid';
+import { Console } from 'console';
 
 @Injectable({
   providedIn: 'root'
@@ -579,8 +580,17 @@ export class CharacterService {
     })
   }
   
-  updateSpell(nSpell: Spell, oSpellName: string) {
-    const index = this.spellList.findIndex(item => item.name === oSpellName);
+  updateSpell(nSpell: Spell, oSpell: Spell) {
+    const index = this.spellList.findIndex((item) => {
+      item.name == oSpell.name// &&
+      // item.description == oSpell.description &&
+      // item.level == oSpell.level &&
+      // item.school == oSpell.school &&
+      // item.summary == oSpell.summary &&
+      // item.prepared == oSpell.prepared &&
+      // item.srdUrl == oSpell.srdUrl
+    });
+    console.log(`Index: ${index}`);
     if (index > -1) {
       this.spellList[index].name = nSpell.name;
       this.spellList[index].summary = nSpell.summary;
@@ -590,13 +600,17 @@ export class CharacterService {
       this.spellList[index].school = nSpell.school;
       this.spellList[index].srdUrl = nSpell.srdUrl;
     }
-    else{
-      this.spellList.push(nSpell);
+    else {
+      if (oSpell.name !== nSpell.name) {
+        this.spellList.push(nSpell);
+        console.log("Pushed spell, index", index);
+      }
     }
   }
   
   deleteSpell(sName: string) {
     const index = this.spellList.findIndex(item => item.name === sName);
+    console.log("Deleting index: ", index);
     if (index > -1) {
       this.spellList.splice(index, 1);
     }
